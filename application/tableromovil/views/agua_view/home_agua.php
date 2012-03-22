@@ -7,12 +7,14 @@
 				<select name="riego_write" id="riego_write" data-role="slider" data-theme="b">
 					<option value="off">Off</option>
 					<option value="on">On</option>
-				</select>
+				</select>		
 				<select name="riego_read" id="riego_read" data-role="slider">
 					<option value="desact">Desact.</option>
 					<option value="act">Act.</option>				
-				</select>
+				</select>											
 		</div>
+		<div id="mensaje"></div>
+		
 		<div data-role="fieldcontain">		
 			<label for="piscina_write">Piscina</label>
 				<select name="piscina_write" id="piscina_write" data-role="slider" data-theme="b">
@@ -44,6 +46,15 @@
     });
 
     $('#riego_write').change(function() {
-    	//alert('Encendido');
-   	});    
+    	//code     	
+    	var valor = $('#riego_write').val();
+    	if(valor == 'on')
+    	{
+    		//alert('encendido');
+    		//$('#riego_read').val('act');
+    		$('#mensaje').text('encendido');
+    	}else{
+    		$('#mensaje').text('apagado');
+    	}
+   	});  
 </script>
