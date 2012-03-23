@@ -1,7 +1,6 @@
 <?php ?> 
 
-<div class="ui-body ui-body-c">
-	<form action="<?php base_url()?>index.php/" method="post">	
+<div class="ui-body ui-body-c">	
 		<div data-role="fieldcontain">
 			<label for="riego_write">Riego</label>
 				<select name="riego_write" id="riego_write" data-role="slider" data-theme="b">
@@ -36,8 +35,7 @@
 					<option value="desact">Desact.</option>
 					<option value="act">Act.</option>				
 				</select>
-		</div>
-	</form>
+		</div>	
 </div>
 <script type="text/javascript">
     $(document).ready(function(){ 
