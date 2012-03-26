@@ -4,9 +4,9 @@
 
 /* Config general titles */
 
-$config['recordListTitle']=' Listado de perfiles';
-$config['recordAddTitle']=' Nuevo perfiles';
-$config['recordEditTitle']=' Editar perfiles';
+$config['recordListTitle']='Perfiles';
+$config['recordAddTitle']=' Nuevo Perfil';
+$config['recordEditTitle']=' Editar Perfil';
 $config['accessTitle']='<div class="accessTitle"> No tienes permiso para realizar esta operaci&oacute;n </div>';
 
 /* Config labels of the form fields */
@@ -45,7 +45,7 @@ $config['isRequired_perfiles_updated_at']= 1;
 
 /* Config params of pagination */
 
-$config['pag_perpage']= 3;
+$config['pag_perpage']= 10;
 
 /* Config flash messages */
 

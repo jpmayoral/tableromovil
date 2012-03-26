@@ -11,7 +11,7 @@ class Main_Controller extends CI_Controller {
 	function index()
 	{
 		//code here
-		$data['subtitle'] = 'Test';
+		$data['title_header'] = 'Principal';
 		$this->load->view('main/main_view', $data);
 	}
 

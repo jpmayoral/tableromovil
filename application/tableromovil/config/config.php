@@ -11,12 +11,12 @@
 |	http://example.com/
 |
 | If this is not set then CodeIgniter will guess the protocol, domain and
-| path to your installation. ''
+| path to your installation.
 |
 */
-#$config['base_url']	= 'http://testsystem.zapto.org/projects/tableromovil/';
-#$config['base_url']	= 'http://192.168.2.10/projects/tableromovil/';
-$config['base_url'] = 'http://localhost/tableromovil/';
+//$config['base_url']	= 'http://testsystem.zapto.org/projects/tableromovil/';
+$config['base_url']	= 'http://localhost/projects/tableromovil/';
+//$config['base_url']	= 'http://192.168.2.10/projects/tableromovil/';
 
 /*
 |--------------------------------------------------------------------------

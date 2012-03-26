@@ -1,7 +1,7 @@
 <form action="<?=base_url()?>welcome/login" method="post" name="formLoginusuarios" id="formLoginusuarios">
 	<div data-role="fieldcontain">
 		<label for="usuarios_username">Usuario:</label>
-		<input type="text" name="usuarios_username" id="usuarios_username" value="" autofocus="autofocus"/>
+		<input type="text" name="usuarios_username" id="usuarios_username" value="" />
 	</div>
 	<div data-role="fieldcontain">
 		<label for="usuarios_password">Contraseña:</label>

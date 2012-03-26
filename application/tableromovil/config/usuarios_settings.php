@@ -4,9 +4,9 @@
 
 /* Config general titles */
 
-$config['recordListTitle']=' Listado de usuarios';
-$config['recordAddTitle']=' Nuevo usuario';
-$config['recordEditTitle']=' Editar usuario';
+$config['recordListTitle']='Usuarios';
+$config['recordAddTitle']='Nuevo usuario';
+$config['recordEditTitle']='Editar usuario';
 $config['accessTitle']='<div class="accessTitle"> No tienes permiso para realizar esta operaci&oacute;n </div>';
 
 /* Config labels of the form fields */

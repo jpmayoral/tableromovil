@@ -169,7 +169,7 @@ class Basicauth {
 	 * 
 	 * @return string data
 	 */
-	function getMenu($parent=0,$ul_start="<ul data-role='listview' data-theme='b'>")
+	function getMenu($parent=0,$ul_start="<ul data-role='listview' data-theme='h'>")
 	{
 		
 		$query_str = "select s.sismenu_id, s.sismenu_descripcion, s.sismenu_parent, s.sismenu_iconpath, sv.sisvinculos_link from sismenu as s 

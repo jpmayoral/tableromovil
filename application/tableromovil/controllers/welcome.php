@@ -19,7 +19,8 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view("home/home");
+		$data['title_header'] = 'Ingreso';
+		$this->load->view("home/home", $data);
 	}
 
 
@@ -34,6 +35,7 @@ class Welcome extends CI_Controller {
 		//code here
 		$this->load->model('usuarios_model');
 		$data = array();
+		$data['title_header'] = 'Ingreso';
 		$this->form_validation->set_rules('usuarios_username', 'usuarios_username', 'trim|required|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_password', 'usuarios_password', 'trim|required|alpha_numeric|md5|xss_clean');
 		if($this->form_validation->run())

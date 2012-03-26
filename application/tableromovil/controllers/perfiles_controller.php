@@ -45,7 +45,7 @@ class Perfiles_Controller extends CI_Controller {
 	{
 		//code here
 		$data = array();
-		$data['subtitle'] = $this->config->item('recordAddTitle');
+		$data['title_header'] = $this->config->item('recordAddTitle');
 		$data['estados'] = $this->tabgral_model->get_m(array("grupos_tabgral_id" => 1));
 		$this->form_validation->set_rules('perfiles_descripcion', 'perfiles_descripcion', 'trim|required|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('perfiles_estado', 'perfiles_estado', 'trim|integer|xss_clean');
@@ -85,7 +85,7 @@ class Perfiles_Controller extends CI_Controller {
 	{
 		//code here
 		$data = array();
-		$data['subtitle'] = $this->config->item('recordEditTitle');
+		$data['title_header'] = $this->config->item('recordEditTitle');
 		$data['perfiles'] = $this->perfiles_model->get_m(array('perfiles_id' => $perfiles_id),$flag=1);
 		$data['estados'] = $this->tabgral_model->get_m(array("grupos_tabgral_id" => 1));
 		$this->form_validation->set_rules('perfiles_id', 'perfiles_id', 'trim|required|integer|xss_clean');
@@ -173,6 +173,7 @@ class Perfiles_Controller extends CI_Controller {
 			$data['fieldShow'] = $this->basicrud->getFieldToShow($this->perfiles_model->getFieldsTable_m());
 			$data['flag'] = $this->flags;
 
+			$data['title_header'] = 'Perfiles';
 			$this->load->view('perfiles_view/home_perfiles', $data);
 			$this->load->view('perfiles_view/record_list_perfiles');
 			$this->load->view('perfiles_view/_footer');

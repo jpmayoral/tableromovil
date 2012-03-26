@@ -46,23 +46,21 @@ class Usuarios_Controller extends CI_Controller {
 	{
 		//code here
 		$data = array();
-		$data['subtitle'] = $this->config->item('recordAddTitle');
-		$this->form_validation->set_rules('usuarios_id', 'usuarios_id', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('usuarios_username', 'usuarios_username', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_password', 'usuarios_password', 'trim|alpha_numeric|md5|xss_clean');
-		$this->form_validation->set_rules('usuarios_nombre', 'usuarios_nombre', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_apellido', 'usuarios_apellido', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_email', 'usuarios_email', 'trim|alpha_numeric|xss_clean');
+		$data['title_header'] = $this->config->item('recordAddTitle');
+		$data['estados'] = $this->tabgral_model->get_m(array("grupos_tabgral_id" => 1));
+		$data['perfiles'] = $this->perfiles_model->get_m();
+
+		$this->form_validation->set_rules('usuarios_username', 'usuarios_username', 'trim|required|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('usuarios_password', 'usuarios_password', 'trim|required|alpha_numeric|md5|xss_clean');
+		$this->form_validation->set_rules('usuarios_nombre', 'usuarios_nombre', 'trim|required|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('usuarios_apellido', 'usuarios_apellido', 'trim|required|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('usuarios_email', 'usuarios_email', 'trim|required|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_direccion', 'usuarios_direccion', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_telefono', 'usuarios_telefono', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_estado', 'usuarios_estado', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('usuarios_legajo', 'usuarios_legajo', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('perfiles_id', 'perfiles_id', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('provincias_id', 'provincias_id', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('localidades_id', 'localidades_id', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('usuarios_activationcode', 'usuarios_activationcode', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_tokenforgotpasswd', 'usuarios_tokenforgotpasswd', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_created_at', 'usuarios_created_at', 'trim|alpha_numeric|xss_clean');
 		if($this->form_validation->run())
 		{	
 			$data_usuarios  = array();
@@ -90,14 +88,8 @@ class Usuarios_Controller extends CI_Controller {
 				$data_usuarios['provincias_id'] = $this->input->post('provincias_id');
 			if($this->input->post('localidades_id'))
 				$data_usuarios['localidades_id'] = $this->input->post('localidades_id');
-			if($this->input->post('usuarios_activationcode'))
-				$data_usuarios['usuarios_activationcode'] = $this->input->post('usuarios_activationcode');
-			if($this->input->post('usuarios_tokenforgotpasswd'))
-				$data_usuarios['usuarios_tokenforgotpasswd'] = $this->input->post('usuarios_tokenforgotpasswd');
-			if($this->input->post('usuarios_created_at'))
-				$data_usuarios['usuarios_created_at'] = $this->basicrud->getFormatDateToBD($this->input->post('usuarios_created_at'));
-			if($this->input->post('usuarios_updated_at'))
-				$data_usuarios['usuarios_updated_at'] = $this->basicrud->getFormatDateToBD($this->input->post('usuarios_updated_at'));
+			$data_usuarios['usuarios_created_at'] = $this->basicrud->formatDateToBD();
+			$data_usuarios['usuarios_updated_at'] = $this->basicrud->formatDateToBD();
 
 			$id_usuarios = $this->usuarios_model->add_m($data_usuarios);
 			if($id_usuarios){ 
@@ -125,8 +117,11 @@ class Usuarios_Controller extends CI_Controller {
 	{
 		//code here
 		$data = array();
-		$data['subtitle'] = $this->config->item('recordEditTitle');
+		$data['title_header'] = $this->config->item('recordEditTitle');
 		$data['usuarios'] = $this->usuarios_model->get_m(array('usuarios_id' => $usuarios_id),$flag=1);
+		$data['estados'] = $this->tabgral_model->get_m(array("grupos_tabgral_id" => 1));
+		$data['perfiles'] = $this->perfiles_model->get_m();
+		
 		$this->form_validation->set_rules('usuarios_id', 'usuarios_id', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('usuarios_username', 'usuarios_username', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_password', 'usuarios_password', 'trim|alpha_numeric|md5|xss_clean');
@@ -136,13 +131,8 @@ class Usuarios_Controller extends CI_Controller {
 		$this->form_validation->set_rules('usuarios_direccion', 'usuarios_direccion', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_telefono', 'usuarios_telefono', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_estado', 'usuarios_estado', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('usuarios_legajo', 'usuarios_legajo', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('perfiles_id', 'perfiles_id', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('provincias_id', 'provincias_id', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('localidades_id', 'localidades_id', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('usuarios_activationcode', 'usuarios_activationcode', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_tokenforgotpasswd', 'usuarios_tokenforgotpasswd', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_created_at', 'usuarios_created_at', 'trim|alpha_numeric|xss_clean');
+		
 		if($this->form_validation->run()){
 			$data_usuarios  = array();
 			if($this->input->post('usuarios_id'))
@@ -171,14 +161,7 @@ class Usuarios_Controller extends CI_Controller {
 				$data_usuarios['provincias_id'] = $this->input->post('provincias_id');
 			if($this->input->post('localidades_id'))
 				$data_usuarios['localidades_id'] = $this->input->post('localidades_id');
-			if($this->input->post('usuarios_activationcode'))
-				$data_usuarios['usuarios_activationcode'] = $this->input->post('usuarios_activationcode');
-			if($this->input->post('usuarios_tokenforgotpasswd'))
-				$data_usuarios['usuarios_tokenforgotpasswd'] = $this->input->post('usuarios_tokenforgotpasswd');
-			if($this->input->post('usuarios_created_at'))
-				$data_usuarios['usuarios_created_at'] = $this->basicrud->getFormatDateToBD($this->input->post('usuarios_created_at'));
-			if($this->input->post('usuarios_updated_at'))
-				$data_usuarios['usuarios_updated_at'] = $this->basicrud->getFormatDateToBD($this->input->post('usuarios_updated_at'));
+			$data_usuarios['usuarios_updated_at'] = $this->basicrud->formatDateToBD();
 
 			if($this->usuarios_model->edit_m($data_usuarios)){ 
 				$this->session->set_flashdata('flashConfirm', $this->config->item('usuarios_flash_edit_message')); 
@@ -254,6 +237,7 @@ class Usuarios_Controller extends CI_Controller {
 			$data['flag'] = $this->flags;		
 			$data['fieldShow'] = $this->basicrud->getFieldToShow($this->usuarios_model->getFieldsTable_m());
 			
+			$data['title_header'] = $this->config->item("recordListTitle");
 			$this->load->view('usuarios_view/home_usuarios', $data);
 			$this->load->view('usuarios_view/record_list_usuarios',$data);
 			$this->load->view('default/_footer');
@@ -306,6 +290,6 @@ class Usuarios_Controller extends CI_Controller {
 	{
 		//code here
 		$this->basicauth->logout();
-		redirect('usuarios_controller/login_c');	
+		redirect('welcome/index');	
 	}
 }

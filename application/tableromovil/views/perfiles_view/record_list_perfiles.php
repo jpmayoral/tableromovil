@@ -8,7 +8,7 @@
 		<div class="ui-grid-b">
 		<?php foreach($perfiles as $f):?>
 			<div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:27px"><?=$f->perfiles_descripcion?></div></div>
-			<div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:27px"><?=$f->perfiles_estado_descripcio?></div></div>
+			<div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:27px"><?=$f->perfiles_estado_descripcion?></div></div>
 			<div class="ui-block-c">
 				<div class="ui-bar ui-bar-c" style="height:27px">
 					<div data-role="controlgroup" data-type="horizontal">

@@ -4,8 +4,8 @@
 
 /* Config general titles */
 
-$config['title_footer']='Tablero m&oacute;vil &copy; 2012';
-$config['title_header']='Principal';
+$config['title_footer']='Domotech &copy; 2012';
+$config['title_header']='Ingreso';
 $config['title_menu_main_controllers']='Menu Principal';
 
 /* Config titles of controllers*/

@@ -14,10 +14,10 @@
 					<div class="ui-bar ui-bar-c" style="height:27px">
 						<div data-role="controlgroup" data-type="horizontal">
 							<?php if($flag['u']):?>
-								<a href="#" onClick="loadPage('<?=base_url()?>index.php/usuarios_controller/edit_c/<?=$f->usuarios_id?>','right-content')" data-role="button" data-icon="refresh" data-iconpos="notext" title="Modificar">Modificar</a>
+								<a href="<?=base_url()?>index.php/usuarios_controller/edit_c/<?=$f->usuarios_id?>" data-role="button" data-icon="refresh" data-iconpos="notext" title="Modificar">Modificar</a>
 							<?php endif;?>
 							<?php if($flag['d']):?>
-								<a href="#" onClick="deleteData('<?=base_url()?>index.php/usuarios_controller/delete_c/<?=$f->usuarios_id?>','right-content','¿Estás seguro de eliminar este item?')" data-role="button" data-icon="delete" data-iconpos="notext" title="Eliminar">Eliminar</a>
+								<a href="<?=base_url()?>index.php/usuarios_controller/delete_c/<?=$f->usuarios_id?>" data-role="button" data-icon="delete" data-iconpos="notext" title="Eliminar">Eliminar</a>
 							<?php endif;?>
 						</div>
 					</div>
