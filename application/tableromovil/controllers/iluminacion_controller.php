@@ -27,11 +27,10 @@ class Iluminacion_Controller extends CI_Controller
 
 	function index()
 	{
-
-		$data['title_header'] = 'Iluminación';
 		//code here
+		$data['title_header'] = 'Iluminación';		
 		$this->load->view('default/_header',$data);
-		//$this->load->view('agua_view/home_agua');
+		$this->load->view('iluminacion_view/home_iluminacion');
 		$this->load->view('default/_footer');
 	}
 
