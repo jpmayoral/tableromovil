@@ -1,7 +1,7 @@
 <?php
 if (! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Iluminacion_Controler extends CI_Controller
+class Iluminacion_Controller extends CI_Controller
 {
 	private $flagR;
 	private $flagI;
@@ -27,12 +27,12 @@ class Iluminacion_Controler extends CI_Controller
 
 	function index()
 	{
+
+		$data['title_header'] = 'Iluminación';
 		//code here
-		echo "hola";
-		/*
-		$this->load->view('default/_header');
-		$this->load->view('iluminacion_view/home_iluminacion');
-		$this->load->view('default/_footer');*/
+		$this->load->view('default/_header',$data);
+		//$this->load->view('agua_view/home_agua');
+		$this->load->view('default/_footer');
 	}
 
 	/*

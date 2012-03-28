@@ -28,7 +28,8 @@ class Agua_Controller extends CI_Controller
 	function index()
 	{
 		//code here
-		$this->load->view('default/_header');
+		$data['title_header']='Agua';
+		$this->load->view('default/_header', $data);
 		$this->load->view('agua_view/home_agua');
 		$this->load->view('default/_footer');
 	}

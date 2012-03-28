@@ -38,10 +38,6 @@
 		</div>	
 </div>
 <script type="text/javascript">
-    $(document).ready(function(){ 
-        $("#main-header h1").html("Agua");
-
-    });
 
     $('#riego_write').change(function() {
     	//code     	
@@ -54,5 +50,6 @@
     	}else{
     		$('#mensaje').text('apagado');
     	}
-   	});  
+   	}); 
+   	 
 </script>
