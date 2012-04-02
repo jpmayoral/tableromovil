@@ -7,7 +7,7 @@
 		<label for="usuarios_password">Contraseña:</label>
 		<input type="password" name="usuarios_password" id="usuarios_password" data-theme="b"/>
 	</div>
-	<input type="submit" name="Aceptar"  value="Aceptar" data-role="button" data-theme="b"/>
+	<input type="submit" name="Aceptar"  value="Aceptar" data-role="button" data-theme="a"/>
 	<div class="errors" id="errors">
 	<?php
 		echo validation_errors();

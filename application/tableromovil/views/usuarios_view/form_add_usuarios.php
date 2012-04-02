@@ -53,8 +53,8 @@
 		<input type="text" name="localidades_id" id="localidades_id"></input>
 	</div>-->
 	<div class="ui-grid-a">
-		<div class="ui-block-a"><a href="<?=base_url()?>usuarios_controller/index" data-role="button" data-theme="b">Cancelar</a></div>
-		<div class="ui-block-b"><input type="submit" name="guardar" value="Guardar"  class="ui-block-b" data-role="button" data-theme="b"/></div>
+		<div class="ui-block-a"><a href="<?=base_url()?>usuarios_controller/index" data-role="button" data-theme="a">Cancelar</a></div>
+		<div class="ui-block-b"><input type="submit" name="guardar" value="Guardar"  class="ui-block-b" data-role="button" data-theme="a"/></div>
 	</div>
 	<div class="errors" id="errors">
 	<?php

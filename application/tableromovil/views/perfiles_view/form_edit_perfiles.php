@@ -2,11 +2,11 @@
 <form action="<?=base_url()?>perfiles_controller/edit_c/<?=$perfiles->perfiles_id?>" method="post" name="formEditperfiles" id="formEditperfiles">
 	<div data-role="fieldcontain">
 		<label for="perfiles_id"><?=$this->config->item('perfiles_id')?>:</label>
-		<input type="text" value="<?=$perfiles->perfiles_id?>" name="perfiles_id" id="perfiles_id"  readonly="readonly"></input>
+		<input type="text" value="<?=$perfiles->perfiles_id?>" name="perfiles_id" id="perfiles_id"  readonly="readonly" data-theme="b"></input>
 	</div>
 	<div data-role="fieldcontain">
 		<label for="perfiles_descripcion"><?=$this->config->item('perfiles_descripcion')?>:</label>
-		<input type="text" value="<?=$perfiles->perfiles_descripcion?>" name="perfiles_descripcion" id="perfiles_descripcion"></input>
+		<input type="text" value="<?=$perfiles->perfiles_descripcion?>" name="perfiles_descripcion" id="perfiles_descripcion" data-theme="b"></input>
 	</div>
 	<div data-role="fieldcontain">
 		<label for="perfiles_estado"><?=$this->config->item('perfiles_estado_descripcion')?>:</label>
@@ -22,11 +22,11 @@
 	</div>
 	<div data-role="fieldcontain">
 		<label for="perfiles_created_at"><?=$this->config->item('perfiles_created_at')?>:</label>
-		<input type="text" value="<?=$perfiles->perfiles_created_at?>" name="perfiles_created_at" id="perfiles_created_at"></input>
+		<input type="text" value="<?=$perfiles->perfiles_created_at?>" name="perfiles_created_at" id="perfiles_created_at" data-theme="b" readonly="true"></input>
 	</div>
 	<div class="ui-grid-a">
-		<div class="ui-block-a"><a href="<?=base_url()?>perfiles_controller/index" data-role="button" data-theme="b">Cancelar</a></div>
-		<div class="ui-block-b"><input type="submit" name="modificar" value="Modificar" data-theme="b" />
+		<div class="ui-block-a"><a href="<?=base_url()?>perfiles_controller/index" data-role="button" data-theme="a">Cancelar</a></div>
+		<div class="ui-block-b"><input type="submit" name="modificar" value="Modificar" data-theme="a" />
 	</div>
 	<div class="errors" id="errors">
 	<?php

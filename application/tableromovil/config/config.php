@@ -14,9 +14,7 @@
 | path to your installation.
 |
 */
-//$config['base_url']	= 'http://testsystem.zapto.org/projects/tableromovil/';
-$config['base_url']	= 'http://localhost/tableromovil/';
-//$config['base_url']	= 'http://192.168.2.10/projects/tableromovil/';
+$config['base_url']	= 'http://localhost/repositorios/tableromovil/';
 
 /*
 |--------------------------------------------------------------------------

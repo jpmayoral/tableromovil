@@ -6,11 +6,11 @@
 	</div>
 	<div data-role="fieldcontain">
 		<label for="usuarios_username"><?=$this->config->item('usuarios_username')?>:</label>
-		<input type="text" value="<?=$usuarios->usuarios_username?>" name="usuarios_username" id="usuarios_username" data-theme="b"></input>
+		<input type="text" value="<?=$usuarios->usuarios_username?>" name="usuarios_username" id="usuarios_username" readonly="true" data-theme="b"></input>
 	</div>
 	<div data-role="fieldcontain">
 		<label for="usuarios_password"><?=$this->config->item('usuarios_password')?>:</label>
-		<input type="password" value="" name="usuarios_password" id="usuarios_password" data-theme="b"></input>
+		<input type="password" name="usuarios_password" id="usuarios_password" data-theme="b"></input>
 	</div>
 	<div data-role="fieldcontain">
 		<label for="usuarios_nombre"><?=$this->config->item('usuarios_nombre')?>:</label>
@@ -69,8 +69,8 @@
 		<input type="text" value="<?=$usuarios->usuarios_created_at?>" name="usuarios_created_at" id="usuarios_created_at" readonly="true" data-theme="b"></input>
 	</div>
 	<div class="ui-grid-a">
-		<div class="ui-block-a"><a href="<?=base_url()?>usuarios_controller/index" data-role="button" data-theme="b">Cancelar</a></div>
-		<div class="ui-block-b"><input type="submit" name="modificar" value="Modificar" data-role="button" data-theme="b" /></div>
+		<div class="ui-block-a"><a href="<?=base_url()?>usuarios_controller/index" data-role="button" data-theme="a">Cancelar</a></div>
+		<div class="ui-block-b"><input type="submit" name="modificar" value="Modificar" data-role="button" data-theme="a" /></div>
 	</div>
 	<div class="errors" id="errors">
 	<?php

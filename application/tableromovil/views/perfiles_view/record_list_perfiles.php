@@ -1,9 +1,9 @@
 <div id="result-list">
 	<?php if(isset($perfiles) && is_array($perfiles) && count($perfiles)>0):?>
 		<div class="ui-grid-b">
-			<div class="ui-block-a"><div class="ui-bar ui-bar-b" style="height:22px">Descripci&oacute;n</div></div>
-			<div class="ui-block-b"><div class="ui-bar ui-bar-b" style="height:22px">Estado</div></div>
-			<div class="ui-block-c"><div class="ui-bar ui-bar-b" style="height:22px"></div></div>
+			<div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:22px">Descripci&oacute;n</div></div>
+			<div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:22px">Estado</div></div>
+			<div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:22px"></div></div>
 		</div>
 		<div class="ui-grid-b">
 		<?php foreach($perfiles as $f):?>

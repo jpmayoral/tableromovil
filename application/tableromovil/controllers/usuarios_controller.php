@@ -57,33 +57,25 @@ class Usuarios_Controller extends CI_Controller {
 		$this->form_validation->set_rules('usuarios_email', 'usuarios_email', 'trim|required|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_direccion', 'usuarios_direccion', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_telefono', 'usuarios_telefono', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_estado', 'usuarios_estado', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('perfiles_id', 'perfiles_id', 'trim|integer|xss_clean');
+		$this->form_validation->set_rules('usuarios_estado', 'usuarios_estado', 'trim|required|integer|xss_clean');
+		$this->form_validation->set_rules('perfiles_id', 'perfiles_id', 'trim|required|integer|xss_clean');
 		$this->form_validation->set_rules('provincias_id', 'provincias_id', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('localidades_id', 'localidades_id', 'trim|integer|xss_clean');
 		if($this->form_validation->run())
 		{	
 			$data_usuarios  = array();
-			if($this->input->post('usuarios_username'))
-				$data_usuarios['usuarios_username'] = $this->input->post('usuarios_username');
-			if($this->input->post('usuarios_password'))
-				$data_usuarios['usuarios_password'] = $this->input->post('usuarios_password');
-			if($this->input->post('usuarios_nombre'))
-				$data_usuarios['usuarios_nombre'] = $this->input->post('usuarios_nombre');
-			if($this->input->post('usuarios_apellido'))
-				$data_usuarios['usuarios_apellido'] = $this->input->post('usuarios_apellido');
+			$data_usuarios['usuarios_username'] = $this->input->post('usuarios_username');
+			$data_usuarios['usuarios_password'] = $this->input->post('usuarios_password');
+			$data_usuarios['usuarios_nombre'] = $this->input->post('usuarios_nombre');
+			$data_usuarios['usuarios_apellido'] = $this->input->post('usuarios_apellido');
 			if($this->input->post('usuarios_email'))
 				$data_usuarios['usuarios_email'] = $this->input->post('usuarios_email');
 			if($this->input->post('usuarios_direccion'))
 				$data_usuarios['usuarios_direccion'] = $this->input->post('usuarios_direccion');
 			if($this->input->post('usuarios_telefono'))
 				$data_usuarios['usuarios_telefono'] = $this->input->post('usuarios_telefono');
-			if($this->input->post('usuarios_estado'))
-				$data_usuarios['usuarios_estado'] = $this->input->post('usuarios_estado');
-			if($this->input->post('usuarios_legajo'))
-				$data_usuarios['usuarios_legajo'] = $this->input->post('usuarios_legajo');
-			if($this->input->post('perfiles_id'))
-				$data_usuarios['perfiles_id'] = $this->input->post('perfiles_id');
+			$data_usuarios['usuarios_estado'] = $this->input->post('usuarios_estado');
+			$data_usuarios['perfiles_id'] = $this->input->post('perfiles_id');
 			if($this->input->post('provincias_id'))
 				$data_usuarios['provincias_id'] = $this->input->post('provincias_id');
 			if($this->input->post('localidades_id'))
@@ -122,41 +114,33 @@ class Usuarios_Controller extends CI_Controller {
 		$data['estados'] = $this->tabgral_model->get_m(array("grupos_tabgral_id" => 1));
 		$data['perfiles'] = $this->perfiles_model->get_m();
 		
-		$this->form_validation->set_rules('usuarios_id', 'usuarios_id', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('usuarios_username', 'usuarios_username', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_password', 'usuarios_password', 'trim|alpha_numeric|md5|xss_clean');
-		$this->form_validation->set_rules('usuarios_nombre', 'usuarios_nombre', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_apellido', 'usuarios_apellido', 'trim|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('usuarios_id', 'usuarios_id', 'trim|required|integer|xss_clean');
+		$this->form_validation->set_rules('usuarios_username', 'usuarios_username', 'trim|required|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('usuarios_password', 'usuarios_password', 'trim|required|alpha_numeric|md5|xss_clean');
+		$this->form_validation->set_rules('usuarios_nombre', 'usuarios_nombre', 'trim|required|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('usuarios_apellido', 'usuarios_apellido', 'trim|required|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_email', 'usuarios_email', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_direccion', 'usuarios_direccion', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_telefono', 'usuarios_telefono', 'trim|alpha_numeric|xss_clean');
-		$this->form_validation->set_rules('usuarios_estado', 'usuarios_estado', 'trim|integer|xss_clean');
-		$this->form_validation->set_rules('perfiles_id', 'perfiles_id', 'trim|integer|xss_clean');
+		$this->form_validation->set_rules('usuarios_estado', 'usuarios_estado', 'trim|required|integer|xss_clean');
+		$this->form_validation->set_rules('perfiles_id', 'perfiles_id', 'trim|required|integer|xss_clean');
 		
 		if($this->form_validation->run()){
 			$data_usuarios  = array();
-			if($this->input->post('usuarios_id'))
-				$data_usuarios['usuarios_id'] = $this->input->post('usuarios_id');
-			if($this->input->post('usuarios_username'))
-				$data_usuarios['usuarios_username'] = $this->input->post('usuarios_username');
+			$data_usuarios['usuarios_id'] = $this->input->post('usuarios_id');
+			$data_usuarios['usuarios_username'] = $this->input->post('usuarios_username');
 			if($this->input->post('usuarios_password'))
 				$data_usuarios['usuarios_password'] = $this->input->post('usuarios_password');
-			if($this->input->post('usuarios_nombre'))
-				$data_usuarios['usuarios_nombre'] = $this->input->post('usuarios_nombre');
-			if($this->input->post('usuarios_apellido'))
-				$data_usuarios['usuarios_apellido'] = $this->input->post('usuarios_apellido');
+			$data_usuarios['usuarios_nombre'] = $this->input->post('usuarios_nombre');
+			$data_usuarios['usuarios_apellido'] = $this->input->post('usuarios_apellido');
 			if($this->input->post('usuarios_email'))
 				$data_usuarios['usuarios_email'] = $this->input->post('usuarios_email');
 			if($this->input->post('usuarios_direccion'))
 				$data_usuarios['usuarios_direccion'] = $this->input->post('usuarios_direccion');
 			if($this->input->post('usuarios_telefono'))
 				$data_usuarios['usuarios_telefono'] = $this->input->post('usuarios_telefono');
-			if($this->input->post('usuarios_estado'))
-				$data_usuarios['usuarios_estado'] = $this->input->post('usuarios_estado');
-			if($this->input->post('usuarios_legajo'))
-				$data_usuarios['usuarios_legajo'] = $this->input->post('usuarios_legajo');
-			if($this->input->post('perfiles_id'))
-				$data_usuarios['perfiles_id'] = $this->input->post('perfiles_id');
+			$data_usuarios['usuarios_estado'] = $this->input->post('usuarios_estado');
+			$data_usuarios['perfiles_id'] = $this->input->post('perfiles_id');
 			if($this->input->post('provincias_id'))
 				$data_usuarios['provincias_id'] = $this->input->post('provincias_id');
 			if($this->input->post('localidades_id'))

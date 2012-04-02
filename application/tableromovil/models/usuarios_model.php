@@ -147,8 +147,12 @@ class Usuarios_Model extends CI_Model {
 		//sort
 		if(isset($options['sortBy']) && isset($options['sortDirection']))
 			$this->db->order_by($options['sortBy'],$options['sortDirection']);
-
-		$query = $this->db->get('usuarios');
+		
+		$this->db->select("u.*, p.perfiles_descripcion, tg.tabgral_descripcion as usuarios_estado_descripcion");
+		$this->db->from("usuarios as u");
+		$this->db->join("perfiles as p","p.perfiles_id = u.perfiles_id");
+		$this->db->join("tabgral as tg","tg.tabgral_id = u.usuarios_estado");
+		$query = $this->db->get();
 
 		if(isset($options['count'])) return $query->num_rows();
 
@@ -189,8 +193,10 @@ class Usuarios_Model extends CI_Model {
 		$fields[]='usuarios_direccion';
 		$fields[]='usuarios_telefono';
 		$fields[]='usuarios_estado';
+		$fields[]='usuarios_estado_descripcion';
 		$fields[]='usuarios_legajo';
 		$fields[]='perfiles_id';
+		$fields[]='perfiles_descripcion';
 		$fields[]='provincias_id';
 		$fields[]='localidades_id';
 		$fields[]='usuarios_activationcode';

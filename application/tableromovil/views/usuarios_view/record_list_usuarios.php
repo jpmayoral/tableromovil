@@ -2,14 +2,14 @@
 <div id="result-list">
 	<?php if(isset($usuarios) && is_array($usuarios) && count($usuarios)>0):?>
 		<div class="ui-grid-b">
-			<div class="ui-block-a"><div class="ui-bar ui-bar-b" style="height:22px">Username</div></div>
-			<div class="ui-block-b"><div class="ui-bar ui-bar-b" style="height:22px">Perfil</div></div>
-			<div class="ui-block-c"><div class="ui-bar ui-bar-b" style="height:22px"></div></div>
+			<div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:22px">Username</div></div>
+			<div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:22px">Perfil</div></div>
+			<div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:22px"></div></div>
 		</div>
 		<div class="ui-grid-b">
 			<?php foreach($usuarios as $f):?>
 				<div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:27px"><?=$f->usuarios_username?></div></div>
-				<div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:27px"><?=$f->perfiles_id?></div></div>
+				<div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:27px"><?=$f->perfiles_descripcion?></div></div>
 				<div class="ui-block-c">
 					<div class="ui-bar ui-bar-c" style="height:27px">
 						<div data-role="controlgroup" data-type="horizontal">
