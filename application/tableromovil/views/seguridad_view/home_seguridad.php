@@ -1,6 +1,7 @@
 <?php ?> 
 
-<div class="ui-body ui-body-c">	
+<!--<div class="ui-body ui-body-a">-->
+<div>	
 		<div data-role="fieldcontain">
 			<label for="electricidad">Electricidad</label>
 				<select name="electricidad" id="electricidad" data-role="slider" data-theme="b">

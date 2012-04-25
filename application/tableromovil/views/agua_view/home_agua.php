@@ -1,6 +1,11 @@
 <?php ?> 
 
-<div class="ui-body ui-body-c">	
+<div class="ui-body ui-body-a">	
+		<div data-role="collapsible" data-content-theme="c">
+			<h3>Info</h3>
+			<p>Para activar/desactivar las diferentes opciones, 
+				deslice el botón On/Off.</p>
+		</div>	
 		<div data-role="fieldcontain">
 			<label for="riego">Riego</label>
 				<select name="riego" id="riego" data-role="slider" data-theme="b">
@@ -8,8 +13,7 @@
 					<option value="on">On</option>
 				</select>													
 		</div>
-		<div id="mensaje"></div>
-		
+		<div id="mensaje"></div>		
 		<div data-role="fieldcontain">		
 			<label for="piscina">Piscina</label>
 				<select name="piscina" id="piscina" data-role="slider" data-theme="b">
@@ -23,13 +27,16 @@
 				<option value="off">Off</option>
 				<option value="on">On</option>
 			</select>			
-		</div>	
+		</div>		
 </div>
+
+
+
 <script type="text/javascript">
 
-    $('#riego_write').change(function() {
+    $('#riego').change(function() {
     	//code     	
-    	var valor = $('#riego_write').val();
+    	var valor = $('#riego').val();
     	if(valor == 'on')
     	{
     		//alert('encendido');

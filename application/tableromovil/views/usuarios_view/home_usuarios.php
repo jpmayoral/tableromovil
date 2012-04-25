@@ -5,7 +5,7 @@
 <?php if($flag['i']):?>
 	<a href="<?=base_url()?>index.php/usuarios_controller/add_c" title='Nuevo'>Nuevo</a>
 <?php endif; ?>
-<div class="ui-body ui-body-c">
+<div class="ui-body ui-body-a">
 	<form action="<?=base_url()?>index.php/usuarios_controller/search_c" method="post" name="formSearchusuarios" id="formSearchusuarios">
 		<label for="usuarios_username"><?=$this->config->item("usuarios_username")?>:</label>
     	<input type="search" name="usuarios_username" id="usuarios_username" />
