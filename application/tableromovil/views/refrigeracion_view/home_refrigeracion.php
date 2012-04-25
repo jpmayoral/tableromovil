@@ -6,11 +6,7 @@
 				<select name="aire_1_write" id="aire_1_write" data-role="slider" data-theme="b">
 					<option value="off">Off</option>
 					<option value="on">On</option>
-				</select>		
-				<select name="aire_1_read" id="aire_1_read" data-role="slider">
-					<option value="desact">Desact.</option>
-					<option value="act">Act.</option>				
-				</select>											
+				</select>									
 		</div>	
 		<div data-role="fieldcontain">
 			<label for="temperatura_1">Temperatura:</label>
@@ -21,10 +17,6 @@
 				<select name="aire_2_write" id="aire_2_write" data-role="slider" data-theme="b">
 					<option value="off">Off</option>
 					<option value="on">On</option>
-				</select>
-				<select name="aire_2_read" id="aire_2_read" data-role="slider">
-					<option value="desact">Desact.</option>
-					<option value="act">Act.</option>				
 				</select>
 		</div>	
 		<div data-role="fieldcontain">
@@ -37,10 +29,6 @@
 					<option value="off">Off</option>
 					<option value="on">On</option>
 				</select>
-				<select name="aire_3_read" id="aire_3_read" data-role="slider">
-					<option value="desact">Desact.</option>
-					<option value="act">Act.</option>				
-				</select>		
 		</div>
 		<div data-role="fieldcontain">
 			<label for="temperatura_3">Temperatura:</label>

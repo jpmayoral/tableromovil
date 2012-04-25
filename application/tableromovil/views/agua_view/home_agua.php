@@ -2,39 +2,27 @@
 
 <div class="ui-body ui-body-c">	
 		<div data-role="fieldcontain">
-			<label for="riego_write">Riego</label>
-				<select name="riego_write" id="riego_write" data-role="slider" data-theme="b">
+			<label for="riego">Riego</label>
+				<select name="riego" id="riego" data-role="slider" data-theme="b">
 					<option value="off">Off</option>
 					<option value="on">On</option>
-				</select>		
-				<select name="riego_read" id="riego_read" data-role="slider">
-					<option value="desact">Desact.</option>
-					<option value="act">Act.</option>				
-				</select>											
+				</select>													
 		</div>
 		<div id="mensaje"></div>
 		
 		<div data-role="fieldcontain">		
-			<label for="piscina_write">Piscina</label>
-				<select name="piscina_write" id="piscina_write" data-role="slider" data-theme="b">
+			<label for="piscina">Piscina</label>
+				<select name="piscina" id="piscina" data-role="slider" data-theme="b">
 					<option value="off">Off</option>
 					<option value="on">On</option>
-				</select>
-				<select name="piscina_read" id="piscina_read" data-role="slider">
-					<option value="desact">Desact.</option>
-					<option value="act">Act.</option>				
-				</select>
+				</select>				
 		</div>
 		<div data-role="fieldcontain">		
-			<label for="bomba_write">Bomba</label>
-			<select name="bomba_write" id="bomba_write" data-role="slider" data-theme="b">
+			<label for="bomba">Bomba</label>
+			<select name="bomba" id="bomba" data-role="slider" data-theme="b">
 				<option value="off">Off</option>
 				<option value="on">On</option>
-			</select>
-			<select name="bomba_read" id="bomba_read" data-role="slider">
-					<option value="desact">Desact.</option>
-					<option value="act">Act.</option>				
-				</select>
+			</select>			
 		</div>	
 </div>
 <script type="text/javascript">
