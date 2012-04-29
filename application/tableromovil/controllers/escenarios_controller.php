@@ -14,7 +14,8 @@ class Escenarios_Controller extends CI_Controller
 		parent::__construct();
 		$this->load->model('perfiles_model');
 		$this->load->model('sisperfil_model');
-		$this->load->model('tabgral_model');		
+		$this->load->model('tabgral_model');	
+		$this->load->model('escenarios_model');	
 		if($this->session->userdata('logged_in') == TRUE) {
 				$data['flags'] = $this->basicauth->getPermissions('perfiles');
 				$this->flagR = $data['flags']['flag-read'];
@@ -29,8 +30,11 @@ class Escenarios_Controller extends CI_Controller
 	{
 		//code here
 		$data['title_header']='Escenarios';
-		$this->load->view('default/_header', $data);
-		$this->load->view('escenarios_view/home_escenarios');
+		$this->load->view('default/_header', $data);		
+		
+		$data['query'] = $this->escenarios_model->getEscenarios();
+		
+		$this->load->view('escenarios_view/home_escenarios',$data);
 		$this->load->view('default/_footer');
 	}
 
