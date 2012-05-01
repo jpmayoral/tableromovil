@@ -6,6 +6,10 @@
 			<p>Para activar/desactivar las diferentes opciones, 
 				deslice el botón On/Off.</p>
 		</div>	
+		<!--<div data-role="fieldcontain">			
+			<label for="cantidad_riego">Cantidad de Riego: </label>
+			<input type="range" name="cantidad_riego" id="cantidad_riego" value="1" min="0" max="5"/>
+		</div>-->
 		<div data-role="fieldcontain">
 			<label for="riego">Riego</label>
 				<select name="riego" id="riego" data-role="slider" data-theme="b">
@@ -45,6 +49,5 @@
     	}else{
     		$('#mensaje').text('apagado');
     	}
-   	}); 
-   	 
+   	});   	 
 </script>
