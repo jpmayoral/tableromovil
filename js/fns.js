@@ -41,3 +41,24 @@ function setPaginationTwo(p_div_loader, p_form)
             });  
      });        
 }
+
+function setSwitch(value, url)
+{
+    var u;
+    if(value == 'on') u = url + 1;
+    else if(value == 'off') u = url + 0;
+
+    $.get(u, function(data) {
+        //alert(data);
+    });
+    
+}    
+
+function updateContent(url)
+{
+    $.get(url, function(data){
+        //$("#content").html(data).page();
+        //$( "div[data-role=page]" ).page("destroy").page();
+        $('#content').html(data).trigger("pagecreate").trigger("refresh");
+    });
+}

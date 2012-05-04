@@ -175,9 +175,10 @@ class Basicauth {
 		$query_str = "select s.sismenu_id, s.sismenu_descripcion, s.sismenu_parent, s.sismenu_iconpath, sv.sisvinculos_link from sismenu as s 
 		inner join sisperfil as sp on s.sismenu_id = sp.sismenu_id inner join
 		sisvinculos as sv on s.sismenu_id = sv.sismenu_id where 
-		s.sismenu_parent =$parent and 
-		s.sismenu_estado=3
-		and sp.perfiles_id = ".$this->CI->session->userdata('perfiles_id')."";
+		s.sismenu_parent = $parent and 
+		s.sismenu_estado = 3 and
+		sp.sisperfil_estado = 1 and 
+		sp.perfiles_id = ".$this->CI->session->userdata('perfiles_id')."";
 		
 		$query_a = $this->CI->db->query($query_str);
 		

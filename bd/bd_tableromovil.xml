@@ -101,6 +101,37 @@
       </Cl>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="salidad">
+      <TblOpts/>
+      <Pk ClNs="salidad_id" nm="pksalidad"/>
+      <Cl au="1" df="" nm="salidad_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salidad_relay" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salidad_value" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salidad_modulo" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salidad_descripcion" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="salidad_created_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salidad_updated_at" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="salidad_tabgral_id_modulo" prLkCl="tabgral_id" upAc="1">
+        <PrTb mn="0" nm="tabgral" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salidad" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="salidad_modulo" prCl="tabgral_id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="sismenu">
       <TblOpts/>
       <Pk ClNs="sismenu_id" nm="pksismenu"/>
@@ -418,10 +449,12 @@
     <TbGl bkCl="ffccccff" sch="public" tbl="sispermisos" x="164" y="261"/>
     <TbGl bkCl="ffccccff" sch="public" tbl="provincias" x="1146" y="257"/>
     <TbGl bkCl="ffccccff" sch="public" tbl="localidades" x="1141" y="73"/>
-    <TbGl bkCl="ffccccff" sch="public" tbl="tabgral" x="655" y="240"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="tabgral" x="675" y="245"/>
     <TbGl bkCl="ffccccff" sch="public" tbl="grupos_tabgral" x="415" y="321"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="salidad" x="777" y="484"/>
     <FkGl bkCl="ff000000" nm="public.localidades.localidades_provincias_id"/>
     <FkGl bkCl="ff000000" nm="public.perfiles.perfiles_tabgral_id"/>
+    <FkGl bkCl="ff000000" nm="public.salidad.salidad_tabgral_id_modulo"/>
     <FkGl bkCl="ff000000" nm="public.sismenu.sismenu_tabgral_id"/>
     <FkGl bkCl="ff000000" nm="public.sisperfil.perfiles_id"/>
     <FkGl bkCl="ff000000" nm="public.sisperfil.sisperfil_sismenu_id"/>
@@ -436,10 +469,10 @@
     <Notes/>
     <Zones>
       <Zone bkCl="ffece9d8" h="1231" nm="módulo autetinficación de usuarios" w="394" x="133" y="9"/>
-      <Zone bkCl="ffece9d8" h="1231" nm="Módulo principal" w="542" x="148" y="451"/>
+      <Zone bkCl="ffece9d8" h="1231" nm="Módulo principal" w="542" x="133" y="447"/>
     </Zones>
   </Dgm>
-  <RnmMgr NxRnmId="143">
+  <RnmMgr NxRnmId="153">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="callcenter" SupCls="" SupNme="">
       <Rnm id="1" nNm="public" oNm="schemaA"/>
     </RnmCh>
@@ -808,6 +841,32 @@
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="sismenu" SupCls="Schema" SupNme="public">
       <Rnm id="141" nNm="sismenu_created_at" oNm="sismenu_updated_at"/>
     </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="143" nNm="iluconfig" oNm="iluminacion"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="iluconfig" SupCls="Schema" SupNme="public">
+      <Rnm id="144" nNm="iluconfig_id" oNm="iluminacion_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="iluconfig" SupCls="Schema" SupNme="public">
+      <Rnm id="145" nNm="iluconfig_descripcion" oNm="iluminacion_descripcion"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="iluconfig" SupCls="Schema" SupNme="public">
+      <Rnm id="146" nNm="iluconfig_created_at" oNm="iluminacion_created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="iluconfig" SupCls="Schema" SupNme="public">
+      <Rnm id="147" nNm="iluconfig_updated_at" oNm="iluminacion_updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salidad" SupCls="Schema" SupNme="public">
+      <Rnm id="148" nNm="salidad_modulo" oNm="salidad_created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salidad" SupCls="Schema" SupNme="public">
+      <Rnm id="151" nNm="salidad_descripcion" oNm="salidad_created_at"/>
+      <Rnm id="149" nNm="salidad_created_at" oNm="salidad_updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salidad" SupCls="Schema" SupNme="public">
+      <Rnm id="152" nNm="salidad_created_at" oNm="salidad_updated_at"/>
+      <Rnm id="150" nNm="salidad_updated_at" oNm="salidad"/>
+    </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
     <BasicOptionMgr>
@@ -831,6 +890,6 @@
     <TreePath/>
     <TreePath>/Schemas (1)</TreePath>
     <TreePath>/Schemas (1)/public</TreePath>
-    <TreePath>/Schemas (1)/public/Tables (10)</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (11)</TreePath>
   </TreePaths>
 </Db>
