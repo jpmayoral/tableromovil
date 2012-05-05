@@ -54,11 +54,11 @@ function setSwitch(value, url)
     
 }    
 
-function updateContent(url)
+function updateContent(url,div)
 {
     $.get(url, function(data){
         //$("#content").html(data).page();
         //$( "div[data-role=page]" ).page("destroy").page();
-        $('#content').html(data).trigger("pagecreate").trigger("refresh");
+        $('#'+div).html(data).trigger("pagecreate").trigger("refresh");
     });
 }

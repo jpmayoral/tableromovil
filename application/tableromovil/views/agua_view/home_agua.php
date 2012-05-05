@@ -4,10 +4,10 @@
 			<p>Para activar/desactivar las diferentes opciones, 
 				deslice el botón On/Off.</p>
         </div>
-		<div id="content">
+		<div id="content_agua">
 			<?=$this->load->view("agua_view/record_list_agua")?>
 		</div>	
 </div>
 <script type="text/javascript"> 
-	var t = setInterval("updateContent('<?=base_url()?>agua_controller/search_c/')",3000);
+	var t = setInterval("updateContent('<?=base_url()?>agua_controller/search_c/','content_agua')",3000);
 </script>
