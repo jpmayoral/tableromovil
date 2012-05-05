@@ -11,17 +11,19 @@ class Agua_Controller extends CI_Controller
 	
 	function __construct()
 	{
-		parent::__construct();
-		$this->load->model('perfiles_model');
-		$this->load->model('sisperfil_model');
-		$this->load->model('tabgral_model');		
+		parent::__construct();	
 		if($this->session->userdata('logged_in') == TRUE) {
-				$data['flags'] = $this->basicauth->getPermissions('perfiles');
+				$this->load->model('perfiles_model');
+				$this->load->model('salidad_model');
+				$this->load->model('sisperfil_model');
+				$this->load->model('tabgral_model');	
+
+				$data['flags'] = $this->basicauth->getPermissions('salidad');
 				$this->flagR = $data['flags']['flag-read'];
 				$this->flagI = $data['flags']['flag-insert'];
 				$this->flagU = $data['flags']['flag-update'];
 				$this->flagD = $data['flags']['flag-delete'];
-				$this->flags = array('i' => $this->flagI, 'u' => $this->flagU, 'd' => $this->flagD);
+				$this->flags = array('r' => $this->flagR, 'i' => $this->flagI, 'u' => $this->flagU, 'd' => $this->flagD);
 		}
 	}
 
@@ -29,16 +31,16 @@ class Agua_Controller extends CI_Controller
 	{
 		//code here
 		$data['title_header']='Agua';
-		$this->load->view('default/_header', $data);
-		$this->load->view('agua_view/home_agua');
+		$this->load->view('default/_header',$data);
+		$data["rows_salidad"] = $this->salidad_model->get_m(array("salidad_modulo" => 7)); //filtrar solo los relay del modulo de agua		
+		$this->load->view('agua_view/home_agua', $data);
 		$this->load->view('default/_footer');
 	}
 
-	/*
 	function search_c($offset = 0)
 	{
-			echo "hola";
-			//$this->load->view('agua_view/home_agua');
-	}*/
+		$data["rows_salidad"] = $this->salidad_model->get_m(array("salidad_modulo" => 7)); //filtrar solo los relay del modulo de iluminacion		
+		$this->load->view('agua_view/record_list_agua', $data);
+	}
 
 }
