@@ -210,7 +210,7 @@
 	background-image:    -moz-linear-gradient( #444 , #222 ); 
 	background-image:     -ms-linear-gradient( #444 , #222 ); 
 	background-image:      -o-linear-gradient( #444 , #222 ); 
-	background-image:         linear-gradient( #444 , #222 );	*/
+	background-image:         linear-gradient( #444 , #222 );	*/ 
 }
 
 .ui-overlay-i {
