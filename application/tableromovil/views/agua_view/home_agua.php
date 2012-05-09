@@ -1,4 +1,4 @@
-<div class="ui-body ui-body-a">	
+<div class="ui-body ui-body-j">	
 		<div data-role="collapsible" data-content-theme="c">
 			<h3>Info</h3>
 			<p>Para activar/desactivar las diferentes opciones, 
@@ -9,5 +9,5 @@
 		</div>	
 </div>
 <script type="text/javascript"> 
-	var t = setInterval("updateContent('<?=base_url()?>agua_controller/search_c/','content_agua')",3000);
+	var t = setInterval("updateContent('<?=base_url()?>agua_controller/search_c/','content_agua')",1000);
 </script>
