@@ -1,6 +1,6 @@
 .ui-page {
 	background: black url('images/body_bg_new.jpg') repeat fixed center top;
-	/*background: #547eff;
+	/*background: #547eff; /*
 	background: -moz-linear-gradient(-45deg, #547eff 0%, #0f1cdb 100%);
 	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#547eff), color-stop(100%,#0f1cdb));
 	background: -webkit-linear-gradient(-45deg, #547eff 0%,#0f1cdb 100%);
