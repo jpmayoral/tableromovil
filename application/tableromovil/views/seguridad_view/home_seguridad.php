@@ -1,9 +1,9 @@
-<div class="ui-body ui-body-k">	
-		<div data-role="collapsible" data-content-theme="c">
+<div class="ui-body ui-body-j">	
+		<!--<div data-role="collapsible" data-content-theme="c">
 			<h3>Info</h3>
 			<p>Para activar/desactivar las diferentes opciones, 
 				deslice el botón On/Off.</p>
-		</div>	
+		</div>-->	
 		<div data-role="fieldcontain">
 			<label for="electricidad">Electricidad</label>
 				<select name="electricidad" id="electricidad" data-role="slider" data-theme="b">
