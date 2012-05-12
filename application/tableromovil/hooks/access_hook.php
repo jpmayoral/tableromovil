@@ -6,7 +6,21 @@ class Access_Hook {
 	function checkUser()
 	{
 		$CI =& get_instance();
-		$privatecontrollers = array('usuarios_controller','sismenu_controller','perfiles_controller','sispermisos_controller','main_controller');
+		$privatecontrollers = array(
+			'usuarios_controller',
+			'sismenu_controller',
+			'perfiles_controller',
+			'sispermisos_controller',
+			'main_controller',
+			'agua_controlleer',
+			'entradad_controller',
+			'escenarios_controller',
+			'iluminacion_controller',
+			'localidades_controller',
+			'refrigeracion_controller',
+			'salidad_controller',
+			'seguridad_controller',
+			'autocomplete_controller');
 		if($CI->session->userdata('logged_in') == true && $CI->router->method == 'login') redirect('main_controller');
 		if($CI->session->userdata('logged_in') != true && $CI->router->method != 'login' && in_array($CI->router->class, $privatecontrollers))
 		{

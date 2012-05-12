@@ -3,48 +3,13 @@
 			<h3>Info</h3>
 			<p>Para activar/desactivar las diferentes opciones, 
 				deslice el botón On/Off.</p>
-		</div>-->	
-		<div data-role="fieldcontain">
-			<label for="electricidad">Electricidad</label>
-				<select name="electricidad" id="electricidad" data-role="slider" data-theme="b">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select>										
-		</div>		
-		<div data-role="fieldcontain">		
-			<label for="gas">Gas</label>
-				<select name="gas" id="gas" data-role="slider" data-theme="b">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select>
-		</div>
-		<div data-role="fieldcontain">		
-			<label for="agua">Agua</label>
-				<select name="agua" id="agua" data-role="slider" data-theme="b">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select>
-		</div>
-		<div data-role="fieldcontain">		
-			<label for="inundacion">Inundación</label>
-				<select name="inundacion" id="inundacion" data-role="slider" data-theme="b">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select>
-		</div>
-		<div data-role="fieldcontain">		
-			<label for="simulacion">Simulación Presencia</label>
-				<select name="simulacion" id="simulacion" data-role="slider" data-theme="b">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select>
-		</div>
-		<div data-role="fieldcontain">		
-			<label for="alarma">Alarma</label>
-				<select name="alarma" id="alarma" data-role="slider" data-theme="b">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select>
-		</div>
+        </div>-->
+		<div id="content_seguridad">
+			<?=$this->load->view("seguridad_view/record_list_seguridad")?>
+		</div>	
 </div>
+<script type="text/javascript"> 
+	var t = setInterval("updateContent('<?=base_url()?>seguridad_controller/search_c/','content_seguridad')",1000);
+</script>
+
 
