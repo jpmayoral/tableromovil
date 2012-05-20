@@ -5,6 +5,43 @@
   <DefTblOpts/>
   <DocFolder>/home/johnny/Documentos/proyectos_db</DocFolder>
   <Sch Cm="" nm="public">
+    <Tbl UsSo="1" nm="cameras">
+      <TblOpts/>
+      <Pk ClNs="cameras_id" nm="pkcameras"/>
+      <Cl au="1" df="" nm="cameras_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cameras_descripcion" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cameras_url" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cameras_port" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cameras_estado" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cameras_user" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cameras_password" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="cameras_created_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cameras_updated_at" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="cameras_estado_tabgral_id" prLkCl="tabgral_id" upAc="1">
+        <PrTb mn="0" nm="tabgral" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="cameras" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="cameras_estado" prCl="tabgral_id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="entradaa">
       <TblOpts/>
       <Pk ClNs="entradaa_id" nm="pkentradaa"/>
@@ -533,10 +570,12 @@
     <TbGl bkCl="ffccccff" sch="public" tbl="localidades" x="1141" y="73"/>
     <TbGl bkCl="ffccccff" sch="public" tbl="tabgral" x="675" y="245"/>
     <TbGl bkCl="ffccccff" sch="public" tbl="grupos_tabgral" x="415" y="321"/>
-    <TbGl bkCl="ffccccff" sch="public" tbl="salidad" x="777" y="484"/>
-    <TbGl bkCl="ffccccff" sch="public" tbl="entradad" x="320" y="546"/>
-    <TbGl bkCl="ffccccff" sch="public" tbl="entradaa" x="322" y="675"/>
-    <TbGl bkCl="ffccccff" sch="public" tbl="salidaa" x="630" y="699"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="salidad" x="822" y="514"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="entradad" x="364" y="515"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="entradaa" x="154" y="520"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="salidaa" x="586" y="514"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="cameras" x="1060" y="516"/>
+    <FkGl bkCl="ff000000" nm="public.cameras.cameras_estado_tabgral_id"/>
     <FkGl bkCl="ff000000" nm="public.entradad.entradad_modulo_tabgral_id"/>
     <FkGl bkCl="ff000000" nm="public.localidades.localidades_provincias_id"/>
     <FkGl bkCl="ff000000" nm="public.perfiles.perfiles_tabgral_id"/>
@@ -998,6 +1037,6 @@
     <TreePath/>
     <TreePath>/Schemas (1)</TreePath>
     <TreePath>/Schemas (1)/public</TreePath>
-    <TreePath>/Schemas (1)/public/Tables (14)</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (15)</TreePath>
   </TreePaths>
 </Db>

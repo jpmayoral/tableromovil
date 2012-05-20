@@ -335,11 +335,12 @@
 }
 .ui-body-j,
 .ui-overlay-j {
-	border: 0px solid 		#444 ;
+	/*border: 1px solid 		#3fffff ;*/
 	/*background: 			#111 ;*/
 	color: 					#fff ;
 	text-shadow: 0  1px  1px  #000 ;
 	font-weight: normal;
+	padding: 0px;
 	/*background-image: -webkit-gradient(linear, left top, left bottom, from( #dbe8c4 ), to( #5e6354 )); 
 	background-image: -webkit-linear-gradient( #444 , #222 ); 
 	background-image:    -moz-linear-gradient( #444 , #222 ); 
