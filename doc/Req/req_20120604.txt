@@ -19,4 +19,6 @@ Requisitos y correcionees:
 	  Ejemplo:
 		-  Si un cliente me pide una funcionalidad o visto para dicho cliente 'modulo' para abrir un porton. La idea es que
 		   se pueda crear una opcion de menu 'Portones' y asociar a esa opcion de menu tantas salidas digitales o entradas inclusive con
-		   una descripcion como portones se tenga.
+		   una descripcion como portones se tenga.  
+	
+	 Estado : LISTO

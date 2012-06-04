@@ -15,7 +15,10 @@ $config['salidad_id']='Id';
 $config['salidad_relay']='Relay';
 $config['salidad_value']='Value';
 $config['salidad_modulo']='M&oacute;dulo';
+$config['salidad_modulo_descripcion']='M&oacute;dulo';
 $config['salidad_descripcion']='Descripci&oacute;n';
+$config['sismenu_id']='Men&uacute;';
+$config['salidad_estado']='Estado';
 $config['salidad_created_at']='Fecha de alta';
 $config['salidad_updated_at']='Actualizado el';
 
@@ -35,7 +38,9 @@ $config['show_salidad_id']= 1;
 $config['show_salidad_relay']= 1;
 $config['show_salidad_value']= 1;
 $config['show_salidad_modulo']= 1;
+$config['show_salidad_modulo_descripcion']= 1;
 $config['show_salidad_descripcion']= 1;
+$config['show_salidad_estado']= 1;
 $config['show_salidad_created_at']= 1;
 $config['show_salidad_updated_at']= 1;
 

@@ -108,7 +108,7 @@ class Sismenu_Model extends CI_Model {
 		if(isset($options['sortBy']) && isset($options['sortDirection']))
 			$this->db->order_by($options['sortBy'],$options['sortDirection']);
 
-		$this->db->select('sm.sismenu_id, sm.sismenu_descripcion, sm.sismenu_estado, sm.sismenu_parent, sm.sismenu_iconpath, sm.sismenu_created_at, sv.sisvinculos_link');
+		$this->db->select('sm.sismenu_id, sm.sismenu_descripcion, sm.sismenu_estado, sm.sismenu_parent, sm.sismenu_iconpath, sm.sismenu_created_at,sm.sismenu_updated_at, sv.sisvinculos_link');
 		$this->db->from('sismenu as sm');
 		$this->db->join('sisvinculos as sv', 'sm.sismenu_id = sv.sismenu_id');
 		$query = $this->db->get();

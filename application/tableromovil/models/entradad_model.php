@@ -46,6 +46,10 @@ class Entradad_Model extends CI_Model {
 			$this->db->set('entradad_created_at', $options['entradad_created_at']);
 		if(isset($options['entradad_updated_at']))
 			$this->db->set('entradad_updated_at', $options['entradad_updated_at']);
+		if(isset($options['sismenu_id']))
+			$this->db->set('sismenu_id', $options['sismenu_id']);
+		if(isset($options['entradad_estado']))
+			$this->db->set('entradad_estado', $options['entradad_estado']);
 
 		$this->db->where('entradad_id', $options['entradad_id']);
 
@@ -97,6 +101,10 @@ class Entradad_Model extends CI_Model {
 			$this->db->where('entradad_created_at', $options['entradad_created_at']);
 		if(isset($options['entradad_updated_at']))
 			$this->db->where('entradad_updated_at', $options['entradad_updated_at']);
+		if(isset($options['sismenu_id']))
+			$this->db->where('sismenu_id', $options['sismenu_id']);
+		if(isset($options['entradad_estado']))
+			$this->db->where('entradad_estado', $options['entradad_estado']);
 
 		//limit / offset
 		if(isset($options['limit']) && isset($options['offset']))
@@ -147,6 +155,8 @@ class Entradad_Model extends CI_Model {
 		$fields[]='entradad_descripcion';
 		$fields[]='entradad_created_at';
 		$fields[]='entradad_updated_at';
+		$fields[]='sismenu_id';
+		$fields[]='entradad_estado';
 		return $fields;
 	}
 

@@ -15,6 +15,8 @@ class Salidad_Controller extends CI_Controller {
 		if($this->session->userdata('logged_in') == true) { 
 			$this->load->model('salidad_model');
 			$this->load->model('tabgral_model');
+			$this->load->model('sismenu_model');
+			$this->load->model('estados_model');
 			$this->config->load('salidad_settings');
 			$data['flags'] = $this->basicauth->getPermissions('salidad');
 			$this->flagR = $data['flags']['flag-read'];
@@ -55,6 +57,7 @@ class Salidad_Controller extends CI_Controller {
 		$this->form_validation->set_rules('salidad_value', 'salidad_value', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('salidad_modulo', 'salidad_modulo', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('salidad_descripcion', 'salidad_descripcion', 'trim|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('salidad_estado', 'salidad_estado', 'trim|integer|xss_clean');
 		if($this->form_validation->run())
 		{	
 			$data_salidad  = array();
@@ -62,6 +65,9 @@ class Salidad_Controller extends CI_Controller {
 			$data_salidad['salidad_modulo'] = $this->input->post('salidad_modulo');
 			$data_salidad['salidad_descripcion'] = $this->input->post('salidad_descripcion');
 			$data_salidad['salidad_updated_at'] = $this->basicrud->formatDateToBD();
+			$data_salidad['salidad_estado'] = $this->input->post('salidad_estado');
+			if($this->input->post('sismenu_id'))
+				$data_salidad['sismenu_id'] = $this->input->post('sismenu_id');
 
 			$id_salidad = $this->salidad_model->add_m($data_salidad);
 			if($id_salidad){ 
@@ -97,10 +103,11 @@ class Salidad_Controller extends CI_Controller {
 		$data['title_header'] = $this->config->item('recordEditTitle');
 
 		$data['salidad'] = $this->salidad_model->get_m(array('salidad_id' => $salidad_id),$flag=1);
-		
+
 		$this->form_validation->set_rules('salidad_id', 'salidad_id', 'trim|integer|required|xss_clean');
 		$this->form_validation->set_rules('salidad_modulo', 'salidad_modulo', 'trim|required|integer|xss_clean');
 		$this->form_validation->set_rules('salidad_descripcion', 'salidad_descripcion', 'trim|required|alpha_numeric|xss_clean');
+		$this->form_validation->set_rules('salidad_estado', 'salidad_estado', 'trim|integer|xss_clean');
 
 		if($this->form_validation->run()){
 			$data_salidad  = array();
@@ -108,6 +115,9 @@ class Salidad_Controller extends CI_Controller {
 			$data_salidad['salidad_modulo'] = $this->input->post('salidad_modulo');
 			$data_salidad['salidad_descripcion'] = $this->input->post('salidad_descripcion');
 			$data_salidad['salidad_updated_at'] = $this->basicrud->formatDateToBD();
+			$data_salidad['salidad_estado'] = $this->input->post('salidad_estado');
+			if($this->input->post('sismenu_id'))
+				$data_salidad['sismenu_id'] = $this->input->post('sismenu_id');
 
 			if($this->salidad_model->edit_m($data_salidad)){ 
 				$this->session->set_flashdata('flashConfirm', $this->config->item('salidad_flash_edit_message')); 
@@ -119,6 +129,10 @@ class Salidad_Controller extends CI_Controller {
 		}else{
 			//filtrar todos los modulos de tabgral
 			$data["modulos"] = $this->tabgral_model->get_m(array('grupos_tabgral_id' => 3));
+			//filtrar todos los menus del sistema 
+			$data['sismenus'] = $this->sismenu_model->get_m();
+			//filtrar todos los estados de las entradas y salidas 
+			$data['estados'] = $this->estados_model->get_m();
 			$this->load->view('salidad_view/form_edit_salidad',$data);
 		}
 

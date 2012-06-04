@@ -15,6 +15,8 @@ class Entradad_Controller extends CI_Controller {
 		if($this->session->userdata('logged_in') == true) { 		
 			$this->load->model('entradad_model');
 			$this->load->model('tabgral_model');
+			$this->load->model('sismenu_model');
+			$this->load->model('estados_model');
 			$this->config->load('entradad_settings');
 			$data['flags'] = $this->basicauth->getPermissions('entradad');
 			$this->flagR = $data['flags']['flag-read'];
@@ -60,6 +62,9 @@ class Entradad_Controller extends CI_Controller {
 			$data_entradad['entradad_modulo'] = $this->input->post('entradad_modulo');
 			$data_entradad['entradad_descripcion'] = $this->input->post('entradad_descripcion');
 			$data_entradad['entradad_updated_at'] = $this->basicrud->formatDateToBD();
+			$data_entradad['entradad_estado'] = $this->input->post('entradad_estado');
+			if($this->input->post('sismenu_id'))
+				$data_entradad['sismenu_id'] = $this->input->post('sismenu_id');
 
 			$id_entradad = $this->entradad_model->add_m($data_entradad);
 			if($id_entradad){ 
@@ -105,6 +110,9 @@ class Entradad_Controller extends CI_Controller {
 			$data_entradad['entradad_modulo'] = $this->input->post('entradad_modulo');
 			$data_entradad['entradad_descripcion'] = $this->input->post('entradad_descripcion');
 			$data_entradad['entradad_updated_at'] = $this->basicrud->formatDateToBD();
+			$data_entradad['entradad_estado'] = $this->input->post('entradad_estado');
+			if($this->input->post('sismenu_id'))
+				$data_entradad['sismenu_id'] = $this->input->post('sismenu_id');
 
 			if($this->entradad_model->edit_m($data_entradad)){ 
 				$this->session->set_flashdata('flashConfirm', $this->config->item('entradad_flash_edit_message')); 
@@ -116,6 +124,10 @@ class Entradad_Controller extends CI_Controller {
 		}else{
 			//filtrar todos los modulos de tabgral
 			$data["modulos"] = $this->tabgral_model->get_m(array('grupos_tabgral_id' => 3));
+			//filtrar todos los menus del sistema 
+			$data['sismenus'] = $this->sismenu_model->get_m();
+			//filtrar todos los estados de las entradas y salidas 
+			$data['estados'] = $this->estados_model->get_m();
 			$this->load->view('entradad_view/form_edit_entradad',$data);
 		}
 		

@@ -18,6 +18,9 @@
 							<?php if($flag['d']):?>
 								<a href="<?=base_url()?>index.php/cameras_controller/delete_c/<?=$f->cameras_id?>" data-role="button" data-icon="delete" data-iconpos="notext" title="Eliminar">Eliminar</a>
 							<?php endif;?>
+							<?php if($flag['u']):?>
+								<a href="<?=base_url()?>index.php/btncameras_controller/index/<?=$f->cameras_id?>" data-role="button" data-icon="grid" data-iconpos="notext" title="Botones">Botones</a>
+							<?php endif;?>
 						</div>
 					</div>
 				</div>

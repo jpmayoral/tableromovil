@@ -46,6 +46,8 @@ class Salidad_Model extends CI_Model {
 			$this->db->set('salidad_created_at', $options['salidad_created_at']);
 		if(isset($options['salidad_updated_at']))
 			$this->db->set('salidad_updated_at', $options['salidad_updated_at']);
+		if(isset($options['salidad_estado']))
+			$this->db->set('salidad_estado', $options['salidad_estado']);
 
 		$this->db->where('salidad_id', $options['salidad_id']);
 
@@ -97,6 +99,10 @@ class Salidad_Model extends CI_Model {
 			$this->db->where('salidad_created_at', $options['salidad_created_at']);
 		if(isset($options['salidad_updated_at']))
 			$this->db->where('salidad_updated_at', $options['salidad_updated_at']);
+		if(isset($options['sismenu_id']))
+			$this->db->where('sismenu_id', $options['sismenu_id']);
+		if(isset($options['salidad_estado']))
+			$this->db->where('salidad_estado', $options['salidad_estado']);
 
 		//limit / offset
 		if(isset($options['limit']) && isset($options['offset']))
@@ -147,6 +153,8 @@ class Salidad_Model extends CI_Model {
 		$fields[]='salidad_descripcion';
 		$fields[]='salidad_created_at';
 		$fields[]='salidad_updated_at';
+		$fields[]='sismenu_id';
+		$fields[]='salidad_estado';
 		return $fields;
 	}
 

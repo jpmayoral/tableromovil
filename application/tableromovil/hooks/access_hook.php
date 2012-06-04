@@ -19,7 +19,12 @@ class Access_Hook {
 			'refrigeracion_controller',
 			'salidad_controller',
 			'seguridad_controller',
-			'autocomplete_controller');
+			'autocomplete_controller',
+			'salidadg_controller',
+			'entradadg_controller',
+			'controlaccess_controller',
+			'cameras_controller',
+			'btncameras_controller');
 		if($CI->session->userdata('logged_in') == true && $CI->router->method == 'login') echo "<script>window.open('".base_url()."main_controller/index','_top');</script>";
 		if($CI->session->userdata('logged_in') != true && $CI->router->method != 'login' && in_array($CI->router->class, $privatecontrollers))
 		{

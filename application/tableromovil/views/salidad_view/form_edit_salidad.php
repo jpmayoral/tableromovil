@@ -8,7 +8,7 @@
 	</div>
 	<div data-role="fieldcontain">
 		<label for="salidad_modulo"><?=$this->config->item('salidad_modulo')?>:</label>
-		<select name="salidad_modulo" id="salidad_modulo" data-native-menu="false" data-theme="b" >
+		<select name="salidad_modulo" id="salidad_modulo" data-native-menu="false" data-theme="b">
 			<option value="">Seleccione</option>
 			<?php foreach ($modulos as $f): ?>
 				<?php if($f->tabgral_id == $salidad->salidad_modulo): ?>
@@ -20,8 +20,36 @@
 		</select>
 	</div>
 	<div data-role="fieldcontain">
+		<div class="sismenu_content">
+			<label for="sismenu_id"><?=$this->config->item('sismenu_id')?>:</label>
+			<select name="sismenu_id" id="sismenu_id" data-native-menu="false" data-theme="b" >
+				<option value="">Seleccione</option>
+				<?php foreach ($sismenus as $f): ?>
+					<?php if($f->sismenu_id == $salidad->sismenu_id): ?>
+						<option value="<?=$f->sismenu_id?>" selected ><?=$f->sismenu_descripcion?></option>
+					<?php else: ?>
+						<option value="<?=$f->sismenu_id?>"><?=$f->sismenu_descripcion?></option>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</select>
+		</div>
+	</div>
+	<div data-role="fieldcontain">
 		<label for="salidad_descripcion"><?=$this->config->item('salidad_descripcion')?>:</label>
 		<input type="text" value="<?=$salidad->salidad_descripcion?>" name="salidad_descripcion" id="salidad_descripcion" data-theme="b"></input>
+	</div>
+	<div data-role="fieldcontain">
+		<label for="salidad_estado"><?=$this->config->item('salidad_estado')?>:</label>
+		<select name="salidad_estado" id="salidad_estado" data-native-menu="false" data-theme="b">
+			<option value="">Seleccione</option>
+			<?php foreach ($estados as $f): ?>
+				<?php if($f->estados_id == $salidad->salidad_estado): ?>
+					<option value="<?=$f->estados_id?>" selected ><?=$f->estados_descripcion?></option>
+				<?php else: ?>
+					<option value="<?=$f->estados_id?>"><?=$f->estados_descripcion?></option>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</select>
 	</div>
 	<div class="ui-grid-a">
 		<div class="ui-block-a"><a href="<?=base_url()?>salidad_controller/index" data-role="button" data-theme="a">Cancelar</a></div>
@@ -33,7 +61,21 @@
 		if(isset($error)) echo $error;
 	?>
 	</div>
-
+	
 </form>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		/*$("#salidad_modulo").bind( "change", function(event, ui) {
+  			if($(this).val() == 11){
+				$(".sismenu_content").attr("display","block")
+			}else{
+				$(".sismenu_content").attr("display","none")
+			}
+		});*/
+		
+	});
+</script>
 
 <?=$this->load->view('default/_footer')?>

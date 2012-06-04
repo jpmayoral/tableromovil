@@ -8,6 +8,11 @@
 					src="<?=$f->cameras_url?>:<?=$f->cameras_port?>/shot.jpg" 
 					onload="loadJsWindowed('<?=$f->cameras_url?>:<?=$f->cameras_port?>')"
 					 width="320" height="240">
+					<?php foreach($rows_btncameras as $g):?>
+						<?php if($g->cameras_id == $f->cameras_id): ?>
+							<a href="#" data-role="button" name="<?=$g->btncameras_nombre?>" data-inline="true" data-theme="b"><?=$g->btncameras_label?></a>
+						<?php endif; ?>
+					<?php endforeach;?>
 				</div>
 			</div>
 		<?php endforeach; ?>
@@ -21,6 +26,7 @@
 .contentCamera{
 	background-color: rgba(13, 33, 0, 0.3);
 }
+
 </style>
 
 <script type="text/javascript"> 
