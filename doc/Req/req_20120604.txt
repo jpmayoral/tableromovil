@@ -1,0 +1,22 @@
+Requisitos y correcionees:
+---------------------------
+---------------------------
+
+
+- Modulo de control de acceso y camara:
+	
+	. Permitir visualizar varias camaras
+	. Ver como implementar un script de acceso a camara lo mas general que se pueda
+	. Por cada camara se tiene que poder agregar botones que se van a corresponder
+	  con una determinada salidad
+
+- Modulo de refrigeracion
+	
+	. Es identico a los modulo de luz y agua
+        . Se planteo una forma generica de poder establecer salidas digitales a una opcion de menu del modulo principal.
+	  SI doy de alta una opcion de menu, se  deberia poder de alguna forma asociar a esa opcion de menu salidas digitales.
+	  Se deberia de crear un modulo generico parecido al de luz o agua para realizar esta accion. 
+	  Ejemplo:
+		-  Si un cliente me pide una funcionalidad o visto para dicho cliente 'modulo' para abrir un porton. La idea es que
+		   se pueda crear una opcion de menu 'Portones' y asociar a esa opcion de menu tantas salidas digitales o entradas inclusive con
+		   una descripcion como portones se tenga.

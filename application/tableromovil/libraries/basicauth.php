@@ -1,5 +1,4 @@
 <?php 
-
 /**
  * Clase Basicauth 
  * 
@@ -12,11 +11,7 @@
  * @author Johnny Guzmán
  * @version  1.0  
  */
- 
- 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
- 
+ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Basicauth {
 	
 	private $CI;
@@ -73,10 +68,7 @@ class Basicauth {
 		$data = array();
 		
 		// valores requeridos
-		if(!$this->_required(
-			array('usuarios_username', 'usuarios_password'),
-			$options)
-		) return false;
+		if(!$this->_required(array('usuarios_username', 'usuarios_password'),$options)) return false;
 		
 		$query_a = $this->CI->db->get_where('usuarios', array('usuarios_username'=>$options['usuarios_username'], 'usuarios_password'=>$options['usuarios_password']));
 		
@@ -125,8 +117,7 @@ class Basicauth {
 	 */
 	function logout() 
 	{
-		$CI = & get_instance();	
-		$CI->session->sess_destroy();	
+		$this->CI->session->sess_destroy();	
 	}	
 	
 	
@@ -226,7 +217,5 @@ class Basicauth {
 		
 		return $data;	
 	}
-	
-	
 }
 ?>
