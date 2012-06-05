@@ -25,7 +25,7 @@ class Access_Hook {
 			'controlaccess_controller',
 			'cameras_controller',
 			'btncameras_controller');
-		if($CI->session->userdata('logged_in') == true && $CI->router->method == 'login') echo "<script>window.open('".base_url()."main_controller/index','_top');</script>";
+		if($CI->session->userdata('logged_in') == true && $CI->router->method == 'login') redirect('main_controller/index');
 		if($CI->session->userdata('logged_in') != true && $CI->router->method != 'login' && in_array($CI->router->class, $privatecontrollers))
 		{
 			//redirect('usuarios_controller/login_c');

@@ -7,12 +7,12 @@
 					<img id="imgDisplay_<?=$f->cameras_id?>" alt="Im&aacute;gen de video no disponible" 
 					src=""
 					onclick="imageOnclick(this)"
-					data-url="<?=$f->cameras_url?>:<?=$f->cameras_port?>/shot.jpg?count=" 
-					onload="load_video('imgDisplay_<?=$f->cameras_id?>','<?=$f->cameras_url?>:<?=$f->cameras_port?>/shot.jpg?count=')"
+					data-url="<?=$f->cameras_url?>:<?=$f->cameras_port?>/snapshot.cgi?user=<?=$f->cameras_user?>&pwd=<?=$f->cameras_password?>&next_url=tempsnapshot.jpg&count=" 
+					onload="load_video('imgDisplay_<?=$f->cameras_id?>','<?=$f->cameras_url?>:<?=$f->cameras_port?>/snapshot.cgi?user=<?=$f->cameras_user?>&pwd=<?=$f->cameras_password?>&next_url=tempsnapshot.jpg&count=')"
 					width="320" height="240">
 					<?php foreach($rows_btncameras as $g):?>
 						<?php if($g->cameras_id == $f->cameras_id): ?>
-							<a href="#" data-role="button" name="<?=$g->btncameras_nombre?>" id="btn_actions" data-corners="false" data-inline="true" data-mini="true" data-theme="b"><?=$g->btncameras_label?></a>
+							<a href="#" data-role="button" name="<?=$g->btncameras_nombre?>" id="btn_actions" data-inline="true" data-theme="b"><?=$g->btncameras_label?></a>
 						<?php endif; ?>
 					<?php endforeach;?>
 				</div>
@@ -45,8 +45,9 @@
 	function body_onload(img_id,src_url){
 		load_video(img_id,src_url);
 	}	
-	function reload_image(img_id,src_url){			
-		xx.src =  src_url + count;
+
+	function reload_image(img_id,src_url){		
+		xx.src = src_url + count ;	
 		$("#"+img_id).attr("src",xx.src);
 		count++;	
 	}
@@ -81,6 +82,6 @@
 		$( "#contentIpCam div[id^=collapsible_]" ).live( "collapse", function(event, ui) {
   			paused = false;
 		});
-
 	});
+
 </script>

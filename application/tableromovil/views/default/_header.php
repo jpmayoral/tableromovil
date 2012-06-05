@@ -33,7 +33,7 @@
 	<div data-role="header" id="main-header" data-position="fixed">
 		<h1><?=$title_header?></h1>
 		<?php if($this->session->userdata('logged_in')): ?>
-			<a href="<?=base_url()?>main_controller/index" class="ui-btn-left">Home</a>
+			<a href="<?=base_url()?>main_controller/index" class="ui-btn-left" data-icon="home" data-iconpos="notext">Home</a>
 			<a href="<?=base_url()?>welcome/logout" id="login" class="ui-btn-right">Salir</a>
 		<?php endif; ?>
 	</div>

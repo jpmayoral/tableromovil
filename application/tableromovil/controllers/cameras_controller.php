@@ -63,13 +63,10 @@ class Cameras_Controller extends CI_Controller {
 			$data_cameras  = array();
 			$data_cameras['cameras_descripcion'] = $this->input->post('cameras_descripcion');
 			$data_cameras['cameras_url'] = $this->input->post('cameras_url');
-			if($this->input->post('cameras_port'))
-				$data_cameras['cameras_port'] = $this->input->post('cameras_port');
-				$data_cameras['cameras_estado'] = $this->input->post('cameras_estado');
-			if($this->input->post('cameras_user'))
-				$data_cameras['cameras_user'] = $this->input->post('cameras_user');
-			if($this->input->post('cameras_password'))
-				$data_cameras['cameras_password'] = $this->input->post('cameras_password');
+			$data_cameras['cameras_port'] = $this->input->post('cameras_port');
+			$data_cameras['cameras_estado'] = $this->input->post('cameras_estado');
+			$data_cameras['cameras_user'] = $this->input->post('cameras_user');
+			$data_cameras['cameras_password'] = $this->input->post('cameras_password');
 			$data_cameras['cameras_updated_at'] = $this->basicrud->formatDateToBD();
 
 			$id_cameras = $this->cameras_model->add_m($data_cameras);
@@ -120,13 +117,10 @@ class Cameras_Controller extends CI_Controller {
 			$data_cameras['cameras_id'] = $this->input->post('cameras_id');
 			$data_cameras['cameras_descripcion'] = $this->input->post('cameras_descripcion');
 			$data_cameras['cameras_url'] = $this->input->post('cameras_url');
-			if($this->input->post('cameras_port'))
-				$data_cameras['cameras_port'] = $this->input->post('cameras_port');
-				$data_cameras['cameras_estado'] = $this->input->post('cameras_estado');
-			if($this->input->post('cameras_user'))
-				$data_cameras['cameras_user'] = $this->input->post('cameras_user');
-			if($this->input->post('cameras_password'))
-				$data_cameras['cameras_password'] = $this->input->post('cameras_password');
+			$data_cameras['cameras_port'] = $this->input->post('cameras_port');
+			$data_cameras['cameras_estado'] = $this->input->post('cameras_estado');
+			$data_cameras['cameras_user'] = $this->input->post('cameras_user');
+			$data_cameras['cameras_password'] = $this->input->post('cameras_password');
 			$data_cameras['cameras_updated_at'] = $this->basicrud->formatDateToBD();
 
 			if($this->cameras_model->edit_m($data_cameras)){ 
