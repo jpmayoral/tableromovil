@@ -39,7 +39,7 @@ class Controlaccess_Controller extends CI_Controller
 	{
 		$data["rows_cameras"] = $this->cameras_model->get_m(); 
 		$data["rows_btncameras"] = $this->btncameras_model->get_m(); 
-		$this->load->view('controlaccess_view/record_list_controlaccess2', $data);
+		$this->load->view('controlaccess_view/record_list_controlaccess', $data);
 	}
 
 }
