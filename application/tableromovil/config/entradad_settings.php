@@ -20,6 +20,8 @@ $config['entradad_created_at']='Fecha de alta';
 $config['entradad_updated_at']='Actualizado el';
 $config['sismenu_id']='Men&uacute;';
 $config['entradad_estado']='Estado';
+$config['entradad_iconon']='Icono On';
+$config['entradad_iconoff']='Icono Off';
 
 /* Config fields for search */
 
@@ -42,6 +44,8 @@ $config['show_entradad_created_at']= 1;
 $config['show_entradad_updated_at']= 1;
 $config['show_sismenu_id']= 1;
 $config['show_entradad_estado']= 1;
+$config['show_entradad_iconon']= 1;
+$config['show_entradad_iconoff']= 1;
 
 /* Config required fields */
 

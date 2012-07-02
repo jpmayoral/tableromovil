@@ -21,6 +21,8 @@ $config['sismenu_id']='Men&uacute;';
 $config['salidad_estado']='Estado';
 $config['salidad_created_at']='Fecha de alta';
 $config['salidad_updated_at']='Actualizado el';
+$config['salidad_iconon']='Icono On';
+$config['salidad_iconoff']='Icono Off';
 
 /* Config fields for search */
 
@@ -43,6 +45,8 @@ $config['show_salidad_descripcion']= 1;
 $config['show_salidad_estado']= 1;
 $config['show_salidad_created_at']= 1;
 $config['show_salidad_updated_at']= 1;
+$config['show_salidad_iconon']= 1;
+$config['show_salidad_iconoff']= 1;
 
 /* Config required fields */
 

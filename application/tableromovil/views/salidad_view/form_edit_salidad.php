@@ -1,6 +1,8 @@
 <?=$this->load->view('default/_header')?>
 
-<form action="<?=base_url()?>salidad_controller/edit_c/<?=$salidad->salidad_id?>" method="post" name="formEditsalidad" id="formEditsalidad">
+<form action="<?=base_url()?>salidad_controller/edit_c/<?=$salidad->salidad_id?>" method="post" name="formEditsalidad" id="formEditsalidad"
+	enctype="multipart/form-data" data-ajax="false">
+
 	<input type="hidden" value="<?=$salidad->salidad_id?>" name="salidad_id" id="salidad_id"></input>
 	<div data-role="fieldcontain">
 		<label for="salidad_relay"><?=$this->config->item('salidad_relay')?>:</label>
@@ -51,6 +53,15 @@
 			<?php endforeach; ?>
 		</select>
 	</div>
+	<div data-role="fieldcontain">
+		<label for="salidad_iconon"><?=$this->config->item('salidad_iconon')?>:</label>
+		<input type="file" name="salidad_iconon" id="salidad_iconon"></input>
+	</div>
+	<div data-role="fieldcontain">
+		<label for="salidad_iconoff"><?=$this->config->item('salidad_iconoff')?>:</label>
+		<input type="file" name="salidad_iconoff" id="salidad_iconoff"></input>
+	</div>
+	
 	<div class="ui-grid-a">
 		<div class="ui-block-a"><a href="<?=base_url()?>salidad_controller/index" data-role="button" data-theme="a">Cancelar</a></div>
 		<div class="ui-block-b"><input type="submit" name="modificar" value="Modificar" data-theme="a" />

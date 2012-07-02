@@ -1,7 +1,14 @@
-<ul data-role="listview" data-split-icon="gear" data-theme="a">
-	<?php foreach($query as $q):?>
-		<li><a href="#"><img src="<?php echo base_url("css/images/".$q->escenarios_iconpath)?>"><?php echo $q->escenarios_descripcion;?></a><a href="#"></a></li>
-	<?php endforeach; ?>
-</ul>
+<?=$this->load->view('default/_header')?>
+<?php if($this->session->flashdata('flashConfirm')) echo $this->session->flashdata('flashConfirm'); ?>
+<?php if($this->session->flashdata('flashError')) echo $this->session->flashdata('flashError'); ?>
+<?php if($flag['i']):?>
+	<a href="<?=base_url()?>escenarios_controller/add_c" data-role="button" data-icon="plus" data-inline="true" title='Nuevo'>Nuevo</a>
+<?php endif; ?>
+<br><br>
+<script type="text/javascript">
+    $(document).ready(function(){ 
+        $("#main-header h1").html("Escenarios");
+    });
+</script>
 
 

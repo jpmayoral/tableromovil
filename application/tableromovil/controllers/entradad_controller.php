@@ -9,6 +9,9 @@ class Entradad_Controller extends CI_Controller {
 	private $flagD;
 	private $flags;
 
+	private $flag_override_img = FALSE;
+	private $name_thumb = '';
+
 	function __construct()
 	{
 		parent::__construct();
@@ -66,6 +69,9 @@ class Entradad_Controller extends CI_Controller {
 			if($this->input->post('sismenu_id'))
 				$data_entradad['sismenu_id'] = $this->input->post('sismenu_id');
 
+			$data_entradad['entradad_iconon'] = $this->upload('entradad_iconon');
+			$data_entradad['entradad_iconoff'] = $this->upload('entradad_iconoff');
+
 			$id_entradad = $this->entradad_model->add_m($data_entradad);
 			if($id_entradad){ 
 				$this->session->set_flashdata('flashConfirm', $this->config->item('entradad_flash_add_message')); 
@@ -113,6 +119,9 @@ class Entradad_Controller extends CI_Controller {
 			$data_entradad['entradad_estado'] = $this->input->post('entradad_estado');
 			if($this->input->post('sismenu_id'))
 				$data_entradad['sismenu_id'] = $this->input->post('sismenu_id');
+			
+			$data_entradad['entradad_iconon'] = $this->editimg('entradad_iconon',$this->input->post('entradad_id'));
+			$data_entradad['entradad_iconoff'] = $this->editimg('entradad_iconoff',$this->input->post('entradad_id'));
 
 			if($this->entradad_model->edit_m($data_entradad)){ 
 				$this->session->set_flashdata('flashConfirm', $this->config->item('entradad_flash_edit_message')); 
@@ -225,4 +234,53 @@ class Entradad_Controller extends CI_Controller {
 
 	}
 
+
+	function upload($field)
+	{
+		$this->load->helper('string');
+		
+		$config['upload_path'] = './thumbs/entradad/';
+		$config['allowed_types'] = 'jpg|png';
+
+		if($this->flag_override_img == FALSE){
+			$config['file_name'] = 'thumb_'.random_string('alnum', 25);
+		}else{
+			if($this->name_thumb == ''){
+				$config['file_name'] = 'thumb_'.random_string('alnum', 25);
+			}else{
+				$config['file_name'] = $this->name_thumb;
+				$config['overwrite'] = $this->flag_override_img;
+			}
+		}
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload($field))
+		{
+			$this->flag_override_img = FALSE;
+			$error = array('error' => $this->upload->display_errors());
+			return null;
+		}
+		else
+		{
+			$this->flag_override_img = FALSE;
+			$data = $this->upload->data();
+			return $data['file_name'];
+		}
+	}
+
+
+
+	function editimg($field,$entradad_id)
+	{
+		$entradad = $this->entradad_model->get_m(array('entradad_id' => $entradad_id));
+		if($field == 'entradad_iconon'){
+			if($entradad[0]->entradad_iconon) $this->name_thumb = $entradad[0]->entradad_iconon;
+			$this->flag_override_img = TRUE;
+		}else{
+			if($entradad[0]->entradad_iconoff) $this->name_thumb = $entradad[0]->entradad_iconoff;
+			$this->flag_override_img = TRUE;
+		}
+		return $name_image = $this->upload($field);
+	}
 }

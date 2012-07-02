@@ -125,6 +125,12 @@
       <Cl au="0" df="1" nm="entradad_estado" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
+      <Cl au="0" df="" nm="entradad_iconon" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="entradad_iconoff" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
       <Cl au="0" df="now()" nm="entradad_created_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
@@ -316,11 +322,17 @@
       <Cl au="0" df="1" nm="salidad_estado" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="now()" nm="salidad_created_at" nu="1">
-        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      <Cl au="0" df="" nm="salidad_iconon" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="salidad_updated_at" nu="1">
+      <Cl au="0" df="" nm="salidad_iconoff" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salidad_created_at" nu="1">
         <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="salidad_updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Fk deAc="1" nm="salidad_estados_id" prLkCl="estados_id" upAc="1">
         <PrTb mn="0" nm="estados" oe="1" sch="public" zr="0"/>
@@ -694,7 +706,7 @@
       <Zone bkCl="ffece9d8" h="1231" nm="Módulo principal" w="542" x="133" y="447"/>
     </Zones>
   </Dgm>
-  <RnmMgr NxRnmId="176">
+  <RnmMgr NxRnmId="187">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="callcenter" SupCls="" SupNme="">
       <Rnm id="1" nNm="public" oNm="schemaA"/>
     </RnmCh>
@@ -1135,12 +1147,31 @@
       <Rnm id="169" nNm="btncameras_created_at" oNm="btncameras_updated_at"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="salidad" SupCls="Schema" SupNme="public">
+      <Rnm id="184" nNm="salidad_iconon" oNm="salidad_iconpath"/>
+      <Rnm id="178" nNm="salidad_iconpath" oNm="salidad_created_at"/>
       <Rnm id="173" nNm="salidad_created_at" oNm="salidad_estados"/>
       <Rnm id="171" nNm="salidad_estados" oNm="salidad_estado"/>
       <Rnm id="170" nNm="salidad_estado" oNm="salidad_updated_at"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="entradad" SupCls="Schema" SupNme="public">
+      <Rnm id="182" nNm="entradad_iconon" oNm="entradad_icon_on"/>
+      <Rnm id="180" nNm="entradad_icon_on" oNm="entradad_iconpath"/>
+      <Rnm id="176" nNm="entradad_iconpath" oNm="entradad_created_at"/>
       <Rnm id="175" nNm="entradad_created_at" oNm="entradad_updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="entradad" SupCls="Schema" SupNme="public">
+      <Rnm id="181" nNm="entradad_iconoff" oNm="entradad_created_at"/>
+      <Rnm id="177" nNm="entradad_created_at" oNm="entradad_updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salidad" SupCls="Schema" SupNme="public">
+      <Rnm id="185" nNm="salidad_iconoff" oNm="salidad_created_at"/>
+      <Rnm id="179" nNm="salidad_created_at" oNm="salidad_updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="entradad" SupCls="Schema" SupNme="public">
+      <Rnm id="183" nNm="entradad_created_at" oNm="entradad_updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salidad" SupCls="Schema" SupNme="public">
+      <Rnm id="186" nNm="salidad_created_at" oNm="salidad_updated_at"/>
     </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>

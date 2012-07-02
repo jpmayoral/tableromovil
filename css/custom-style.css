@@ -1,13 +1,19 @@
 .ui-page {
-	background: black url('images/body_bg_new.jpg') repeat fixed center top;
-	/*background: #547eff; /*
-	background: -moz-linear-gradient(-45deg, #547eff 0%, #0f1cdb 100%);
-	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#547eff), color-stop(100%,#0f1cdb));
-	background: -webkit-linear-gradient(-45deg, #547eff 0%,#0f1cdb 100%);
-	background: -o-linear-gradient(-45deg, #547eff 0%,#0f1cdb 100%);
-	background: -ms-linear-gradient(-45deg, #547eff 0%,#0f1cdb 100%);
-	background: linear-gradient(-45deg, #547eff 0%,#0f1cdb 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#547eff', endColorstr='#0f1cdb',GradientType=1 );*/
+	/*background: black url('images/body_bg_new.jpg') repeat fixed center top;*/
+	background-image: linear-gradient(bottom, rgb(1,31,12) 0%, rgb(0,92,48) 63%);
+	background-image: -o-linear-gradient(bottom, rgb(1,31,12) 0%, rgb(0,92,48) 63%);
+	background-image: -moz-linear-gradient(bottom, rgb(1,31,12) 0%, rgb(0,92,48) 63%);
+	background-image: -webkit-linear-gradient(bottom, rgb(1,31,12) 0%, rgb(0,92,48) 63%);
+	background-image: -ms-linear-gradient(bottom, rgb(1,31,12) 0%, rgb(0,92,48) 63%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(1,31,12)),
+		color-stop(0.63, rgb(0,92,48))
+	);
+
 }
 
 .nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
@@ -18,7 +24,10 @@
 #beer .ui-icon { background:  url("images/glyphish/88-beermug.png") 50% 50% no-repeat;  background-size: 22px 27px; }
 #coffee .ui-icon { background:  url("images/glyphish/100-coffee.png") 50% 50% no-repeat;  background-size: 20px 24px; }
 #skull .ui-icon { background:  url("images/glyphish/21-skull.png") 50% 50% no-repeat;  background-size: 22px 24px; }
-
+#playmusic .ui-icon { background:  url("images/icon-play.png") 50% 50% no-repeat; background-size: 24px 22px; }
+#back .ui-icon { background:  url("images/icon-back.png") 50% 50% no-repeat; background-size: 24px 22px; }
+#song .ui-icon { background:  url("images/icon-song.png") 50% 50% no-repeat; background-size: 24px 22px; }
+#albums .ui-icon { background:  url("images/icon-albums.png") 50% 50% no-repeat; background-size: 24px 22px; }
 
 .ui-bar-h {
 	border: 0px solid 		#456f9a ;
@@ -55,7 +64,7 @@
 	/*border: 1px solid 		#999 ;*/
 	/*background: 			#f3f3f3 ;*/
 	color: 					#fff ;
-	text-shadow: 0  1px  0  #fff ;
+	/*text-shadow: 0  1px  0  #fff ;*/
 	font-weight: normal;
 	/*background-image: -webkit-gradient(linear, left top, left bottom, from( #ddd ), to( #ccc )); 
 	background-image: -webkit-linear-gradient( #ddd , #ccc ); 
@@ -568,4 +577,51 @@
 .ui-btn-down-k {
 	font-family: Helvetica, Arial, sans-serif ;
 	text-decoration: none;
+}
+
+
+
+.active{
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	background-image: linear-gradient(bottom, rgb(0,15,6) 0%, rgb(0,61,32) 63%);
+	background-image: -o-linear-gradient(bottom, rgb(0,15,6) 0%, rgb(0,61,32) 63%);
+	background-image: -moz-linear-gradient(bottom, rgb(0,15,6) 0%, rgb(0,61,32) 63%);
+	background-image: -webkit-linear-gradient(bottom, rgb(0,15,6) 0%, rgb(0,61,32) 63%);
+	background-image: -ms-linear-gradient(bottom, rgb(0,15,6) 0%, rgb(0,61,32) 63%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(0,15,6)),
+		color-stop(0.63, rgb(0,61,32))
+	);
+	display: inline;
+	width: auto;
+	padding: 4px;
+	font-size: 0.75em;
+}
+
+.desactive{
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	background-image: linear-gradient(bottom, rgb(144,153,12) 0%, rgb(129,133,0) 63%);
+	background-image: -o-linear-gradient(bottom, rgb(144,153,12) 0%, rgb(129,133,0) 63%);
+	background-image: -moz-linear-gradient(bottom, rgb(144,153,12) 0%, rgb(129,133,0) 63%);
+	background-image: -webkit-linear-gradient(bottom, rgb(144,153,12) 0%, rgb(129,133,0) 63%);
+	background-image: -ms-linear-gradient(bottom, rgb(144,153,12) 0%, rgb(129,133,0) 63%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(144,153,12)),
+		color-stop(0.63, rgb(129,133,0))
+	);
+
+	display: inline;
+	width: auto;
+	padding: 4px;
+	font-size: 0.75em;
 }

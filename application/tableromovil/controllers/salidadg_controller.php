@@ -40,6 +40,7 @@ class Salidadg_Controller extends CI_Controller
 				//filtrar solo los relay del modulo generico y del menu con id $sismenu_id		
 				$data["rows_salidad"] = $this->salidad_model->get_m(array("salidad_modulo" => 11, 'salidad_estado' => 2 ,'sismenu_id' => $sismenu[0]->sismenu_id));
 				if($data["rows_salidad"]){ 
+					$data['flag'] = $this->flags;
 					$this->load->view('salidadg_view/home_salidadg', $data);
 					$this->load->view('default/_footer');	
 				}
@@ -51,7 +52,8 @@ class Salidadg_Controller extends CI_Controller
 	function search_c($sismenu_id)
 	{
 		//filtrar solo los relay del modulo generico y del menu con id $sismenu_id	
-		if($sismenu_id){	
+		if($sismenu_id){
+			$data['flag'] = $this->flags;	
 			$data["rows_salidad"] = $this->salidad_model->get_m(array("salidad_modulo" => 11, 'salidad_estado' => 2, 'sismenu_id' => $sismenu_id)); 
 			if($data["rows_salidad"])
 				$this->load->view('salidadg_view/record_list_salidadg', $data);

@@ -1,35 +1,45 @@
-<script> setDatePicker(new Array('entradad_created_at'));</script>
-<div id="title-level2"><?=$subtitle?></div>
-<div id="form">
-<div class="fields-required">Campos obligatorios (*)</div>
-<form action="<?=base_url()?>entradad_controller/add_c" method="post" name="formAddentradad" id="formAddentradad">
-	<p>
+<?=$this->load->view('default/_header')?>
+
+<form action="<?=base_url()?>entradad_controller/add_c" method="post" name="formAddentradad" id="formAddentradad"
+	enctype="multipart/form-data" data-ajax="false">
+
+	<div data-role="fieldcontain">
 		<label><span class='required'>*</span><?=$this->config->item('entradad_din')?>:</label>
 		<input type="text" name="entradad_din" id="entradad_din"></input>
-	</p>
-	<p>
+	</div>
+	<div data-role="fieldcontain">
 		<label><span class='required'>*</span><?=$this->config->item('entradad_value')?>:</label>
 		<input type="text" name="entradad_value" id="entradad_value"></input>
-	</p>
-	<p>
+	</div>
+	<div data-role="fieldcontain">
 		<label><span class='required'>*</span><?=$this->config->item('entradad_modulo')?>:</label>
 		<input type="text" name="entradad_modulo" id="entradad_modulo"></input>
-	</p>
-	<p>
+	</div>
+	<div data-role="fieldcontain">
 		<label><span class='required'>*</span><?=$this->config->item('entradad_descripcion')?>:</label>
 		<input type="text" name="entradad_descripcion" id="entradad_descripcion"></input>
-	</p>
-	<p>
+	</div>
+	<div data-role="fieldcontain">
 		<label><span class='required'>*</span><?=$this->config->item('entradad_created_at')?>:</label>
 		<input type="text" name="entradad_created_at" id="entradad_created_at"></input>
-	</p>
-	<p>
+	</div>
+	<div data-role="fieldcontain">
 		<label><span class='required'>*</span><?=$this->config->item('entradad_updated_at')?>:</label>
 		<input type="text" name="entradad_updated_at" id="entradad_updated_at"></input>
-	</p>
-	<div class="botonera">
-		<input type="submit" name="guardar" value="Guardar" class="crudtest-button" id="btn-save" onClick="submitData('formAddentradad',new Array('right-content','right-content'))"></input>
-		<input type="button" name="cancelar" value="Cancelar" class="crudtest-button" id="btn-cancel" onClick="loadPage('<?=base_url()?>entradad_controller/index','right-content')"></input>
+	</div>
+	
+	<div data-role="fieldcontain">
+		<label for="entradad_iconon"><?=$this->config->item('entradad_iconon')?>:</label>
+		<input type="file" name="entradad_iconon" id="entradad_iconon"></input>
+	</div>
+	<div data-role="fieldcontain">
+		<label for="entradad_iconoff"><?=$this->config->item('entradad_iconoff')?>:</label>
+		<input type="file" name="entradad_iconoff" id="entradad_iconoff"></input>
+	</div>
+
+	<div class="ui-grid-a">
+		<div class="ui-block-a"><a href="<?=base_url()?>entradad_controller/index" data-role="button" data-theme="a">Cancelar</a></div>
+		<div class="ui-block-b"><input type="submit" name="guardar" value="Guardar" data-theme="a" /></div>
 	</div>
 	<div class="errors" id="errors">
 	<?php
@@ -37,5 +47,5 @@
 		if(isset($error)) echo $error;
 	?>
 	</div>
-	<div id="busy"><img src="<?=base_url()?>css/images/ajax-loader.gif" /></div></form>
-</div>
+
+<?=$this->load->view('default/_footer')?>

@@ -1,3 +1,11 @@
+#AddType type/subtype extension
+AddType audio/aac .aac
+AddType audio/mp4 .mp4 .m4a
+AddType audio/mpeg .mp1 .mp2 .mp3 .mpg .mpeg
+AddType audio/ogg .oga .ogg
+AddType audio/wav .wav
+AddType audio/webm .webm
+
 RewriteEngine on
-RewriteCond $1 !^(index\.php|images|js|css|captcha|robots\.txt)
+RewriteCond $1 !^(index\.php|images|js|css|thumbs|sounds|robots\.txt)
 RewriteRule ^(.*)$ /repositorios/tableromovil/index.php/$1 [L]

@@ -11,17 +11,9 @@ class Audio_Controller extends CI_Controller
 	
 	function __construct()
 	{
-		parent::__construct();
-		$this->load->model('perfiles_model');
-		$this->load->model('sisperfil_model');
-		$this->load->model('tabgral_model');		
+		parent::__construct();		
 		if($this->session->userdata('logged_in') == TRUE) {
-				$data['flags'] = $this->basicauth->getPermissions('perfiles');
-				$this->flagR = $data['flags']['flag-read'];
-				$this->flagI = $data['flags']['flag-insert'];
-				$this->flagU = $data['flags']['flag-update'];
-				$this->flagD = $data['flags']['flag-delete'];
-				$this->flags = array('i' => $this->flagI, 'u' => $this->flagU, 'd' => $this->flagD);
+				$this->load->helper('directory');
 		}
 	}
 
@@ -30,15 +22,56 @@ class Audio_Controller extends CI_Controller
 		//code here
 		$data['title_header']='Audio';
 		$this->load->view('default/_header', $data);
-		$this->load->view('audio_view/home_audio');
+		$data['playlist'] = $this->getPlayList();
+		$this->load->view('audio_view/home_audio',$data);
 		$this->load->view('default/_footer');
 	}
 
-	/*
-	function search_c($offset = 0)
+	function getPlayList()
 	{
-			echo "hola";
-			//$this->load->view('agua_view/home_agua');
-	}*/
+		
+		return $playlist = directory_map('./sounds/');
+	}
+
+	function showSongs($album)
+	{
+		$data['title_header'] = urldecode($album);
+		$data['album'] = urldecode($album);
+		$data['songs'] = $this->parseSongs($album);
+
+		$this->load->view('default/_header', $data);
+		$this->load->view('audio_view/show_songs',$data);
+		$this->load->view('audio_view/_footer_audio');
+	}
+
+
+	function parseSongs($album)
+	{
+		$newSongs = array();
+		$songs = directory_map("./sounds/".urldecode($album)."/");
+		foreach ($songs as $key => $value) {
+			$parse1 = substr($value, -3); 
+			if($parse1 == 'mp3'){
+				$parse2 = str_replace(".mp3", '', $value);
+				$newSongs[] = $parse2;
+			}
+		}
+		return $newSongs;
+	}
+
+	
+	function playMusic($album,$param_tracks)
+	{
+		$data['title_header'] = urldecode($album);
+		$this->load->view('audio_view/_header_audio', $data);
+		
+		$tracks = explode(",", urldecode($param_tracks));
+		unset($tracks[count($tracks)-1]);
+		$data['tracks'] = $tracks;
+		$data['album'] = urldecode($album);
+		
+		$this->load->view('audio_view/play',$data);
+		$this->load->view('audio_view/_footer_audio_tracks');
+	}
 
 }

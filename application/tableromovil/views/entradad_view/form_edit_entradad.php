@@ -1,6 +1,8 @@
 <?=$this->load->view('default/_header')?>
 
-<form action="<?=base_url()?>entradad_controller/edit_c/<?=$entradad->entradad_id?>" method="post" name="formEditentradad" id="formEditentradad">
+<form action="<?=base_url()?>entradad_controller/edit_c/<?=$entradad->entradad_id?>" method="post" name="formEditentradad" id="formEditentradad"
+	enctype="multipart/form-data" data-ajax="false">
+	
 	<input type="hidden" value="<?=$entradad->entradad_id?>" name="entradad_id" id="entradad_id"></input>
 	<div data-role="fieldcontain">
 		<label for="entradad_din"><?=$this->config->item('entradad_din')?>:</label>
@@ -51,6 +53,15 @@
 			<?php endforeach; ?>
 		</select>
 	</div>
+	<div data-role="fieldcontain">
+		<label for="entradad_iconon"><?=$this->config->item('entradad_iconon')?>:</label>
+		<input type="file" name="entradad_iconon" id="entradad_iconon"></input>
+	</div>
+	<div data-role="fieldcontain">
+		<label for="entradad_iconoff"><?=$this->config->item('entradad_iconoff')?>:</label>
+		<input type="file" name="entradad_iconoff" id="entradad_iconoff"></input>
+	</div>
+
 	<div class="ui-grid-a">
 		<div class="ui-block-a"><a href="<?=base_url()?>entradad_controller/index" data-role="button" data-theme="a">Cancelar</a></div>
 		<div class="ui-block-b"><input type="submit" name="modificar" value="Modificar" data-theme="a" />

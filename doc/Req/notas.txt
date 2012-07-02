@@ -1,0 +1,21 @@
+Notas
+--------
+
+- 	El modulo de de Segurdad, Agua e Iluminacion ahora forman parte del modulo generico
+- 	
+
+Coasas relizadas:
+	
+	- Se elimino problema de constante acutalizacion en el modulo generico. Por ejemplo cuando se ingresaba a Refrigeracion y luego a Portones
+	en Portones aparecian los datos de REfrigeracion.
+	- Se pueden realizar altan de escenarios y activarlos o desactivarlos
+	- En la interfaz principal se agrego un menu llamado "Escenarios" donde solo se puede observar que escenarios estas activdas o desactivados.
+	- Modulo de auto y reproduccion listo
+		Notas -> No funcion el playlist en versiones de android 2.x
+		Notas -> opcionalmente puede reproducir un archivo atraves de flash siempre y cuando el dispositivo tenga soporte para esta tecnologia.
+	- Ahora se puede cargar un imagen que indiquen un estado on y off para las salidas digitales y entradas digitales
+	- Solucionado tippo de datos del campo salidad_updated_at. 
+		Ahora el tipo de campo es:
+			- TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+			el tipo de campo del campo salidad_created_at es:
+			- DATETIME

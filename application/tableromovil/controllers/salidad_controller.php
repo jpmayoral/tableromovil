@@ -9,6 +9,9 @@ class Salidad_Controller extends CI_Controller {
 	private $flagD;
 	private $flags;
 
+	private $flag_override_img = FALSE;
+	private $name_thumb = '';
+
 	function __construct()
 	{
 		parent::__construct();
@@ -64,10 +67,12 @@ class Salidad_Controller extends CI_Controller {
 			$data_salidad['salidad_relay'] = $this->input->post('salidad_relay');
 			$data_salidad['salidad_modulo'] = $this->input->post('salidad_modulo');
 			$data_salidad['salidad_descripcion'] = $this->input->post('salidad_descripcion');
-			$data_salidad['salidad_updated_at'] = $this->basicrud->formatDateToBD();
+			$data_salidad['salidad_created_at'] = $this->basicrud->formatDateToBD();
 			$data_salidad['salidad_estado'] = $this->input->post('salidad_estado');
 			if($this->input->post('sismenu_id'))
 				$data_salidad['sismenu_id'] = $this->input->post('sismenu_id');
+			$data_salidad['salidad_iconon'] = $this->upload('salidad_iconon');
+			$data_salidad['salidad_iconoff'] = $this->upload('salidad_iconoff');
 
 			$id_salidad = $this->salidad_model->add_m($data_salidad);
 			if($id_salidad){ 
@@ -114,11 +119,13 @@ class Salidad_Controller extends CI_Controller {
 			$data_salidad['salidad_id'] = $this->input->post('salidad_id');
 			$data_salidad['salidad_modulo'] = $this->input->post('salidad_modulo');
 			$data_salidad['salidad_descripcion'] = $this->input->post('salidad_descripcion');
-			$data_salidad['salidad_updated_at'] = $this->basicrud->formatDateToBD();
+			//$data_salidad['salidad_updated_at'] = $this->basicrud->formatDateToBD();
 			$data_salidad['salidad_estado'] = $this->input->post('salidad_estado');
-			if($this->input->post('sismenu_id'))
-				$data_salidad['sismenu_id'] = $this->input->post('sismenu_id');
-
+			//if($this->input->post('sismenu_id'))
+			$data_salidad['sismenu_id'] = $this->input->post('sismenu_id');
+			$data_salidad['salidad_iconon'] = $this->editimg('salidad_iconon',$this->input->post('salidad_id'));
+			$data_salidad['salidad_iconoff'] = $this->editimg('salidad_iconoff',$this->input->post('salidad_id'));
+			
 			if($this->salidad_model->edit_m($data_salidad)){ 
 				$this->session->set_flashdata('flashConfirm', $this->config->item('salidad_flash_edit_message')); 
 				redirect('salidad_controller','location');
@@ -159,7 +166,7 @@ class Salidad_Controller extends CI_Controller {
 		
 		$data_salidad['salidad_id'] = $salidad_id;
 		$data_salidad['salidad_value'] = $salidad_value;
-		$data_salidad['salidad_updated_at'] = $this->basicrud->formatDateToBD();
+		//$data_salidad['salidad_updated_at'] = $this->basicrud->formatDateToBD();
 
 		if($this->salidad_model->edit_m($data_salidad)){ 
 			echo "ok";
@@ -226,6 +233,57 @@ class Salidad_Controller extends CI_Controller {
 		$this->load->view('default/_footer');
 		
 
+	}
+
+
+
+	function upload($field)
+	{
+		$this->load->helper('string');
+		
+		$config['upload_path'] = './thumbs/salidad/';
+		$config['allowed_types'] = 'jpg|png';
+
+		if($this->flag_override_img == FALSE){
+			$config['file_name'] = 'thumb_'.random_string('alnum', 25);
+		}else{
+			if($this->name_thumb == ''){
+				$config['file_name'] = 'thumb_'.random_string('alnum', 25);
+			}else{
+				$config['file_name'] = $this->name_thumb;
+				$config['overwrite'] = $this->flag_override_img;
+			}
+		}
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload($field))
+		{
+			$this->flag_override_img = FALSE;
+			$error = array('error' => $this->upload->display_errors());
+			return null;
+		}
+		else
+		{
+			$this->flag_override_img = FALSE;
+			$data = $this->upload->data();
+			return $data['file_name'];
+		}
+	}
+
+
+
+	function editimg($field,$salidad_id)
+	{
+		$salidad = $this->salidad_model->get_m(array('salidad_id' => $salidad_id));
+		if($field == 'salidad_iconon'){
+			if($salidad[0]->salidad_iconon) $this->name_thumb = $salidad[0]->salidad_iconon;
+			$this->flag_override_img = TRUE;
+		}else{
+			if($salidad[0]->salidad_iconoff) $this->name_thumb = $salidad[0]->salidad_iconoff;
+			$this->flag_override_img = TRUE;
+		}
+		return $name_image = $this->upload($field);
 	}
 
 }

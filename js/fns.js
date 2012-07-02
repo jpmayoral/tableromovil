@@ -62,3 +62,26 @@ function updateContent(url,div)
         $('#'+div).html(data).trigger("pagecreate").trigger("refresh");
     });
 }
+
+function deleteRow(url)
+{
+    if(confirm("¿Estás seguro de eliminar este item?")){
+        window.open(url,'_top');
+    }
+
+}
+
+/*function loadPageChk(url,div,nameChk)
+{   
+    var list = new Array();
+    $.each($("input[name="+nameChk+"]:checked"), function() {
+      list.push($(this).val());
+   });
+    if(list.length>0){              
+        $.post(url,{arrkeys:list}, function(data) {
+             $('#'+div).html(data).trigger("pagecreate").trigger("refresh");
+        }); 
+    }else{
+       // showAleatoryMessage('Selecciona al menos un registro!');
+    }
+}*/
