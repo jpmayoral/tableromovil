@@ -12,7 +12,7 @@ $(document).ready(function(){
 			{
 				title:'<?=$value?>',
 				mp3:'<?=base_url()."sounds/".$album."/".$value.".mp3"?>',
-				oga:'<?=base_url()."sounds/".$album."/".$value.".ogg"?>'
+				oga:'<?=base_url()."sounds/".$album."/".$value.".ogg"?>',
 			}
 			<?php if($i <= ($total -1)): ?>
 				,
@@ -20,6 +20,9 @@ $(document).ready(function(){
 		<?php $i++; endforeach; ?>
 		
 	], {
+		playlistOptions: { 
+    		autoPlay: true 
+  		}, 
 		swfPath: "<?=base_url()?>js/jplayer",
 		supplied: "oga, mp3",
 		solution:"html,flash",

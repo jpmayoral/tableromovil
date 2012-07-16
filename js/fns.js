@@ -71,17 +71,15 @@ function deleteRow(url)
 
 }
 
-/*function loadPageChk(url,div,nameChk)
-{   
-    var list = new Array();
-    $.each($("input[name="+nameChk+"]:checked"), function() {
-      list.push($(this).val());
-   });
-    if(list.length>0){              
-        $.post(url,{arrkeys:list}, function(data) {
-             $('#'+div).html(data).trigger("pagecreate").trigger("refresh");
-        }); 
-    }else{
-       // showAleatoryMessage('Selecciona al menos un registro!');
-    }
-}*/
+function selectAllChks(p_chk1,p_chk2)
+{
+    $("input[name="+p_chk1+"]").change(function(){
+        $("input[name="+p_chk2+"]").each( function() {          
+            if($("input[name="+p_chk1+"]:checked").length == 1){
+                this.checked = true;
+            } else {
+                this.checked = false;
+            }
+        });
+    });
+}

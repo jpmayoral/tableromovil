@@ -238,4 +238,13 @@ class Escenarios_Controller extends CI_Controller
 
 		return $name_image = $this->upload();
 	}
+
+
+	function changeState($escenarios_id,$escenarios_estado)
+	{
+		if($this->escenarios_model->edit_m(array('escenarios_id' => $escenarios_id, 'escenarios_estado' => $escenarios_estado)))
+		 echo "ok";
+		else echo "error";
+
+	}
 }

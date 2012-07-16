@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="<?=base_url()?>css/jquery.mobile-1.1.0/jquery.mobile-1.1.0-rc.1.css" />
 	<link rel="stylesheet" href="<?=base_url()?>css/custom-style.css" />
-	<!--<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>-->
 	<script src="<?=base_url()?>js/jquery-v1.7.1.js"></script>
 	<script src="<?=base_url()?>js/fns.js"></script>
 	<script src="<?=base_url()?>js/jquery.mobile-1.1.0/jquery.mobile-1.1.0-rc.1.min.js"></script>
