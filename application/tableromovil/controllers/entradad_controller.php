@@ -68,6 +68,9 @@ class Entradad_Controller extends CI_Controller {
 			$data_entradad['entradad_estado'] = $this->input->post('entradad_estado');
 			if($this->input->post('sismenu_id'))
 				$data_entradad['sismenu_id'] = $this->input->post('sismenu_id');
+			if($data_entradad['entradad_estado'] == 1){ // si entrada es igual a 'LIBRE'
+				$data_entradad['entradad_descripcion'] = '';
+			}
 
 			$data_entradad['entradad_iconon'] = $this->upload('entradad_iconon');
 			$data_entradad['entradad_iconoff'] = $this->upload('entradad_iconoff');

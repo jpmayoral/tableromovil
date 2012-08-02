@@ -176,7 +176,7 @@ class Perfiles_Controller extends CI_Controller {
 			$data['title_header'] = 'Perfiles';
 			$this->load->view('perfiles_view/home_perfiles', $data);
 			$this->load->view('perfiles_view/record_list_perfiles');
-			$this->load->view('perfiles_view/_footer');
+			$this->load->view('default/_footer');
 		}
 
 	}

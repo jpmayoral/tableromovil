@@ -119,9 +119,11 @@ class Salidad_Controller extends CI_Controller {
 			$data_salidad['salidad_id'] = $this->input->post('salidad_id');
 			$data_salidad['salidad_modulo'] = $this->input->post('salidad_modulo');
 			$data_salidad['salidad_descripcion'] = $this->input->post('salidad_descripcion');
-			//$data_salidad['salidad_updated_at'] = $this->basicrud->formatDateToBD();
 			$data_salidad['salidad_estado'] = $this->input->post('salidad_estado');
-			//if($this->input->post('sismenu_id'))
+			if($data_salidad['salidad_estado'] == 1){ // si estado de salidad es igual a 'LIBRE'
+				$data_salidad['salidad_descripcion'] = '';
+			}
+
 			$data_salidad['sismenu_id'] = $this->input->post('sismenu_id');
 			$data_salidad['salidad_iconon'] = $this->editimg('salidad_iconon',$this->input->post('salidad_id'));
 			$data_salidad['salidad_iconoff'] = $this->editimg('salidad_iconoff',$this->input->post('salidad_id'));

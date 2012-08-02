@@ -62,9 +62,9 @@ CREATE TABLE  `tableromovil`.`btncameras` (
   PRIMARY KEY (`btncameras_id`),
   KEY `btncameras_cameras_id` (`cameras_id`),
   KEY `btncameras_salidad_id` (`salidad_id`),
-  CONSTRAINT `btncameras_salidad_id` FOREIGN KEY (`salidad_id`) REFERENCES `salidad` (`salidad_id`),
-  CONSTRAINT `btncameras_cameras_id` FOREIGN KEY (`cameras_id`) REFERENCES `cameras` (`cameras_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  CONSTRAINT `btncameras_cameras_id` FOREIGN KEY (`cameras_id`) REFERENCES `cameras` (`cameras_id`),
+  CONSTRAINT `btncameras_salidad_id` FOREIGN KEY (`salidad_id`) REFERENCES `salidad` (`salidad_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tableromovil`.`btncameras`
@@ -72,7 +72,10 @@ CREATE TABLE  `tableromovil`.`btncameras` (
 
 /*!40000 ALTER TABLE `btncameras` DISABLE KEYS */;
 LOCK TABLES `btncameras` WRITE;
-INSERT INTO `tableromovil`.`btncameras` VALUES  (6,'open_door','Abrir puerta','localhost',3,1,'2012-06-04 11:01:17','2012-06-04 11:15:11');
+INSERT INTO `tableromovil`.`btncameras` VALUES  (6,'open_door','Abrir puerta','btncameras_controller/setBtnIpCam/',3,1,'2012-06-04 11:01:17','2012-08-01 02:41:20'),
+ (7,'abrir_puerta','Abrir Puerta','btncameras_controller/setBtnIpCam/',1,3,'2012-08-01 03:05:21','2012-08-01 03:05:21'),
+ (8,'abrir_ventana','Abrir Ventana','btncameras_controller/setBtnIpCam/',2,3,'2012-08-01 03:05:45','2012-08-01 03:05:45'),
+ (9,'subir_cortina','Subir Cortina','btncameras_controller/setBtnIpCam/',4,4,'2012-08-01 03:06:28','2012-08-01 03:06:28');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `btncameras` ENABLE KEYS */;
 
@@ -159,9 +162,9 @@ CREATE TABLE  `tableromovil`.`entradad` (
   KEY `entradad_estados_id` (`entradad_estado`),
   KEY `entradad_modulo_tabgral_id` (`entradad_modulo`),
   KEY `entradad_sismenu_id` (`sismenu_id`),
-  CONSTRAINT `entradad_sismenu_id` FOREIGN KEY (`sismenu_id`) REFERENCES `sismenu` (`sismenu_id`),
   CONSTRAINT `entradad_estados_id` FOREIGN KEY (`entradad_estado`) REFERENCES `estados` (`estados_id`),
-  CONSTRAINT `entradad_modulo_tabgral_id` FOREIGN KEY (`entradad_modulo`) REFERENCES `tabgral` (`tabgral_id`)
+  CONSTRAINT `entradad_modulo_tabgral_id` FOREIGN KEY (`entradad_modulo`) REFERENCES `tabgral` (`tabgral_id`),
+  CONSTRAINT `entradad_sismenu_id` FOREIGN KEY (`sismenu_id`) REFERENCES `sismenu` (`sismenu_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
@@ -170,11 +173,11 @@ CREATE TABLE  `tableromovil`.`entradad` (
 
 /*!40000 ALTER TABLE `entradad` DISABLE KEYS */;
 LOCK TABLES `entradad` WRITE;
-INSERT INTO `tableromovil`.`entradad` VALUES  (1,'DIN0',0,11,'Electricidad','0000-00-00 00:00:00','2012-07-01 04:50:57',4,2,'thumb_r4QKihb320ZyrDF3FTISsecSS.png','thumb_r4QKihb320ZyrDF3FTISsecSS1.png'),
- (2,'DIN1',1,11,'Gas','0000-00-00 00:00:00','2012-07-01 03:53:23',4,2,'thumb_m9hf8MrE4vxakTfmYvZopajRI.png','thumb_m9hf8MrE4vxakTfmYvZopajRI1.png'),
- (3,'DIN2',0,11,'Agua','0000-00-00 00:00:00','2012-07-01 04:09:49',4,2,'thumb_wHc844WIdR62ABOkyseFBFEww.png','thumb_wHc844WIdR62ABOkyseFBFEww1.png'),
- (4,'DIN3',0,11,'Iluminación','0000-00-00 00:00:00','2012-07-01 03:57:25',4,2,'thumb_cmduR9BYluz4FxXICzn7YGz9p.png','thumb_cmduR9BYluz4FxXICzn7YGz9p1.png'),
- (5,'DIN4',1,11,'Alarma','0000-00-00 00:00:00','2012-07-01 03:54:03',4,2,'thumb_ZMTWjsJl06tWPgIjGwCQlBkN3.png','thumb_ZMTWjsJl06tWPgIjGwCQlBkN31.png'),
+INSERT INTO `tableromovil`.`entradad` VALUES  (1,'DIN0',0,11,'Electricidad','0000-00-00 00:00:00','2012-08-02 04:50:47',4,2,'thumb_r4QKihb320ZyrDF3FTISsecSS.png','thumb_r4QKihb320ZyrDF3FTISsecSS1.png'),
+ (2,'DIN1',0,11,'Gas','0000-00-00 00:00:00','2012-08-02 04:50:44',4,2,'thumb_m9hf8MrE4vxakTfmYvZopajRI.png','thumb_m9hf8MrE4vxakTfmYvZopajRI1.png'),
+ (3,'DIN2',0,11,'Agua','0000-00-00 00:00:00','2012-08-02 04:50:45',4,2,'thumb_wHc844WIdR62ABOkyseFBFEww.png','thumb_wHc844WIdR62ABOkyseFBFEww1.png'),
+ (4,'DIN3',0,11,'Iluminación','0000-00-00 00:00:00','2012-08-02 04:50:45',4,2,'thumb_cmduR9BYluz4FxXICzn7YGz9p.png','thumb_cmduR9BYluz4FxXICzn7YGz9p1.png'),
+ (5,'DIN4',1,11,'Alarma','0000-00-00 00:00:00','2012-07-31 21:22:17',4,2,'thumb_ZMTWjsJl06tWPgIjGwCQlBkN3.png','thumb_ZMTWjsJl06tWPgIjGwCQlBkN31.png'),
  (6,'DIN5',1,11,'Audio 1','0000-00-00 00:00:00','2012-07-01 05:40:40',9,1,NULL,NULL),
  (7,'DIN6',0,11,'Audio 2','0000-00-00 00:00:00','2012-07-01 05:41:06',9,1,NULL,NULL),
  (8,'DIN7',NULL,NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00',NULL,1,NULL,NULL);
@@ -203,12 +206,12 @@ CREATE TABLE  `tableromovil`.`escenarios` (
 
 /*!40000 ALTER TABLE `escenarios` DISABLE KEYS */;
 LOCK TABLES `escenarios` WRITE;
-INSERT INTO `tableromovil`.`escenarios` VALUES  (12,'Vacaciones familiares','1','2012-06-30 22:28:22','2012-07-01 01:26:56','thumb_Juj3bybYl27m6e7KwonNnTC9X.png'),
+INSERT INTO `tableromovil`.`escenarios` VALUES  (12,'Vacaciones familiares','1','2012-06-30 22:28:22','2012-07-02 15:06:18','thumb_Juj3bybYl27m6e7KwonNnTC9X.png'),
  (15,'Trabajo','1','2012-06-30 23:16:37','2012-07-01 02:11:38','thumb_xXywMkI2DKSWl70eoE0qUtsVL.png'),
- (17,'En casa','0','2012-06-30 23:19:01','2012-06-30 23:24:33','thumb_KeUtV52JyJiC9OWUaRTwyY605.png'),
- (18,'Viaje de negocios','0','2012-06-30 23:23:24','2012-06-30 23:25:00','thumb_ZGgG8CtMoL5VFwZnENoGiB9bP.png'),
- (19,'Picnic familiar','0','2012-06-30 23:23:48','2012-06-30 23:23:48','thumb_Lx27xpwMWiEfl0ZJW8BBIDi21.png'),
- (21,'Pesca con amigos','0','2012-06-30 23:26:23','2012-06-30 23:26:23','thumb_nutxIxrLE6gu3bvnt25iff6iX.png');
+ (17,'En casa','1','2012-06-30 23:19:01','2012-06-30 23:24:33','thumb_KeUtV52JyJiC9OWUaRTwyY605.png'),
+ (18,'Viaje de negocios','1','2012-06-30 23:23:24','2012-07-31 21:20:07','thumb_ZGgG8CtMoL5VFwZnENoGiB9bP.png'),
+ (19,'Picnic familiar','1','2012-06-30 23:23:48','2012-06-30 23:23:48','thumb_Lx27xpwMWiEfl0ZJW8BBIDi21.png'),
+ (21,'Pesca con amigos','1','2012-06-30 23:26:23','2012-06-30 23:26:23','thumb_nutxIxrLE6gu3bvnt25iff6iX.png');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `escenarios` ENABLE KEYS */;
 
@@ -323,6 +326,106 @@ UNLOCK TABLES;
 
 
 --
+-- Definition of table `tableromovil`.`playlist`
+--
+
+DROP TABLE IF EXISTS `tableromovil`.`playlist`;
+CREATE TABLE  `tableromovil`.`playlist` (
+  `playlist_id` int(11) NOT NULL AUTO_INCREMENT,
+  `playlist_descripcion` varchar(150) DEFAULT NULL,
+  `usuarios_id` int(11) DEFAULT NULL,
+  `playlist_created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `playlist_updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`playlist_id`),
+  KEY `playlist_usuarios_id` (`usuarios_id`),
+  CONSTRAINT `playlist_usuarios_id` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`usuarios_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tableromovil`.`playlist`
+--
+
+/*!40000 ALTER TABLE `playlist` DISABLE KEYS */;
+LOCK TABLES `playlist` WRITE;
+INSERT INTO `tableromovil`.`playlist` VALUES  (1,'My PlayList 1',2,'2012-08-01 07:01:48','2012-08-01 07:01:48'),
+ (2,'My PlayList 2',2,'2012-08-01 07:06:52','2012-08-01 07:06:52'),
+ (3,'My PlayList 3',2,'2012-08-01 07:09:20','2012-08-01 07:09:20'),
+ (4,'My PlayList 4',2,'2012-08-01 07:10:56','2012-08-01 07:10:56'),
+ (5,'My PlayList 5',2,'2012-08-01 07:35:52','2012-08-01 07:35:52'),
+ (6,'My PlayList 6',2,'2012-08-01 09:59:41','2012-08-01 09:59:41'),
+ (7,'My PlayList 7',2,'2012-08-02 03:50:11','2012-08-02 03:50:11'),
+ (8,'My PlayList 8',2,'2012-08-02 03:50:44','2012-08-02 03:50:44'),
+ (9,'My PlayList 9',2,'2012-08-02 04:22:37','2012-08-02 04:22:37'),
+ (10,'My PlayList 1',1,'2012-08-02 04:52:18','2012-08-02 04:52:18');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `playlist` ENABLE KEYS */;
+
+
+--
+-- Definition of table `tableromovil`.`playlistlinea`
+--
+
+DROP TABLE IF EXISTS `tableromovil`.`playlistlinea`;
+CREATE TABLE  `tableromovil`.`playlistlinea` (
+  `playlistlinea_id` int(11) NOT NULL AUTO_INCREMENT,
+  `playlistlinea_path` text,
+  `playlistlinea_namesong` varchar(150) DEFAULT NULL,
+  `playlist_id` int(11) DEFAULT NULL,
+  `playlistlinea_created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `playlistlinea_updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`playlistlinea_id`),
+  KEY `playlistlinea_playlist_id` (`playlist_id`),
+  CONSTRAINT `playlistlinea_playlist_id` FOREIGN KEY (`playlist_id`) REFERENCES `playlist` (`playlist_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tableromovil`.`playlistlinea`
+--
+
+/*!40000 ALTER TABLE `playlistlinea` DISABLE KEYS */;
+LOCK TABLES `playlistlinea` WRITE;
+INSERT INTO `tableromovil`.`playlistlinea` VALUES  (1,'Variados 90','Paisaje - vicentico',1,'2012-08-01 07:01:48','2012-08-01 07:01:48'),
+ (2,'Variados 90','Persiana Americana - Soda Stereo',1,'2012-08-01 07:01:48','2012-08-01 07:01:48'),
+ (3,'Variados 90','Dreams - The Cranberries',2,'2012-08-01 07:06:52','2012-08-01 07:06:52'),
+ (4,'Variados 90','Yo Te Voy a Amar - NSync',2,'2012-08-01 07:06:52','2012-08-01 07:06:52'),
+ (5,'Romanticos90','wind_of_change',3,'2012-08-01 07:09:20','2012-08-01 07:09:20'),
+ (6,'Romanticos90','yellow',3,'2012-08-01 07:09:20','2012-08-01 07:09:20'),
+ (7,'Romanticos90','stand_by_me',4,'2012-08-01 07:10:56','2012-08-01 07:10:56'),
+ (8,'Romanticos90','she_is_like_the_wind',4,'2012-08-01 07:10:56','2012-08-01 07:10:56'),
+ (9,'nuevos','La Primavera-Estopa',2,'2012-08-01 07:32:43','2012-08-01 07:32:43'),
+ (10,'nuevos','Me gustas tanto-Paulina Rubio',3,'2012-08-01 07:33:18','2012-08-01 07:33:18'),
+ (11,'nuevos','Titanium -David Guetta',4,'2012-08-01 07:35:11','2012-08-01 07:35:11'),
+ (12,'Romanticos80','i_just_called_to_say_i_love_you',5,'2012-08-01 07:35:52','2012-08-01 07:35:52'),
+ (13,'Romanticos80','rebel_in_me',5,'2012-08-01 07:38:19','2012-08-01 07:38:19'),
+ (14,'nuevos','Coldplay-Paradise',6,'2012-08-01 09:59:41','2012-08-01 09:59:41'),
+ (15,'nuevos','Muerte En Hawaii-Calle 13',6,'2012-08-01 09:59:41','2012-08-01 09:59:41'),
+ (16,'nuevos','Se te nota-Los Tipitos',6,'2012-08-01 09:59:41','2012-08-01 09:59:41'),
+ (17,'nuevos','Ai se eu te pego-Michel Telo',6,'2012-08-01 09:59:42','2012-08-01 09:59:42'),
+ (18,'Romanticos80','all_the_love_in_the_world',6,'2012-08-01 19:58:18','2012-08-01 19:58:18'),
+ (19,'Variados 90','Personalmente - Las Pelotas',1,'2012-08-01 22:21:36','2012-08-01 22:21:36'),
+ (20,'Variados 90','Paisaje - vicentico',1,'2012-08-01 22:21:37','2012-08-01 22:21:37'),
+ (21,'nuevos','Coldplay-Paradise',7,'2012-08-02 03:50:12','2012-08-02 03:50:12'),
+ (22,'nuevos','Muerte En Hawaii-Calle 13',7,'2012-08-02 03:50:12','2012-08-02 03:50:12'),
+ (23,'nuevos','Glad You Came-The Wanted',7,'2012-08-02 03:50:12','2012-08-02 03:50:12'),
+ (24,'nuevos','Coldplay-Paradise',8,'2012-08-02 03:50:44','2012-08-02 03:50:44'),
+ (25,'nuevos','Muerte En Hawaii-Calle 13',8,'2012-08-02 03:50:44','2012-08-02 03:50:44'),
+ (26,'nuevos','Glad You Came-The Wanted',8,'2012-08-02 03:50:44','2012-08-02 03:50:44'),
+ (27,'Romanticos90','wind_of_change',8,'2012-08-02 04:10:31','2012-08-02 04:10:31'),
+ (28,'Romanticos90','Muerte En Hawaii-Calle 13',8,'2012-08-02 04:19:54','2012-08-02 04:19:54'),
+ (29,'Romanticos90','yellow',8,'2012-08-02 04:19:54','2012-08-02 04:19:54'),
+ (30,'Romanticos90','stand_by_me',6,'2012-08-02 04:20:47','2012-08-02 04:20:47'),
+ (31,'Romanticos80','rebel_in_me',8,'2012-08-02 04:21:59','2012-08-02 04:21:59'),
+ (32,'nuevos','Casi Que Me Pierdo-Los Cafres',9,'2012-08-02 04:22:37','2012-08-02 04:22:37'),
+ (33,'nuevos','Caminando-Amaia Montero',9,'2012-08-02 04:22:37','2012-08-02 04:22:37'),
+ (34,'Variados 90','Paisaje - vicentico',10,'2012-08-02 04:52:18','2012-08-02 04:52:18'),
+ (35,'Variados 90','Yo Te Voy a Amar - NSync',10,'2012-08-02 04:52:18','2012-08-02 04:52:18'),
+ (36,'Romanticos90','wind_of_change',10,'2012-08-02 04:52:40','2012-08-02 04:52:40'),
+ (37,'Romanticos90','yellow',10,'2012-08-02 04:52:40','2012-08-02 04:52:40');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `playlistlinea` ENABLE KEYS */;
+
+
+--
 -- Definition of table `tableromovil`.`provincias`
 --
 
@@ -406,14 +509,14 @@ CREATE TABLE  `tableromovil`.`salidad` (
 
 /*!40000 ALTER TABLE `salidad` DISABLE KEYS */;
 LOCK TABLES `salidad` WRITE;
-INSERT INTO `tableromovil`.`salidad` VALUES  (1,'RELAY 0',1,11,'Foco 1',NULL,'2012-07-01 03:21:18',6,2,'thumb_Dd0Opwj9hj9PrtAFck7rJ9bSq.png','thumb_Dd0Opwj9hj9PrtAFck7rJ9bSq1.png'),
- (2,'RELAY 1',0,11,'Porton 1',NULL,'2012-07-01 19:47:21',16,2,'thumb_diXShM71SSEbFK1EDU1RjYnhj.png','thumb_diXShM71SSEbFK1EDU1RjYnhj1.png'),
- (3,'RELAY 2',0,12,'open_door',NULL,'2012-06-04 11:15:11',NULL,2,NULL,NULL),
- (4,'RELAY 3',0,11,'Porton 2',NULL,'2012-07-01 03:57:56',16,2,'thumb_aO8d87GKV13A4lWvWwDDyRbmL.png','thumb_aO8d87GKV13A4lWvWwDDyRbmL1.png'),
- (5,'RELAY 4',0,11,'Aire 1',NULL,'2012-07-02 13:27:50',7,2,'thumb_EWtTIiEEKrpPQa5Dh7B3um3AC.png','thumb_EWtTIiEEKrpPQa5Dh7B3um3AC1.png'),
- (6,'RELAY 5',0,11,'Riego',NULL,'2012-07-01 03:56:34',5,2,'thumb_RJtoq1IX4SSDyrWMNKi45XC6i.png','thumb_RJtoq1IX4SSDyrWMNKi45XC6i1.png'),
- (7,'RELAY 6',1,11,'Piscina',NULL,'2012-07-01 03:36:05',5,2,'thumb_VkZWC4hNrNcd8nLxDvBQ4VKmJ.png','thumb_VkZWC4hNrNcd8nLxDvBQ4VKmJ1.png'),
- (8,'RELAY 7',0,11,'Bomba',NULL,'2012-07-01 03:56:36',5,2,'thumb_d7CD4z4cvSSDbUgqqaPOYR5jZ.png','thumb_d7CD4z4cvSSDbUgqqaPOYR5jZ1.png');
+INSERT INTO `tableromovil`.`salidad` VALUES  (1,'RELAY 0',1,12,'abrir_puerta',NULL,'2012-08-01 03:05:21',6,2,'thumb_Dd0Opwj9hj9PrtAFck7rJ9bSq.png','thumb_Dd0Opwj9hj9PrtAFck7rJ9bSq1.png'),
+ (2,'RELAY 1',1,12,'abrir_ventana',NULL,'2012-08-01 03:07:18',16,2,'thumb_diXShM71SSEbFK1EDU1RjYnhj.png','thumb_diXShM71SSEbFK1EDU1RjYnhj1.png'),
+ (3,'RELAY 2',1,12,'open_door',NULL,'2012-08-01 02:44:36',NULL,2,NULL,NULL),
+ (4,'RELAY 3',0,12,'subir_cortina',NULL,'2012-08-01 03:06:28',16,2,'thumb_aO8d87GKV13A4lWvWwDDyRbmL.png','thumb_aO8d87GKV13A4lWvWwDDyRbmL1.png'),
+ (5,'RELAY 4',0,11,'Aire 1',NULL,'2012-08-02 04:50:53',7,2,'thumb_EWtTIiEEKrpPQa5Dh7B3um3AC.png','thumb_EWtTIiEEKrpPQa5Dh7B3um3AC1.png'),
+ (6,'RELAY 5',1,11,'Riego',NULL,'2012-08-01 03:31:08',5,2,'thumb_RJtoq1IX4SSDyrWMNKi45XC6i.png','thumb_RJtoq1IX4SSDyrWMNKi45XC6i1.png'),
+ (7,'RELAY 6',0,11,'Piscina',NULL,'2012-08-01 03:31:06',5,2,'thumb_VkZWC4hNrNcd8nLxDvBQ4VKmJ.png','thumb_VkZWC4hNrNcd8nLxDvBQ4VKmJ1.png'),
+ (8,'RELAY 7',1,11,'Bomba',NULL,'2012-08-01 03:31:09',5,2,'thumb_d7CD4z4cvSSDbUgqqaPOYR5jZ.png','thumb_d7CD4z4cvSSDbUgqqaPOYR5jZ1.png');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `salidad` ENABLE KEYS */;
 
@@ -478,9 +581,9 @@ CREATE TABLE  `tableromovil`.`sisperfil` (
   KEY `sisperfil_sismenu_id` (`sismenu_id`),
   KEY `sisperfil_tabgral_id` (`sisperfil_estado`),
   KEY `tabgral_id` (`sisperfil_estado`),
-  CONSTRAINT `sisperfil_tabgral_id` FOREIGN KEY (`sisperfil_estado`) REFERENCES `tabgral` (`tabgral_id`),
   CONSTRAINT `perfiles_id` FOREIGN KEY (`perfiles_id`) REFERENCES `perfiles` (`perfiles_id`),
-  CONSTRAINT `sisperfil_sismenu_id` FOREIGN KEY (`sismenu_id`) REFERENCES `sismenu` (`sismenu_id`)
+  CONSTRAINT `sisperfil_sismenu_id` FOREIGN KEY (`sismenu_id`) REFERENCES `sismenu` (`sismenu_id`),
+  CONSTRAINT `sisperfil_tabgral_id` FOREIGN KEY (`sisperfil_estado`) REFERENCES `tabgral` (`tabgral_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
@@ -538,7 +641,7 @@ CREATE TABLE  `tableromovil`.`sispermisos` (
   KEY `perfiles_id` (`perfiles_id`),
   KEY `sispermisos_perfiles_id` (`perfiles_id`),
   CONSTRAINT `sispermisos_perfiles_id` FOREIGN KEY (`perfiles_id`) REFERENCES `perfiles` (`perfiles_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tableromovil`.`sispermisos`
@@ -565,7 +668,11 @@ INSERT INTO `tableromovil`.`sispermisos` VALUES  (1,'usuarios',1,1,1,1,1,'0000-0
  (17,'btncameras',1,1,1,1,11,'2012-06-04 08:43:26','0000-00-00 00:00:00'),
  (18,'btncameras',1,1,1,1,1,'2012-06-04 08:43:25','0000-00-00 00:00:00'),
  (19,'escenarios',1,1,1,1,11,'2012-06-30 21:47:17','0000-00-00 00:00:00'),
- (20,'escenarios',1,0,0,0,1,'2012-06-30 21:47:40','0000-00-00 00:00:00');
+ (20,'escenarios',1,0,1,0,1,'2012-06-30 21:47:40','0000-00-00 00:00:00'),
+ (21,'playlist',1,1,1,1,1,'2012-08-01 06:39:08','0000-00-00 00:00:00'),
+ (22,'playlist',1,1,1,1,11,'2012-08-01 06:39:08','0000-00-00 00:00:00'),
+ (23,'playlistlinea',1,1,1,1,1,'2012-08-01 06:39:08','0000-00-00 00:00:00'),
+ (24,'playlistlinea',1,1,1,1,11,'2012-08-01 06:39:08','0000-00-00 00:00:00');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `sispermisos` ENABLE KEYS */;
 
@@ -679,10 +786,10 @@ CREATE TABLE  `tableromovil`.`usuarios` (
   KEY `usuarios_estado` (`usuarios_estado`),
   KEY `usuarios_perfiles_id` (`perfiles_id`),
   KEY `usuarios_provincias_id` (`provincias_id`),
-  CONSTRAINT `usuarios_provincias_id` FOREIGN KEY (`provincias_id`) REFERENCES `provincias` (`provincias_id`),
   CONSTRAINT `usuarios_estado` FOREIGN KEY (`usuarios_estado`) REFERENCES `tabgral` (`tabgral_id`),
   CONSTRAINT `usuarios_localidades_id` FOREIGN KEY (`localidades_id`) REFERENCES `localidades` (`localidades_id`),
-  CONSTRAINT `usuarios_perfiles_id` FOREIGN KEY (`perfiles_id`) REFERENCES `perfiles` (`perfiles_id`)
+  CONSTRAINT `usuarios_perfiles_id` FOREIGN KEY (`perfiles_id`) REFERENCES `perfiles` (`perfiles_id`),
+  CONSTRAINT `usuarios_provincias_id` FOREIGN KEY (`provincias_id`) REFERENCES `provincias` (`provincias_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --

@@ -250,6 +250,59 @@
       </Idx>
       <SchTrHis/>
     </Tbl>
+    <Tbl UsSo="1" nm="playlist">
+      <TblOpts/>
+      <Pk ClNs="playlist_id" nm="pkplaylist"/>
+      <Cl au="1" df="" nm="playlist_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="playlist_descripcion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuarios_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="playlist_created_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="playlist_updated_at" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="playlist_usuarios_id" prLkCl="usuarios_id" upAc="3">
+        <PrTb mn="0" nm="usuarios" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="playlist" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="usuarios_id" prCl="usuarios_id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="playlistlinea">
+      <TblOpts/>
+      <Pk ClNs="playlistlinea_id" nm="pkplaylistlinea"/>
+      <Cl au="1" df="" nm="playlistlinea_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="playlistlinea_path" nu="1">
+        <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="playlistlinea_namesong" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="150" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="playlist_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="playlistlinea_created_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="playlistlinea_updated_at" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="playlistlinea_playlist_id" prLkCl="playlist_id" upAc="3">
+        <PrTb mn="0" nm="playlist" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="playlistlinea" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="playlist_id" prCl="playlist_id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
     <Tbl UsSo="1" nm="provincias">
       <TblOpts/>
       <Pk ClNs="provincias_id" nm="pkprovincias"/>
@@ -677,6 +730,8 @@
     <TbGl bkCl="ffccccff" sch="public" tbl="cameras" x="1060" y="516"/>
     <TbGl bkCl="ffccccff" sch="public" tbl="btncameras" x="822" y="727"/>
     <TbGl bkCl="ffccccff" sch="public" tbl="estados" x="361" y="767"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="playlist" x="182" y="953"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="playlistlinea" x="482" y="952"/>
     <FkGl bkCl="ff000000" nm="public.btncameras.btncameras_cameras_id"/>
     <FkGl bkCl="ff000000" nm="public.btncameras.btncameras_salidad_id"/>
     <FkGl bkCl="ff000000" nm="public.cameras.cameras_estado_tabgral_id"/>
@@ -685,6 +740,8 @@
     <FkGl bkCl="ff000000" nm="public.entradad.entradad_sismenu_id"/>
     <FkGl bkCl="ff000000" nm="public.localidades.localidades_provincias_id"/>
     <FkGl bkCl="ff000000" nm="public.perfiles.perfiles_tabgral_id"/>
+    <FkGl bkCl="ff000000" nm="public.playlist.playlist_usuarios_id"/>
+    <FkGl bkCl="ff000000" nm="public.playlistlinea.playlistlinea_playlist_id"/>
     <FkGl bkCl="ff000000" nm="public.salidaa.salidaa_modulo_tabgral_id"/>
     <FkGl bkCl="ff000000" nm="public.salidad.salidad_estados_id"/>
     <FkGl bkCl="ff000000" nm="public.salidad.salidad_sismenu_id"/>
@@ -703,10 +760,11 @@
     <Notes/>
     <Zones>
       <Zone bkCl="ffece9d8" h="1231" nm="módulo autetinficación de usuarios" w="394" x="133" y="9"/>
-      <Zone bkCl="ffece9d8" h="1231" nm="Módulo principal" w="542" x="133" y="447"/>
+      <Zone bkCl="ffece9d8" h="556" nm="Módulo de audio y video" w="250" x="133" y="897"/>
+      <Zone bkCl="ffece9d8" h="1231" nm="Módulo principal" w="428" x="133" y="447"/>
     </Zones>
   </Dgm>
-  <RnmMgr NxRnmId="187">
+  <RnmMgr NxRnmId="189">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="callcenter" SupCls="" SupNme="">
       <Rnm id="1" nNm="public" oNm="schemaA"/>
     </RnmCh>
@@ -1173,6 +1231,12 @@
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="salidad" SupCls="Schema" SupNme="public">
       <Rnm id="186" nNm="salidad_created_at" oNm="salidad_updated_at"/>
     </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="playlistlinea" SupCls="Schema" SupNme="public">
+      <Rnm id="187" nNm="playlist_id" oNm="playlistlinea_created_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="playlistlinea" SupCls="Schema" SupNme="public">
+      <Rnm id="188" nNm="playlistlinea_created_at" oNm="playlistlinea_updated_at"/>
+    </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
     <BasicOptionMgr>
@@ -1196,6 +1260,6 @@
     <TreePath/>
     <TreePath>/Schemas (1)</TreePath>
     <TreePath>/Schemas (1)/public</TreePath>
-    <TreePath>/Schemas (1)/public/Tables (17)</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (19)</TreePath>
   </TreePaths>
 </Db>

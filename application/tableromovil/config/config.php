@@ -20,7 +20,7 @@ $config['base_url']	= 'http://localhost/repositorios/tableromovil/';
 
 /*
 |--------------------------------------------------------------------------
-| Index File
+| Index File 
 |--------------------------------------------------------------------------
 |
 | Typically this will be your index.php file, unless you've renamed it to
@@ -128,7 +128,7 @@ $config['subclass_prefix'] = 'MY_';
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-+';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-+()';
 
 
 /*

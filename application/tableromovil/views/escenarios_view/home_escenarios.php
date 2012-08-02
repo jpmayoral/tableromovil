@@ -2,7 +2,7 @@
 <?php if($this->session->flashdata('flashConfirm')) echo $this->session->flashdata('flashConfirm'); ?>
 <?php if($this->session->flashdata('flashError')) echo $this->session->flashdata('flashError'); ?>
 <?php if($flag['i']):?>
-	<a href="<?=base_url()?>escenarios_controller/add_c" data-role="button" data-icon="plus" data-inline="true" title='Nuevo'>Nuevo</a>
+	<a href="<?=base_url()?>escenarios_controller/add_c" title='Nuevo'>Nuevo</a>
 <?php endif; ?>
 <br><br>
 <script type="text/javascript">

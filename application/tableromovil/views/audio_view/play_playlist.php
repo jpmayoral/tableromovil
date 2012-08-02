@@ -8,16 +8,16 @@ $(document).ready(function(){
 	}, [
 
 		<?php $i=1; $total = count($tracks); 
-			foreach ($tracks as $key => $value): ?>
+			for($j=0; $j < count($tracks); $j++): ?>
 			{
-				title:'<?=$value?>',
-				mp3:'<?=base_url()."sounds/".$album."/".$value.".mp3"?>',
-				oga:'<?=base_url()."sounds/".$album."/".$value.".ogg"?>',
+				title:'<?=$titulos[$j]?>',
+				mp3:'<?=base_url()."sounds/".$tracks[$j].".mp3"?>',
+				oga:'<?=base_url()."sounds/".$tracks[$j].".ogg"?>',
 			}
 			<?php if($i <= ($total -1)): ?>
 				,
 			<?php endif; ?>
-		<?php $i++; endforeach; ?>
+		<?php $i++; endfor; ?>
 		
 	], {
 		playlistOptions: { 

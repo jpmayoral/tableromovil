@@ -12,7 +12,8 @@
 					width="320" height="240">
 					<?php foreach($rows_btncameras as $g):?>
 						<?php if($g->cameras_id == $f->cameras_id): ?>
-							<a href="#" data-role="button" name="<?=$g->btncameras_nombre?>" id="btn_actions" data-corners="false" data-inline="true" data-mini="true" data-theme="b"><?=$g->btncameras_label?></a>
+							<a href="#" data-role="button" name="<?=$g->btncameras_nombre?>" id="btn_actions" data-corners="false" data-inline="true" data-mini="true" data-theme="b"
+								onClick="setBtnIpCam(1,<?=$g->salidad_id?>,'<?=base_url()?>/<?=$g->btncameras_url?>')"><?=$g->btncameras_label?></a>
 						<?php endif; ?>
 					<?php endforeach;?>
 				</div>

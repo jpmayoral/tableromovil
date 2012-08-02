@@ -27,11 +27,11 @@ div.jp-video {
 	line-height:1.6;
 	color: #fff;
 	text-shadow: 0 0 0 white;
-	border-top:1px solid #333;
+	/*border-top:1px solid #333;
 	border-left:1px solid #333;
 	border-right:1px solid #333;
-	border-bottom:1px solid #333;
-	background-color:#333;
+	border-bottom:1px solid #333;*/
+	/*background-color:#333;*/
 	position:relative;
 }
 div.jp-audio {

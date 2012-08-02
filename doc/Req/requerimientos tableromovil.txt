@@ -1,0 +1,33 @@
+- unificar boton nuevo -> Listo
+- fondo de reproductor transparente -> Listo
+- audio no funciona en wan -> Falta ver
+- camara no funciona en wan -> Falta ver
+- hacer que los botones de las camaras escriban un uno en la tabla salidad. Solo tiene que escribir un 1 nada mas. ->Listo
+- Dejar espacio para logo -> Listo
+- Error con nombres de canciones -> Funciona casi todo salvo con acentos y parentesis 
+- Agregar lista de reproduccion. -> Listo
+
+
+Novedades
+-----------
+
+Agregar columnas.
+entradad_nov
+salidad_nov
+escenarios_nov   
+
+
+
+Tabla novedades (tiene que ser odernable por cada columna)
+
+novedades_fecha, novedades_descripcion, novedades_estado (puede ser actividado o desactivado), novedades_tipo (0,1,2) 
+
+
+tipo de novedades:
+
+0: critico
+1: alerta
+2: informacion
+
+
+ 

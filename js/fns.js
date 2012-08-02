@@ -50,8 +50,15 @@ function setSwitch(value, url)
 
     $.get(u, function(data) {
         //alert(data);
-    });
-    
+    });    
+}
+
+function setBtnIpCam(value,salidad_id,url)
+{
+    var u = url + salidad_id + '/' + value;
+    $.get(u, function(data) {
+        //alert(data);
+    });    
 }    
 
 function updateContent(url,div)
@@ -71,15 +78,91 @@ function deleteRow(url)
 
 }
 
-function selectAllChks(p_chk1,p_chk2)
+
+function loadPageChk(url,chk)
 {
-    $("input[name="+p_chk1+"]").change(function(){
-        $("input[name="+p_chk2+"]").each( function() {          
-            if($("input[name="+p_chk1+"]:checked").length == 1){
-                this.checked = true;
-            } else {
-                this.checked = false;
-            }
+    var tracks='';
+    $.each($("input[name="+chk+"]:checked"), function() {
+      //list.push($(this).val());
+      tracks = tracks +  $(this).val() + ','; 
+    });
+    if(tracks.length > 0){ 
+        var album = $("#album").val();
+        window.location = url + encodeURIComponent(album) + "/"+ encodeURIComponent(tracks);          
+    }else{
+       // showAleatoryMessage('Selecciona al menos un registro!');
+    }
+}
+
+function checkSelectedSongs(url,chk)
+{
+    var tracks='';
+    $.each($("input[name="+chk+"]:checked"), function() {
+      tracks = tracks +  $(this).val() + ','; 
+    });
+  
+    var album = $("#album").val();
+    $.mobile.changePage(url + encodeURIComponent(album) + '/' + encodeURIComponent(tracks),{
+        type: 'get',
+        role: 'dialog'
+    });
+    
+}
+
+function agregarSongsToLista(url)
+{
+    var tracks='';
+    $.each($("input[name=tracksSelected]"), function() {
+      tracks = tracks +  $(this).val() + ','; 
+    });
+    if(tracks.length > 0){ 
+       
+        var str_url = url + encodeURIComponent(tracks);
+        $.mobile.changePage(str_url,{
+                type: 'get',
+                role: 'dialog'
         });
+    }
+}
+
+function crearLista(url)
+{
+    var tracks='';
+    $.each($("input[name=tracksSelected]"), function() {
+      tracks = tracks +  $(this).val() + ','; 
+    });
+    if(tracks.length > 0){ 
+        var descripcion = $("#playlist_descripcion").val();
+        if(descripcion.length > 0){
+            var str_url = url + encodeURIComponent(tracks) + "/" + encodeURIComponent(descripcion);          
+            $.mobile.changePage(str_url,{
+                type: 'get',
+                role: 'dialog'
+            });
+        }else{
+            $("#msjValid").text("Debes ingresar un nombre para la lista de reproducción.");
+        }   
+    }
+}
+
+
+function showFormNewPlayList(url)
+{
+    var tracksSelected='';
+    $.each($("input[name=tracksSelected]"), function() {
+      tracksSelected = tracksSelected +  $(this).val() + ','; 
+    });
+
+    $.mobile.changePage(url + encodeURIComponent(tracksSelected),{
+        type: 'get',
+        role: 'dialog'
+    });
+}
+
+
+function showAlbunes(url){
+    
+    $.mobile.changePage(url,{
+        type: 'get'
     });
 }

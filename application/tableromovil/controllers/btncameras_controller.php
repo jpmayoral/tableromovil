@@ -217,4 +217,14 @@ class Btncameras_Controller extends CI_Controller {
 
 	}
 
+
+
+	function setBtnIpCam($salidad_id, $salidad_value)
+	{
+		if($this->salidad_model->edit_m(array('salidad_id' => $salidad_id,'salidad_value' => $salidad_value))){
+			echo "ok";
+		}else{
+			echo "error";
+		}
+	}
 }

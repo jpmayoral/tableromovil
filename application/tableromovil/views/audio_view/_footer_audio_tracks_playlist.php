@@ -1,5 +1,4 @@
-
-	<div class="logo-h">
+<div class="logo-h">
 		<span class="logo">Domotech</span><br>
 		<span class="slogan">Contr&oacute;la tu vida</span>
 	</div>
@@ -9,7 +8,7 @@
 			<div data-role="navbar" class="nav-glyphish-example" data-grid="a">
 				<ul>
 					<li><a href="<?=base_url()?>audio_controller/index" id="albums" data-icon="custom">Albunes</a></li>
-					<li><a href="<?=base_url()?>audio_controller/showSongs/<?=urlencode($album)?>"  id="song" data-icon="custom">Canciones</a></li>
+					<li><a href="<?=base_url()?>audio_controller/showSongsPlayList/<?=$playlist_id?>"  id="song" data-icon="custom">Canciones</a></li>
 				</ul>
 			</div>
 		<?php else: ?>

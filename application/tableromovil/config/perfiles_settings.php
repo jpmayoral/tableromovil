@@ -15,8 +15,8 @@ $config['perfiles_id']='Id';
 $config['perfiles_descripcion']='Descripci&oacute;n';
 $config['perfiles_estado']='Estado';
 $config['perfiles_estado_descripcion']='Estado';
-$config['perfiles_created_at']='created_at';
-$config['perfiles_updated_at']='updated_at';
+$config['perfiles_created_at']='Fecha de alta';
+$config['perfiles_updated_at']='Actualizado el';
 
 /* Config fields for search */
 

@@ -24,7 +24,10 @@ class Access_Hook {
 			'entradadg_controller',
 			'controlaccess_controller',
 			'cameras_controller',
-			'btncameras_controller');
+			'btncameras_controller',
+			'audio_controller',
+			'playlist_controller',
+			'playlistlinea_controller');
 		if($CI->session->userdata('logged_in') == true && $CI->router->method == 'login') redirect('main_controller/index');
 		if($CI->session->userdata('logged_in') != true && $CI->router->method != 'login' && in_array($CI->router->class, $privatecontrollers))
 		{

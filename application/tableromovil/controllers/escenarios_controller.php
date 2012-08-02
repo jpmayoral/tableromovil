@@ -231,6 +231,7 @@ class Escenarios_Controller extends CI_Controller
 
 	function editimg($escenarios_id)
 	{
+
 		$escenario = $this->escenarios_model->get_m(array('escenarios_id' => $escenarios_id));
 
 		if($escenario[0]->escenarios_iconpath) $this->name_thumb = $escenario[0]->escenarios_iconpath;
@@ -242,6 +243,12 @@ class Escenarios_Controller extends CI_Controller
 
 	function changeState($escenarios_id,$escenarios_estado)
 	{
+		//code here
+		if(!$this->flagU){
+			echo $this->config->item('accessTitle');
+			exit();
+		}
+		
 		if($this->escenarios_model->edit_m(array('escenarios_id' => $escenarios_id, 'escenarios_estado' => $escenarios_estado)))
 		 echo "ok";
 		else echo "error";
