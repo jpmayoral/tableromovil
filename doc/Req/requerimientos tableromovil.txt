@@ -1,4 +1,5 @@
 - unificar boton nuevo -> Listo
+- poner boton volver -> Listo
 - fondo de reproductor transparente -> Listo
 - audio no funciona en wan -> Falta ver
 - camara no funciona en wan -> Falta ver

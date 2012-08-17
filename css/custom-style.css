@@ -631,3 +631,88 @@
 	padding: 4px;
 	font-size: 0.75em;
 }
+
+.btnStateNovCritico, .btnStateNovAlerta, .btnStateNovInfo{
+	width:  20px;
+	height: 20px;
+	margin: 0px;
+	padding: 0px;
+	border:none 0px #000000;
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+	border-radius: 100%;
+}
+
+.listStateNovCritico, .listStateNovAlerta, .listStateNovInfo{
+	width:  15px;
+	height: 15px;
+	margin: 0px;
+	padding: 0px;
+	border:none 0px #000000;
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+	border-radius: 100%;
+}
+
+.btnStateNovCritico,.listStateNovCritico{
+	background-color: #E34944;
+}
+.btnStateNovAlerta,.listStateNovAlerta{
+	background-color: #4BB2C4;
+}
+.btnStateNovInfo,.listStateNovInfo{
+	background-color: #2EB32E;
+}
+
+.txtFechaNov{
+	font-size:12px;
+	font-weight:normal;
+	color: #666;
+}
+.txtDescripNov{
+	width: 80%;
+	display: block;
+	position: relative;
+	float:left;
+}
+#btnStateNov{
+	width: 3%;
+	display: block;
+	position: relative;
+	float:right;
+	text-align:center;
+}
+.ui-state-highlight{
+	background-image: linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
+	background-image: -o-linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
+	background-image: -moz-linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
+	background-image: -webkit-linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
+	background-image: -ms-linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.17, #C2EDC5),
+		color-stop(1, #D4E6D7)
+	);
+}
+
+.statusbar-content-item{
+	height:30px;
+}
+
+.listNov{
+	font-size:12px;
+	/*height: 20px;*/
+}
+.listFechaNov{
+	font-weight:normal;
+	color:#666;
+}
+.listTipoNov{
+	display: inline;
+	position: absolute;
+	top:4px;
+	right:0px;
+}

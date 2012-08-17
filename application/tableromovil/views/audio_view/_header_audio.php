@@ -12,12 +12,6 @@
 	<script src="<?=base_url()?>js/jquery.mobile-1.1.0/jquery.mobile-1.1.0-rc.1.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jplayer/jquery.jplayer.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>js/jplayer/jplayer.playlist.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			
-		});
-
-	</script>
 </head> 
 <body> 
 

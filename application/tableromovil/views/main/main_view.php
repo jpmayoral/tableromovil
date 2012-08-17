@@ -3,4 +3,4 @@
 	<?=$this->basicauth->getMenu()?>
 </div>
 
-<?=$this->load->view('default/_footer')?>
+<?=$this->load->view('main/_footer_main')?>

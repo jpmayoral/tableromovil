@@ -5,13 +5,13 @@
 			$("#playmusic").click(function (e) {
 			    e.stopImmediatePropagation();
 			    e.preventDefault();
-			    loadPageChk('<?=base_url()?>audio_controller/playMusic/','songsplay');
+			    loadPageChk('<?=base_url()?>audio_controller/playMusic/');
 			});
 
 			$("#playlist").click(function (e) {
 			    e.stopImmediatePropagation();
 			    e.preventDefault();
-			    checkSelectedSongs("<?=base_url()?>playlist_controller/showPlayList/","songsplay");
+			    checkSelectedSongs("<?=base_url()?>playlist_controller/showPlayList/");
 
 			});
 			
@@ -32,7 +32,7 @@
 					<li><a href="<?=base_url()?>audio_controller/index" id="albums" data-icon="custom">Albunes</a></li>
 					<li><a href="#" id="playlist" data-icon="custom">Listas</a></li>
 					<li><a href="#" id="playmusic" data-icon="custom"
-						onClick="loadPageChk('<?=base_url()?>audio_controller/playMusic/','songsplay')">Reproducir</a></li>
+						onClick="loadPageChk('<?=base_url()?>audio_controller/playMusic/')">Reproducir</a></li>
 				</ul>
 			</div>
 		<?php else: ?>

@@ -9,8 +9,8 @@
 				<input type="hidden" name="album" id="album" value="<?=$album?>" />
 				<?php foreach ($songs as $key => $value) : ?>	
 					
-						<input type="checkbox" name="songsplay" id="<?=$value?>" value="<?=$value?>" data-theme="k"/>
-						<label for="<?=$value?>"><?=$value?></label>
+						<input type="checkbox" name="songsplay-<?=$value?>" id="songsplay-<?=$value?>" value="<?=$value?>" class="pistas" data-theme="a"/>
+						<label for="songsplay-<?=$value?>"><?=$value?></label>
 					
 				<?php endforeach; ?>
 			</fieldset>
@@ -23,11 +23,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){ 
 		$('h3 input[type=checkbox]').click(function() {
-		    $("input[name='songsplay']")
+		    $(".pistas")
 		        .attr({
 		            checked: $(this).is(':checked')
 		        });
-		    $("input[name='songsplay']").checkboxradio("refresh");
+		    $(".pistas").checkboxradio("refresh");
 		});
 
 	});

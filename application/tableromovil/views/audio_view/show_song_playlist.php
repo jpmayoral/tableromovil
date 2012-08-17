@@ -8,9 +8,9 @@
 		<div  data-role="fieldcontain">
 			<fieldset data-role="controlgroup">
 				<?php foreach ($songs as $f) : ?>	
-				<input type="hidden" name="in-playlist" id="in_playlist_<?=$f->playlistlinea_id?>" value="<?=$f->playlistlinea_path?>" />	
-				<input type="checkbox" name="songsplay" id="<?=$f->playlistlinea_namesong?>" value="<?=$f->playlistlinea_namesong?>" data-theme="k" class="<?=$f->playlistlinea_id?>"/>
-				<label for="<?=$f->playlistlinea_namesong?>"><?=$f->playlistlinea_namesong?></label>
+				<input type="hidden" name="in-playlist" id="in_playlist_<?=$f->playlistlinea_id?>" value="<?=$f->playlistlinea_path?>"/>	
+				<input type="checkbox" name="songsplay-<?=$f->playlistlinea_id?>" id="songsplay-<?=$f->playlistlinea_id?>" value="<?=$f->playlistlinea_namesong?>" data-theme="k" class="pistas"/>
+				<label for="songsplay-<?=$f->playlistlinea_id?>"><?=$f->playlistlinea_namesong?></label>
 					
 				<?php endforeach; ?>
 			</fieldset>
@@ -23,11 +23,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){ 
 		$('h3 input[type=checkbox]').click(function() {
-		    $("input[name='songsplay']")
+		    $(".pistas")
 		        .attr({
 		            checked: $(this).is(':checked')
 		        });
-		    $("input[name='songsplay']").checkboxradio("refresh");
+		    $(".pistas").checkboxradio("refresh");
 		});
 
 	});

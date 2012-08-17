@@ -554,4 +554,41 @@ class BasiCrud {
 		return $nuevo_porcentaje;
 	}
 	
+
+	function timesince($original) 
+	{
+		$ta = array(
+			array(31536000, "Año", "Años"),
+			array(2592000, "Mes", "Meses"),
+			array(604800, "Semana", "Semanas"),
+			array(86400, "Día", "Días"),
+			array(3600, "Hora", "Horas"),
+			array(60, "Minuto", "Minutos"),
+			array(1, "Segundo", "Segundos")
+		);
+		$since = time() - strtotime($original);
+		$res = "";
+		$lastkey = 0;
+		for( $i=0; $i<count($ta); $i++ )
+		{
+			$cnt = floor($since / $ta[$i][0]);
+			if ($cnt != 0) 
+			{
+				$since = $since - ($ta[$i][0] * $cnt);
+				if($res == "")
+				{
+					$res .= ($cnt == 1) ? "1 {$ta[$i][1]}" : "{$cnt} {$ta[$i][2]}";
+					$lastkey = $i;
+				} 
+				else if ($ta[0] >= 60 && ($i - $lastkey) == 1 )
+				{
+					$res .= ($cnt == 1) ? " y 1 {$ta[$i][1]}" : " y {$cnt} {$ta[$i][2]}";
+					break;
+				} else {
+					break;
+				}
+			}
+		}
+		return "Hace ".$res;
+	}
 }

@@ -8,32 +8,9 @@
 	<link rel="stylesheet" href="<?=base_url()?>css/custom-style.css" />
 	<script src="<?=base_url()?>js/jquery-v1.7.1.js"></script>
 	<script src="<?=base_url()?>js/fns.js"></script>
+	<script src="<?=base_url()?>js/statusbar/jquery.statusbar.js"></script>
+	<!--<script src="<?=base_url()?>js/statusbar/jquery.dotimeout.js"></script>-->
 	<script src="<?=base_url()?>js/jquery.mobile-1.1.0/jquery.mobile-1.1.0-rc.1.min.js"></script>
-	<script>
-		$(document).ready(function() {
-		 /* if (navigator.userAgent.match(/Android/i)) {
-		    window.scrollTo(0,0); // reset in case prev not scrolled  
-		    var nPageH = $(document).height();
-		    var nViewH = window.outerHeight;
-		    if (nViewH > nPageH) {
-		      nViewH = nViewH / window.devicePixelRatio;
-		      $('body').css('height',nViewH + 'px');
-		    }
-		    window.scrollTo(0,1);
-		  }*/
-		   //delete setInterval function
-
-  			$('#btn_home').on({
-			  click: function() {
-			    if(t) clearInterval(t);  
-			  }
-			});
-
-		});
-
-		
-
-	</script>
 </head> 
 <body> 
 

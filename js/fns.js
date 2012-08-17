@@ -1,3 +1,21 @@
+$(document).bind('pageinit', function(){
+    $.mobile.defaultPageTransition = 'none';
+    $.mobile.defaultDialogTransition = 'none';
+    $.mobile.ajaxEnabled = false;
+    
+    $('#btn_home').on({
+      click: function() {
+        if(t) clearInterval(t);  
+      }
+    });
+
+});
+
+$(document).bind("mobileinit", function(){
+  $.mobile.page.prototype.options.addBackBtn = true;
+  $.mobile.page.prototype.options.backBtnText = "Volver";
+});
+
 
 // function to send form through ajax
 function submitData(idform,arr_divs_loader)
@@ -79,10 +97,10 @@ function deleteRow(url)
 }
 
 
-function loadPageChk(url,chk)
+function loadPageChk(url)
 {
     var tracks='';
-    $.each($("input[name="+chk+"]:checked"), function() {
+    $.each($(".pistas:checked"), function() {
       //list.push($(this).val());
       tracks = tracks +  $(this).val() + ','; 
     });
@@ -94,10 +112,28 @@ function loadPageChk(url,chk)
     }
 }
 
-function checkSelectedSongs(url,chk)
+function loadPageChkPlayList(url)
+{
+    var tracks=''; var playlist = '';
+    $.each($(".pistas:checked"), function() {
+      //list.push($(this).val());
+      tracks = tracks +  $(this).val() + ',';
+      var nameChk = $(this).attr("name").split('-');
+      playlist = playlist + $("#in_playlist_" + nameChk[1]).val() + ',' 
+    });
+    if(tracks.length > 0){ 
+        var playlist_id = $("#playlist_id").val();
+        var nameplaylist = $("#nameplaylist").val();
+        window.location = url + playlist_id +'/'+ encodeURIComponent(nameplaylist) + "/" + encodeURIComponent(playlist) + '/'+ encodeURIComponent(tracks);          
+    }else{
+       // showAleatoryMessage('Selecciona al menos un registro!');
+    }
+}
+
+function checkSelectedSongs(url)
 {
     var tracks='';
-    $.each($("input[name="+chk+"]:checked"), function() {
+    $.each($(".pistas:checked"), function() {
       tracks = tracks +  $(this).val() + ','; 
     });
   
@@ -164,5 +200,23 @@ function showAlbunes(url){
     
     $.mobile.changePage(url,{
         type: 'get'
+    });
+}
+
+
+function updateNov(url)
+{  
+   $.getJSON(url, function(data) {
+        if(data){
+            $.statusbar('removeElements');
+            $.each(data, function(key, val) {
+               if(val.novedades_tipo == 0)
+                 $.statusbar('addMessage',{'message':val.novedades_descripcion,'argument':val.novedades_fechaexacta,'classStateNov':'btnStateNovCritico','idNov': val.novedades_id});
+               if(val.novedades_tipo == 1)
+                 $.statusbar('addMessage',{'message':val.novedades_descripcion,'argument':val.novedades_fechaexacta,'classStateNov':'btnStateNovAlerta','idNov': val.novedades_id });
+               if(val.novedades_tipo == 2)
+                 $.statusbar('addMessage',{'message':val.novedades_descripcion,'argument':val.novedades_fechaexacta,'classStateNov':'btnStateNovInfo','idNov': val.novedades_id });
+            });
+        }
     });
 }
