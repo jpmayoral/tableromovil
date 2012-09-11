@@ -251,8 +251,9 @@ class Entradad_Controller extends CI_Controller {
 			if($this->name_thumb == ''){
 				$config['file_name'] = 'thumb_'.random_string('alnum', 25);
 			}else{
-				$config['file_name'] = $this->name_thumb;
-				$config['overwrite'] = $this->flag_override_img;
+				$config['file_name'] = 'thumb_'.random_string('alnum', 25);
+				/*$config['file_name'] = $this->name_thumb;
+				$config['overwrite'] = $this->flag_override_img;*/
 			}
 		}
 

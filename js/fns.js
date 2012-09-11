@@ -1,8 +1,9 @@
 $(document).bind('pageinit', function(){
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
-    $.mobile.ajaxEnabled = false;
+    //$.mobile.ajaxEnabled = false;
     
+
     $('#btn_home').on({
       click: function() {
         if(t) clearInterval(t);  
@@ -211,11 +212,11 @@ function updateNov(url)
             $.statusbar('removeElements');
             $.each(data, function(key, val) {
                if(val.novedades_tipo == 0)
-                 $.statusbar('addMessage',{'message':val.novedades_descripcion,'argument':val.novedades_fechaexacta,'classStateNov':'btnStateNovCritico','idNov': val.novedades_id});
+                 $.statusbar('addMessage',{'message':val.novedades_descripcion + " " +  val.novedades_estado_descripcion,'argument':val.novedades_fechaexacta,'classStateNov':'btnStateNovCritico','idNov': val.novedades_id});
                if(val.novedades_tipo == 1)
-                 $.statusbar('addMessage',{'message':val.novedades_descripcion,'argument':val.novedades_fechaexacta,'classStateNov':'btnStateNovAlerta','idNov': val.novedades_id });
+                 $.statusbar('addMessage',{'message':val.novedades_descripcion + " " +  val.novedades_estado_descripcion,'argument':val.novedades_fechaexacta,'classStateNov':'btnStateNovAlerta','idNov': val.novedades_id });
                if(val.novedades_tipo == 2)
-                 $.statusbar('addMessage',{'message':val.novedades_descripcion,'argument':val.novedades_fechaexacta,'classStateNov':'btnStateNovInfo','idNov': val.novedades_id });
+                 $.statusbar('addMessage',{'message':val.novedades_descripcion + " " +  val.novedades_estado_descripcion,'argument':val.novedades_fechaexacta,'classStateNov':'btnStateNovInfo','idNov': val.novedades_id });
             });
         }
     });

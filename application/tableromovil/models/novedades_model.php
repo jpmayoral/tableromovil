@@ -104,8 +104,9 @@ class Novedades_Model extends CI_Model {
 		if(isset($options['sortBy']) && isset($options['sortDirection']))
 			$this->db->order_by($options['sortBy'],$options['sortDirection']);
 
-		$this->db->select("n.*, novedades_fecha as novedades_fechaexacta");
+		$this->db->select("n.*, novedades_fecha as novedades_fechaexacta, tg.tabgral_descripcion as novedades_estado_descripcion");
 		$this->db->from('novedades as n');
+		$this->db->join("tabgral as tg","tg.tabgral_id = n.novedades_estado");
 		$query = $this->db->get();
 
 		if(isset($options['count'])) return $query->num_rows();
@@ -143,6 +144,7 @@ class Novedades_Model extends CI_Model {
 		$fields[]='novedades_fechaexacta';
 		$fields[]='novedades_descripcion';
 		$fields[]='novedades_estado';
+		$fields[]='novedades_estado_descripcion';
 		$fields[]='novedades_tipo';
 		$fields[]='novedades_leido';
 		return $fields;

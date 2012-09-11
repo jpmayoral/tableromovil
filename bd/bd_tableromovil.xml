@@ -243,6 +243,11 @@
       <Cl au="0" df="" nm="novedades_leido" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
+      <Fk deAc="1" nm="novedades_tabgral_id" prLkCl="tabgral_id" upAc="1">
+        <PrTb mn="0" nm="tabgral" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="novedades" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="novedades_estado" prCl="tabgral_id"/>
+      </Fk>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="perfiles">
@@ -755,7 +760,7 @@
     <TbGl bkCl="ffccccff" sch="public" tbl="estados" x="361" y="767"/>
     <TbGl bkCl="ffccccff" sch="public" tbl="playlist" x="182" y="953"/>
     <TbGl bkCl="ffccccff" sch="public" tbl="playlistlinea" x="482" y="952"/>
-    <TbGl bkCl="ffccccff" sch="public" tbl="novedades" x="809" y="926"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="novedades" x="745" y="947"/>
     <FkGl bkCl="ff000000" nm="public.btncameras.btncameras_cameras_id"/>
     <FkGl bkCl="ff000000" nm="public.btncameras.btncameras_salidad_id"/>
     <FkGl bkCl="ff000000" nm="public.cameras.cameras_estado_tabgral_id"/>
@@ -763,6 +768,7 @@
     <FkGl bkCl="ff000000" nm="public.entradad.entradad_modulo_tabgral_id"/>
     <FkGl bkCl="ff000000" nm="public.entradad.entradad_sismenu_id"/>
     <FkGl bkCl="ff000000" nm="public.localidades.localidades_provincias_id"/>
+    <FkGl bkCl="ff000000" nm="public.novedades.novedades_tabgral_id"/>
     <FkGl bkCl="ff000000" nm="public.perfiles.perfiles_tabgral_id"/>
     <FkGl bkCl="ff000000" nm="public.playlist.playlist_usuarios_id"/>
     <FkGl bkCl="ff000000" nm="public.playlistlinea.playlistlinea_playlist_id"/>
@@ -783,8 +789,8 @@
     <FkGl bkCl="ff000000" nm="public.usuarios.usuarios_provincias_id"/>
     <Notes/>
     <Zones>
-      <Zone bkCl="ffece9d8" h="1231" nm="módulo autetinficación de usuarios" w="394" x="133" y="9"/>
       <Zone bkCl="ffece9d8" h="556" nm="Módulo de audio y video" w="250" x="133" y="897"/>
+      <Zone bkCl="ffece9d8" h="1231" nm="Módulo de autentificación de usuarios" w="394" x="133" y="9"/>
       <Zone bkCl="ffece9d8" h="1231" nm="Módulo principal" w="428" x="133" y="447"/>
     </Zones>
   </Dgm>

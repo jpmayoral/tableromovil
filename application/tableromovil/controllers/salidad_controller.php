@@ -135,6 +135,11 @@ class Salidad_Controller extends CI_Controller {
 				$this->session->set_flashdata('flashError', $this->config->item('salidad_flash_error_message')); 
 				redirect('salidad_controller','location');
 			}
+
+			/*echo "<pre>";
+			print_r($data_salidad);
+			echo "</pre>";*/
+
 		}else{
 			//filtrar todos los modulos de tabgral
 			$data["modulos"] = $this->tabgral_model->get_m(array('grupos_tabgral_id' => 3));
@@ -252,8 +257,9 @@ class Salidad_Controller extends CI_Controller {
 			if($this->name_thumb == ''){
 				$config['file_name'] = 'thumb_'.random_string('alnum', 25);
 			}else{
-				$config['file_name'] = $this->name_thumb;
-				$config['overwrite'] = $this->flag_override_img;
+				//$config['file_name'] = $this->name_thumb;
+				$config['file_name'] = 'thumb_'.random_string('alnum', 25);
+				//$config['overwrite'] = $this->flag_override_img;
 			}
 		}
 

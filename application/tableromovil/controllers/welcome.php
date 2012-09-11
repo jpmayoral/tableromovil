@@ -19,7 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['title_header'] = 'Ingreso';
+		$data['title_header'] = '';
 		$this->load->view("home/home", $data);
 	}
 

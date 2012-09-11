@@ -182,7 +182,8 @@ class Basicauth {
 					echo " <li><a href='#'><img src='".base_url()."css/images/".$field->sismenu_iconpath."'>".$field->sismenu_descripcion."</a>";		
 				}else{
 			   		echo " <li> <a href='".base_url()."".$field->sisvinculos_link."'><img src='".base_url()."css/images/".$field->sismenu_iconpath."'>".$field->sismenu_descripcion."</a>";
-			   }
+			    }
+				
 				$this->getMenu($field->sismenu_id,$ul_start="<ul>"); 	
 			}
 			echo "</ul>";

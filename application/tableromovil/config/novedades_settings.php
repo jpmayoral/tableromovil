@@ -16,6 +16,7 @@ $config['novedades_fecha']='Fecha';
 $config['novedades_fechaexacta']='Fecha';
 $config['novedades_descripcion']='Descripci&oacute;n';
 $config['novedades_estado']='Estado';
+$config['novedades_estado_descripcion']='Estado';
 $config['novedades_tipo']='Tipo';
 $config['novedades_leido']='Leido';
 
@@ -36,6 +37,7 @@ $config['show_novedades_fecha']= 1;
 $config['show_novedades_fechaexacta']= 1;
 $config['show_novedades_descripcion']= 1;
 $config['show_novedades_estado']= 1;
+$config['show_novedades_estado_descripcion']= 1;
 $config['show_novedades_tipo']= 1;
 $config['show_novedades_leido']= 1;
 

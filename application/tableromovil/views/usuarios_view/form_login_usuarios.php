@@ -1,4 +1,4 @@
-<form action="<?=base_url()?>welcome/login" method="post" name="formLoginusuarios" id="formLoginusuarios">
+<form action="<?=base_url()?>welcome/login" method="post" name="formLoginusuarios" id="formLoginusuarios" data-ajax="false">
 	<div data-role="fieldcontain">
 		<label for="usuarios_username">Usuario:</label>
 		<input type="text" name="usuarios_username" id="usuarios_username" value="" data-theme="b"/>

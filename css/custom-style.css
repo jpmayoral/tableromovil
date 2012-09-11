@@ -632,6 +632,14 @@
 	font-size: 0.75em;
 }
 
+#barNov{
+	opacity:0.9;
+}
+.statusbar-content{
+	color: #333;
+	font-weight:bold;
+}
+
 .btnStateNovCritico, .btnStateNovAlerta, .btnStateNovInfo{
 	width:  20px;
 	height: 20px;
@@ -658,22 +666,26 @@
 	background-color: #E34944;
 }
 .btnStateNovAlerta,.listStateNovAlerta{
-	background-color: #4BB2C4;
+	background-color: #FFE500;
 }
 .btnStateNovInfo,.listStateNovInfo{
-	background-color: #2EB32E;
+	background-color: #31C71A;
 }
 
 .txtFechaNov{
 	font-size:12px;
 	font-weight:normal;
-	color: #666;
+	color: #fff;
+	font-style: normal;
 }
 .txtDescripNov{
 	width: 80%;
 	display: block;
 	position: relative;
 	float:left;
+	color: #fff;
+	font-weight: normal;
+	text-shadow: 0 0 0 #fff;
 }
 #btnStateNov{
 	width: 3%;
@@ -683,21 +695,25 @@
 	text-align:center;
 }
 .ui-state-highlight{
-	background-image: linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
-	background-image: -o-linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
-	background-image: -moz-linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
-	background-image: -webkit-linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
-	background-image: -ms-linear-gradient(bottom, #C2EDC5 17%, #D4E6D7 100%);
+background-color: #666;
+}
+
+.ui-state-hover-highlight{
+	background-image: linear-gradient(bottom, #1C1C1C 0%, #1A1A1A 72%, #1A1A1A 86%);
+	background-image: -o-linear-gradient(bottom, #1C1C1C 0%, #1A1A1A 72%, #1A1A1A 86%);
+	background-image: -moz-linear-gradient(bottom, #1C1C1C 0%, #1A1A1A 72%, #1A1A1A 86%);
+	background-image: -webkit-linear-gradient(bottom, #1C1C1C 0%, #1A1A1A 72%, #1A1A1A 86%);
+	background-image: -ms-linear-gradient(bottom, #1C1C1C 0%, #1A1A1A 72%, #1A1A1A 86%);
 
 	background-image: -webkit-gradient(
 		linear,
 		left bottom,
 		left top,
-		color-stop(0.17, #C2EDC5),
-		color-stop(1, #D4E6D7)
+		color-stop(0, #1C1C1C),
+		color-stop(0.72, #1A1A1A),
+		color-stop(0.86, #1A1A1A)
 	);
 }
-
 .statusbar-content-item{
 	height:30px;
 }

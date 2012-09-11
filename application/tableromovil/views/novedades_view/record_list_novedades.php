@@ -35,7 +35,7 @@
 				<?php foreach($novedades as $f):?>
 					<div class="ui-block-a">
 						<div class="ui-bar ui-bar-c listNov" >
-							<?=$f->novedades_descripcion?>
+							<?=$f->novedades_descripcion." ".$f->novedades_estado_descripcion?>
 								<div class="listTipoNov">
 									<?php if($f->novedades_tipo == 0):?>
 										<div class="listStateNovCritico"></div>

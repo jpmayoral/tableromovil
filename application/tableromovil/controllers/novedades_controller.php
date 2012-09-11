@@ -192,31 +192,6 @@ class Novedades_Controller extends CI_Controller {
 	 * @access public
 	 * @return void
 	 */
-	/*function find_c()
-	{
-		//code here
-		$data = array(); 
-		$fieldSearch = array(); 
-		$data_search_novedades = array(); 
-
-		$data_search_novedades['limit'] = 4;
-		$data_search_novedades['sortBy'] = 'novedades_fecha';
-		$data_search_novedades['sortDirection'] = 'desc';
-
-		$data['novedades'] = $this->novedades_model->get_m($data_search_novedades);
-
-		$data['flag'] = $this->flags;
-		$this->load->view('novedades_view/record_list_novedades_to_footermain',$data);
-	}*/
-
-
-	/**
-	 * This function filter and sends the data to the view
-	 * to shows the found result
-	 *
-	 * @access public
-	 * @return void
-	 */
 	function getNovJson()
 	{
 		//code here
@@ -224,11 +199,10 @@ class Novedades_Controller extends CI_Controller {
 		$fieldSearch = array(); 
 		$data_search_novedades = array(); 
 
-		$data_search_novedades['limit'] = 4;
+		$data_search_novedades['limit'] = 10;
 		$data_search_novedades['sortBy'] = 'novedades_fecha';
 		$data_search_novedades['sortDirection'] = 'desc';
 		$data_search_novedades['novedades_leido'] = 0; //no leido
-		$data_search_novedades['novedades_estado'] = 1; //estado activada
 
 		$data['novedades'] = $this->novedades_model->get_m($data_search_novedades);
 

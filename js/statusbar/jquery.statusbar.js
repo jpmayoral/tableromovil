@@ -25,13 +25,15 @@
 					data = $(this).data('statusbar','inicializado'); 
 				}
 		   		
-		   		console.log(settings);
+		   		//console.log(settings);
 		   	});  
 	  	  },
 	  	createBar : function(options){
 		  	  	//create the bar
-				var statusbar = $("<div  data-role=\"footer\" data-position=\"fixed\" style=\"position:absolute; bottom:0px; left:0px; width:100%; z-index:5000; background-color:#F0F0F0; opacity:0.95; color:#333\" class=\"statusbar-wrapper\"><div style=\"height:35px;font-weight:normal;cursor:pointer;overflow:hidden; background-color:#474747;\" class=\"statusbar-header\"></div><div style=\"overflow:auto;\" class=\"statusbar-content\"></div></div>");
-				$('#contentview').append(statusbar);
+				//var statusbar = $("<div  data-role=\"footer\" data-position=\"fixed\" style=\"position:absolute; bottom:0px; left:0px; width:100%; z-index:5000; background-color:#333; opacity:0.9; color:#fff\" class=\"statusbar-wrapper\"><div style=\"height:35px;font-weight:normal;cursor:pointer;overflow:hidden; background-color:#474747;\" class=\"statusbar-header\"></div><div style=\"overflow:auto;\" class=\"statusbar-content\"></div></div>");
+				var statusbar = $("<div  style=\"position:relative; bottom:0px; left:0px; width:100%; z-index:5000; background-color:#333;  color:#fff\" class=\"statusbar-wrapper\"><div style=\"height:35px;font-weight:normal;cursor:pointer;overflow:hidden; background-color:#474747;\" class=\"statusbar-header\"></div><div style=\"overflow:auto;\" class=\"statusbar-content\"></div></div>");
+			
+				$('#barNov').append(statusbar);
 				//$('html').css("margin-top","26px");
 				$('.statusbar-content').hide();
 				var btnRemoveAll = $('<button style="margin:5px; color:#333;" data-role=\"none\" >Limpiar</button>').button().click(function(){
@@ -39,7 +41,7 @@
 				});
 				btnRemoveAll.removeClass("ui-btn-hidden");
 				$('.statusbar-content').append(btnRemoveAll);
-				//$('.statusbar-header').hover(function(){$(this).toggleClass('ui-state-hover')});
+				$('.statusbar-header').hover(function(){$(this).toggleClass('ui-state-hover-highlight')});
 				$('.statusbar-header').click(slide);
 				
 				//create text message area
@@ -84,7 +86,7 @@
 	}
 
 	function addDetails(message, argument, classStateNov, idNov){
-		var item = $("<div style=\"margin:3px;padding:10px;cursor:pointer;\" class=\"statusbar-content-item\" id=\"" + idNov  + "\"></div>");
+		var item = $("<div style=\"height:40px;margin:3px;padding:10px;cursor:pointer;color:#fff;\" class=\"statusbar-content-item\" id=\"" + idNov  + "\"></div>");
 		item.hover(function(){$(this).toggleClass('ui-state-highlight')})
 		//item.text(message);
 		
