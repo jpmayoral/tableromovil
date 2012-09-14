@@ -49,12 +49,13 @@ class Entradad_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagI){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
 		$data['subtitle'] = $this->config->item('recordAddTitle');
+
 		$this->form_validation->set_rules('entradad_din', 'entradad_din', 'trim|required|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('entradad_modulo', 'entradad_modulo', 'trim|required|integer|xss_clean');
 		$this->form_validation->set_rules('entradad_descripcion', 'entradad_descripcion', 'trim|required|alpha_numeric|xss_clean');
@@ -101,15 +102,20 @@ class Entradad_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
+		$data['entradad'] = $this->entradad_model->get_m(array('entradad_id' => $entradad_id),$flag=1);
+		if (is_null($data['entradad']))
+        {
+            show_404();
+            return;
+        }
+
 		$data['title_header'] = $this->config->item('recordEditTitle');
 
-		$data['entradad'] = $this->entradad_model->get_m(array('entradad_id' => $entradad_id),$flag=1);
-		
 		$this->form_validation->set_rules('entradad_id', 'entradad_id', 'trim|required|integer|xss_clean');
 		$this->form_validation->set_rules('entradad_modulo', 'entradad_modulo', 'trim|required|integer|xss_clean');
 		$this->form_validation->set_rules('entradad_descripcion', 'entradad_descripcion', 'trim|required|alpha_numeric|xss_clean');
@@ -160,8 +166,8 @@ class Entradad_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data_entradad = array();
@@ -192,9 +198,16 @@ class Entradad_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagD){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
+
+		$data['entradad'] = $this->entradad_model->get_m(array('entradad_id' => $entradad_id),$flag=1);
+		if (is_null($data['entradad']))
+        {
+            show_404();
+            return;
+        }
 
 		if($this->entradad_model->delete_m($entradad_id)){ 
 			$this->session->set_flashdata('flashConfirm', $this->config->item('entradad_flash_delete_message')); 
@@ -221,19 +234,25 @@ class Entradad_Controller extends CI_Controller {
 		$fieldSearch = array(); 
 		$data_search_salidad = array(); 
 
-		$data_search_entradad['offset'] = $offset;
-		$data_search_entradad['sortBy'] = 'entradad_id';
-		$data_search_entradad['sortDirection'] = 'asc';
+		if($this->flagR)
+		{
+			$data_search_entradad['offset'] = $offset;
+			$data_search_entradad['sortBy'] = 'entradad_id';
+			$data_search_entradad['sortDirection'] = 'asc';
 
-		$data['entradad'] = $this->entradad_model->get_m($data_search_entradad);
+			$data['entradad'] = $this->entradad_model->get_m($data_search_entradad);
 
-		$data['flag'] = $this->flags;
-		$data['fieldShow'] = $this->basicrud->getFieldToShow($this->entradad_model->getFieldsTable_m());
+			$data['flag'] = $this->flags;
+			$data['fieldShow'] = $this->basicrud->getFieldToShow($this->entradad_model->getFieldsTable_m());
 
-		$data['title_header'] = 'Entradas digitales';
-		$this->load->view('entradad_view/home_entradad', $data);
-		$this->load->view('entradad_view/record_list_entradad');
-		$this->load->view('default/_footer');
+			$data['title_header'] = 'Entradas digitales';
+			$this->load->view('entradad_view/home_entradad', $data);
+			$this->load->view('entradad_view/record_list_entradad');
+			$this->load->view('default/_footer');
+		}else{
+			show_404();
+            return;
+		}
 
 	}
 

@@ -51,8 +51,8 @@ class Playlist_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagI){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
@@ -96,13 +96,20 @@ class Playlist_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
-		$data['subtitle'] = $this->config->item('recordEditTitle');
 		$data['playlist'] = $this->playlist_model->get_m(array('playlist_id' => $playlist_id),$flag=1);
+		if (is_null($data['playlist']))
+        {
+            show_404();
+            return;
+        }
+
+		$data['subtitle'] = $this->config->item('recordEditTitle');
+		
 		$this->form_validation->set_rules('playlist_id', 'playlist_id', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('playlist_descripcion', 'playlist_descripcion', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('usuarios_id', 'usuarios_id', 'trim|integer|xss_clean');
@@ -142,9 +149,16 @@ class Playlist_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagD){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
+
+		$data['playlist'] = $this->playlist_model->get_m(array('playlist_id' => $playlist_id),$flag=1);
+		if (is_null($data['playlist']))
+        {
+            show_404();
+            return;
+        }
 
 		if($this->playlist_model->delete_m($playlist_id)){ 
 			$this->session->set_flashdata('flashConfirm', $this->config->item('playlist_flash_delete_message')); 
@@ -172,7 +186,7 @@ class Playlist_Controller extends CI_Controller {
 		$data_search_playlist = array(); 
 		$data_search_pagination = array(); 
 		$flag = 0; 
-		$data['flag'] = $this->flags;
+		
 		if($this->flagR)
 		{
 			$fieldSearch = $this->basicrud->getFieldSearch($this->playlist_model->getFieldsTable_m());
@@ -199,8 +213,12 @@ class Playlist_Controller extends CI_Controller {
 				$data['pagination'] = $this->basicrud->getPagination(array('nameModel'=>'playlist_model','perpage'=>$this->config->item('pag_perpage'),$data_search_pagination));
 				$data['playlist'] = $this->playlist_model->get_m($data_search_playlist);
 			}
+			$data['flag'] = $this->flags;
 			$data['fieldShow'] = $this->basicrud->getFieldToShow($this->playlist_model->getFieldsTable_m());
 			$this->load->view('playlist_view/record_list_playlist',$data);
+		}else{
+			show_404();
+            return;
 		}
 
 	}
@@ -209,6 +227,11 @@ class Playlist_Controller extends CI_Controller {
 
 	function new_c($album, $listsongs, $playlist_descripcion)
 	{
+
+		if(!$this->flagI){
+			show_404();
+            return;
+		}
 
 		$songs = explode(",", urldecode($listsongs));
 		unset($songs[count($songs)-1]);
@@ -246,6 +269,11 @@ class Playlist_Controller extends CI_Controller {
 
 	function modify_m($playlist_id, $album, $listsongs)
 	{
+		if(!$this->flagU){
+			show_404();
+            return;
+		}
+
 		$playlist = $this->playlist_model->get_m(array('playlist_id' => $playlist_id));
 		if($playlist_id){
 			$songs = explode(",", urldecode($listsongs));
@@ -273,6 +301,11 @@ class Playlist_Controller extends CI_Controller {
 
 	function showPlayList($album,  $tracksSelelected)
 	{
+		if(!$this->flagR){
+			show_404();
+            return;
+		}
+
 		$tracks = explode(",", urldecode($tracksSelelected));
 		unset($tracks[count($tracks)-1]);
 		$data['tracks'] = $tracks;
@@ -292,6 +325,11 @@ class Playlist_Controller extends CI_Controller {
 
 	function showFormNewPlayList($album, $tracksSelelected)
 	{
+		if(!$this->flagI){
+			show_404();
+            return;
+		}
+		
 		$tracks = explode(",", urldecode($tracksSelelected));
 		unset($tracks[count($tracks)-1]);
 		$data['tracks'] = $tracks;

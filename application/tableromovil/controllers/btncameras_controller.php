@@ -46,8 +46,8 @@ class Btncameras_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagI){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
@@ -108,13 +108,19 @@ class Btncameras_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
-		$data['title_header'] = $this->config->item('recordEditTitle');
 		$data['btncameras'] = $this->btncameras_model->get_m(array('btncameras_id' => $btncameras_id),$flag=1);
+		if (is_null($data['btncameras']))
+        {
+            show_404();
+            return;
+        }
+
+		$data['title_header'] = $this->config->item('recordEditTitle');
 		
 		$this->form_validation->set_rules('btncameras_id', 'btncameras_id', 'trim|required|integer|xss_clean');
 		$this->form_validation->set_rules('btncameras_nombre', 'btncameras_nombre', 'trim|required|alpha_numeric|xss_clean');
@@ -169,9 +175,16 @@ class Btncameras_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagD){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
+
+		$data['btncameras'] = $this->btncameras_model->get_m(array('btncameras_id' => $btncameras_id),$flag=1);
+		if (is_null($data['btncameras']))
+        {
+            show_404();
+            return;
+        }
 
 		if($this->btncameras_model->delete_m($btncameras_id)){ 
 			$this->session->set_flashdata('flashConfirm', $this->config->item('btncameras_flash_delete_message')); 
@@ -198,22 +211,28 @@ class Btncameras_Controller extends CI_Controller {
 		$fieldSearch = array(); 
 		$data_search_salidad = array(); 
 
-		$data_search_btncameras['cameras_id'] = $cameras_id;
-		$data_search_btncameras['offset'] = $offset;
-		$data_search_btncameras['sortBy'] = 'btncameras_id';
-		$data_search_btncameras['sortDirection'] = 'asc';
+		if($this->flagR)
+		{
+			$data_search_btncameras['cameras_id'] = $cameras_id;
+			$data_search_btncameras['offset'] = $offset;
+			$data_search_btncameras['sortBy'] = 'btncameras_id';
+			$data_search_btncameras['sortDirection'] = 'asc';
 
-		$data['btncameras'] = $this->btncameras_model->get_m($data_search_btncameras);
+			$data['btncameras'] = $this->btncameras_model->get_m($data_search_btncameras);
 
-		$data['flag'] = $this->flags;
-		$data['fieldShow'] = $this->basicrud->getFieldToShow($this->btncameras_model->getFieldsTable_m());
+			$data['flag'] = $this->flags;
+			$data['fieldShow'] = $this->basicrud->getFieldToShow($this->btncameras_model->getFieldsTable_m());
 
-		$data['title_header'] = 'Config. Botones';
-		$data['cameras_id'] = $cameras_id;
+			$data['title_header'] = 'Config. Botones';
+			$data['cameras_id'] = $cameras_id;
 
-		$this->load->view('btncameras_view/home_btncameras', $data);
-		$this->load->view('btncameras_view/record_list_btncameras');
-		$this->load->view('default/_footer');
+			$this->load->view('btncameras_view/home_btncameras', $data);
+			$this->load->view('btncameras_view/record_list_btncameras');
+			$this->load->view('default/_footer');
+		}else{
+			show_404();
+            return;
+		}
 
 	}
 
@@ -221,9 +240,14 @@ class Btncameras_Controller extends CI_Controller {
 
 	function setBtnIpCam($salidad_id, $salidad_value)
 	{
-		if($this->salidad_model->edit_m(array('salidad_id' => $salidad_id,'salidad_value' => $salidad_value))){
-			echo "ok";
-		}else{
+		if($this->flagU)
+		{
+			if($this->salidad_model->edit_m(array('salidad_id' => $salidad_id,'salidad_value' => $salidad_value))){
+				echo "ok";
+			}else{
+				echo "error";
+			}
+		else{
 			echo "error";
 		}
 	}

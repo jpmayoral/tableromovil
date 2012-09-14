@@ -49,8 +49,8 @@ class Salidad_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagI){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
@@ -100,14 +100,19 @@ class Salidad_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
-		$data['title_header'] = $this->config->item('recordEditTitle');
-
 		$data['salidad'] = $this->salidad_model->get_m(array('salidad_id' => $salidad_id),$flag=1);
+		if (is_null($data['salidad']))
+        {
+            show_404();
+            return;
+        }
+
+		$data['title_header'] = $this->config->item('recordEditTitle');
 
 		$this->form_validation->set_rules('salidad_id', 'salidad_id', 'trim|integer|required|xss_clean');
 		$this->form_validation->set_rules('salidad_modulo', 'salidad_modulo', 'trim|required|integer|xss_clean');
@@ -136,10 +141,6 @@ class Salidad_Controller extends CI_Controller {
 				redirect('salidad_controller','location');
 			}
 
-			/*echo "<pre>";
-			print_r($data_salidad);
-			echo "</pre>";*/
-
 		}else{
 			//filtrar todos los modulos de tabgral
 			$data["modulos"] = $this->tabgral_model->get_m(array('grupos_tabgral_id' => 3));
@@ -165,8 +166,8 @@ class Salidad_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
@@ -196,9 +197,16 @@ class Salidad_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagD){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
+
+		$data['salidad'] = $this->salidad_model->get_m(array('salidad_id' => $salidad_id),$flag=1);
+		if (is_null($data['salidad']))
+        {
+            show_404();
+            return;
+        }
 
 		if($this->salidad_model->delete_m($salidad_id)){ 
 			$this->session->set_flashdata('flashConfirm', $this->config->item('salidad_flash_delete_message')); 
@@ -225,21 +233,25 @@ class Salidad_Controller extends CI_Controller {
 		$fieldSearch = array(); 
 		$data_search_salidad = array(); 
 
-		$data_search_salidad['offset'] = $offset;
-		$data_search_salidad['sortBy'] = 'salidad_id';
-		$data_search_salidad['sortDirection'] = 'asc';
+		if($this->flagR)
+		{
+			$data_search_salidad['offset'] = $offset;
+			$data_search_salidad['sortBy'] = 'salidad_id';
+			$data_search_salidad['sortDirection'] = 'asc';
 
-		$data['salidad'] = $this->salidad_model->get_m($data_search_salidad);
+			$data['salidad'] = $this->salidad_model->get_m($data_search_salidad);
 
-		$data['flag'] = $this->flags;
-		$data['fieldShow'] = $this->basicrud->getFieldToShow($this->salidad_model->getFieldsTable_m());
+			$data['flag'] = $this->flags;
+			$data['fieldShow'] = $this->basicrud->getFieldToShow($this->salidad_model->getFieldsTable_m());
 
-		$data['title_header'] = 'Salidas digitales';
-		$this->load->view('salidad_view/home_salidad', $data);
-		$this->load->view('salidad_view/record_list_salidad');
-		$this->load->view('default/_footer');
-		
-
+			$data['title_header'] = 'Salidas digitales';
+			$this->load->view('salidad_view/home_salidad', $data);
+			$this->load->view('salidad_view/record_list_salidad');
+			$this->load->view('default/_footer');
+		}else{
+			show_404();
+            return;
+		}
 	}
 
 

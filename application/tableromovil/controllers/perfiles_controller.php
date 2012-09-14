@@ -44,6 +44,11 @@ class Perfiles_Controller extends CI_Controller {
 	function add_c()
 	{
 		//code here
+		if(!$this->flagI){
+			show_404();
+			return;
+		}
+
 		$data = array();
 		$data['title_header'] = $this->config->item('recordAddTitle');
 		$data['estados'] = $this->tabgral_model->get_m(array("grupos_tabgral_id" => 1));
@@ -85,9 +90,22 @@ class Perfiles_Controller extends CI_Controller {
 	{
 		//code here
 		$data = array();
+		if(!$this->flagU){
+			show_404();
+			return;
+		}
+
+		$data['perfiles'] = $this->perfiles_model->get_m(array('perfiles_id' => $perfiles_id), $flag=1);
+		if (is_null($data['perfiles']))
+        {
+            show_404();
+            return;
+        }
+
+		
 		$data['title_header'] = $this->config->item('recordEditTitle');
-		$data['perfiles'] = $this->perfiles_model->get_m(array('perfiles_id' => $perfiles_id),$flag=1);
 		$data['estados'] = $this->tabgral_model->get_m(array("grupos_tabgral_id" => 1));
+		
 		$this->form_validation->set_rules('perfiles_id', 'perfiles_id', 'trim|required|integer|xss_clean');
 		$this->form_validation->set_rules('perfiles_descripcion', 'perfiles_descripcion', 'trim|required|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('perfiles_estado', 'perfiles_estado', 'trim|integer|xss_clean');
@@ -123,6 +141,19 @@ class Perfiles_Controller extends CI_Controller {
 	 */
 	function delete_c($perfiles_id)
 	{
+		//code here
+		if(!$this->flagD){
+			show_404();
+			return;
+		}
+
+		$data['perfiles'] = $this->perfiles_model->get_m(array('perfiles_id' => $perfiles_id),$flag=1);
+		if (is_null($data['perfiles']))
+        {
+            show_404();
+            return;
+        }
+
 		//code here
 		if($this->perfiles_model->delete_m($perfiles_id)){ 
 			$this->session->set_flashdata('flashConfirm', $this->config->item('perfiles_flash_delete_message')); 
@@ -177,6 +208,9 @@ class Perfiles_Controller extends CI_Controller {
 			$this->load->view('perfiles_view/home_perfiles', $data);
 			$this->load->view('perfiles_view/record_list_perfiles');
 			$this->load->view('default/_footer');
+		}else{
+			show_404();
+			return;
 		}
 
 	}

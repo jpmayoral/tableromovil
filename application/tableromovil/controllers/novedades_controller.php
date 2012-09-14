@@ -32,6 +32,9 @@ class Novedades_Controller extends CI_Controller {
 			$data['title_header'] = 'Novedades';
 			$this->load->view('novedades_view/home_novedades', $data);
 			$this->load->view('default/_footer');
+		}else{
+			show_404();
+            return;
 		}
 
 	}
@@ -49,8 +52,8 @@ class Novedades_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagI){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
@@ -94,13 +97,20 @@ class Novedades_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
-		$data['subtitle'] = $this->config->item('recordEditTitle');
 		$data['novedades'] = $this->novedades_model->get_m(array('novedades_id' => $novedades_id),$flag=1);
+		if (is_null($data['novedades']))
+        {
+            show_404();
+            return;
+        }
+
+		$data['subtitle'] = $this->config->item('recordEditTitle');
+		
 		$this->form_validation->set_rules('novedades_id', 'novedades_id', 'trim|integer|xss_clean');
 		$this->form_validation->set_rules('novedades_fecha', 'novedades_fecha', 'trim|alpha_numeric|xss_clean');
 		$this->form_validation->set_rules('novedades_descripcion', 'novedades_descripcion', 'trim|alpha_numeric|xss_clean');
@@ -142,9 +152,16 @@ class Novedades_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagD){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
+
+		$data['novedades'] = $this->novedades_model->get_m(array('novedades_id' => $novedades_id),$flag=1);
+		if (is_null($data['novedades']))
+        {
+            show_404();
+            return;
+        }
 
 		if($this->novedades_model->delete_m($novedades_id)){ 
 			$this->session->set_flashdata('flashConfirm', $this->config->item('novedades_flash_delete_message')); 
@@ -171,17 +188,22 @@ class Novedades_Controller extends CI_Controller {
 		$data = array(); 
 		$fieldSearch = array(); 
 		$data_search_novedades = array(); 
+		if($this->flagR)
+		{
+			$data_search_novedades['offset'] = $offset;
+			$data_search_novedades['sortBy'] = $this->sort_column($sortBy);
+			$data_search_novedades['sortDirection'] = $this->sort_direction($sortDirection);
 
-		$data_search_novedades['offset'] = $offset;
-		$data_search_novedades['sortBy'] = $this->sort_column($sortBy);
-		$data_search_novedades['sortDirection'] = $this->sort_direction($sortDirection);
-
-		$data['novedades'] = $this->novedades_model->get_m($data_search_novedades);
-		$data['sortBy'] = $data_search_novedades['sortBy'];
-		$data['sortDirection'] = $data_search_novedades['sortDirection'];
-		$data['flag'] = $this->flags;
-		
-		$this->load->view('novedades_view/record_list_novedades',$data);
+			$data['novedades'] = $this->novedades_model->get_m($data_search_novedades);
+			$data['sortBy'] = $data_search_novedades['sortBy'];
+			$data['sortDirection'] = $data_search_novedades['sortDirection'];
+			$data['flag'] = $this->flags;
+			
+			$this->load->view('novedades_view/record_list_novedades',$data);
+		}else{
+			show_404();
+            return;
+		}
 	}
 
 
@@ -199,15 +221,21 @@ class Novedades_Controller extends CI_Controller {
 		$fieldSearch = array(); 
 		$data_search_novedades = array(); 
 
-		$data_search_novedades['limit'] = 10;
-		$data_search_novedades['sortBy'] = 'novedades_fecha';
-		$data_search_novedades['sortDirection'] = 'desc';
-		$data_search_novedades['novedades_leido'] = 0; //no leido
+		if($this->flagR)
+		{
+			$data_search_novedades['limit'] = 10;
+			$data_search_novedades['sortBy'] = 'novedades_fecha';
+			$data_search_novedades['sortDirection'] = 'desc';
+			$data_search_novedades['novedades_leido'] = 0; //no leido
 
-		$data['novedades'] = $this->novedades_model->get_m($data_search_novedades);
+			$data['novedades'] = $this->novedades_model->get_m($data_search_novedades);
 
-		
-		echo json_encode($data['novedades']);
+			
+			echo json_encode($data['novedades']);
+		}else{
+			show_404();
+            return;
+		}
 	}
 
 

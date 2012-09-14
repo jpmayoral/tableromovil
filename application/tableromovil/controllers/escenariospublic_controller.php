@@ -34,6 +34,9 @@ class Escenariospublic_Controller extends CI_Controller
 			$data['flag'] = $this->flags;
 			$this->load->view('escenarios_view/home_escenarios_public', $data);
 			$this->load->view('default/_footer');
+		}else{
+			show_404();
+            return;
 		}
 	}
 
@@ -48,10 +51,14 @@ class Escenariospublic_Controller extends CI_Controller
 	function search_c()
 	{
 		//code here
-		$data['escenarios'] = $this->escenarios_model->get_m();
-		$data['flag'] = $this->flags;
-		$this->load->view('escenarios_view/record_list_escenarios_public', $data);
-		
+		if($this->flagR){
+			$data['escenarios'] = $this->escenarios_model->get_m();
+			$data['flag'] = $this->flags;
+			$this->load->view('escenarios_view/record_list_escenarios_public', $data);
+		}else{
+			show_404();
+            return;
+		}
 	}
 
 }

@@ -46,6 +46,11 @@ class Usuarios_Controller extends CI_Controller {
 	{
 		//code here
 		$data = array();
+		if(!$this->flagI){
+			show_404();
+            return;
+		}
+
 		$data['title_header'] = $this->config->item('recordAddTitle');
 		$data['estados'] = $this->tabgral_model->get_m(array("grupos_tabgral_id" => 1));
 		$data['perfiles'] = $this->perfiles_model->get_m();
@@ -108,9 +113,21 @@ class Usuarios_Controller extends CI_Controller {
 	function edit_c($usuarios_id)
 	{
 		//code here
+		if(!$this->flagU){
+			show_404();
+            return;
+		}
+
 		$data = array();
-		$data['title_header'] = $this->config->item('recordEditTitle');
 		$data['usuarios'] = $this->usuarios_model->get_m(array('usuarios_id' => $usuarios_id),$flag=1);
+		if (is_null($data['usuarios']))
+        {
+            show_404();
+            return;
+        }
+
+		$data['title_header'] = $this->config->item('recordEditTitle');
+		
 		$data['estados'] = $this->tabgral_model->get_m(array("grupos_tabgral_id" => 1));
 		$data['perfiles'] = $this->perfiles_model->get_m();
 		
@@ -172,6 +189,18 @@ class Usuarios_Controller extends CI_Controller {
 	function delete_c($usuarios_id)
 	{
 		//code here
+		if(!$this->flagD){
+			show_404();
+            return;
+		}
+
+		$data['usuarios'] = $this->usuarios_model->get_m(array('usuarios_id' => $usuarios_id),$flag=1);
+		if (is_null($data['usuarios']))
+        {
+            show_404();
+            return;
+        }
+
 		if($this->usuarios_model->delete_m($usuarios_id)){ 
 			$this->session->set_flashdata('flashConfirm', $this->config->item('usuarios_flash_delete_message')); 
 			redirect('usuarios_controller','location');
@@ -226,6 +255,9 @@ class Usuarios_Controller extends CI_Controller {
 			$this->load->view('usuarios_view/record_list_usuarios',$data);
 			$this->load->view('default/_footer');
 			
+		}else{
+			show_404();
+            return;
 		}
 
 	}

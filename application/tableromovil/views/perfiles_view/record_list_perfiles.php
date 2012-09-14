@@ -13,10 +13,10 @@
 				<div class="ui-bar ui-bar-c" style="height:27px">
 					<div data-role="controlgroup" data-type="horizontal">
 						<?php if($flag['u']):?>
-							<a href="<?=base_url()?>index.php/perfiles_controller/edit_c/<?=$f->perfiles_id?>" data-role="button" data-icon="refresh" data-iconpos="notext" title="Modificar">Modificar</a>
+							<a href="<?=base_url()?>perfiles_controller/edit_c/<?=$f->perfiles_id?>" data-role="button" data-icon="refresh" data-iconpos="notext" title="Modificar">Modificar</a>
 						<?php endif;?>
 						<?php if($flag['d']):?>
-							<a href="<?=base_url()?>index.php/perfiles_controller/delete_c/<?=$f->perfiles_id?>" data-role="button" data-icon="delete" data-iconpos="notext" title="Eliminar">Eliminar</a>
+							<a href="<?=base_url()?>perfiles_controller/delete_c/<?=$f->perfiles_id?>" data-role="button" data-icon="delete" data-iconpos="notext" title="Eliminar">Eliminar</a>
 						<?php endif;?>
 					</div>
 				</div>

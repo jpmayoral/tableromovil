@@ -31,32 +31,44 @@ class Salidadg_Controller extends CI_Controller
 	function index($sismenu_id)
 	{
 		//code here
-		if($sismenu_id){
-			$sismenu = $this->sismenu_model->get_m(array('sismenu_id' => $sismenu_id));
-			if($sismenu){
-				$data['title_header'] = $sismenu[0]->sismenu_descripcion;
-				$data['sismenu_id'] = $sismenu[0]->sismenu_id;
-				$this->load->view('default/_header',$data);
-				//filtrar solo los relay del modulo generico y del menu con id $sismenu_id		
-				$data["rows_salidad"] = $this->salidad_model->get_m(array("salidad_modulo" => 11, 'salidad_estado' => 2 ,'sismenu_id' => $sismenu[0]->sismenu_id));
-				if($data["rows_salidad"]){ 
-					$data['flag'] = $this->flags;
-					$this->load->view('salidadg_view/home_salidadg', $data);
-					$this->load->view('default/_footer');	
-				}
-			}			
+		if($this->flagR)
+		{
+			if($sismenu_id){
+				$sismenu = $this->sismenu_model->get_m(array('sismenu_id' => $sismenu_id));
+				if($sismenu){
+					$data['title_header'] = $sismenu[0]->sismenu_descripcion;
+					$data['sismenu_id'] = $sismenu[0]->sismenu_id;
+					$this->load->view('default/_header',$data);
+					//filtrar solo los relay del modulo generico y del menu con id $sismenu_id		
+					$data["rows_salidad"] = $this->salidad_model->get_m(array("salidad_modulo" => 11, 'salidad_estado' => 2 ,'sismenu_id' => $sismenu[0]->sismenu_id));
+					if($data["rows_salidad"]){ 
+						$data['flag'] = $this->flags;
+						$this->load->view('salidadg_view/home_salidadg', $data);
+						$this->load->view('default/_footer');	
+					}
+				}			
+			}
+		}else{
+			show_404();
+            return;
 		}
 	}
 
 	
 	function search_c($sismenu_id)
 	{
-		//filtrar solo los relay del modulo generico y del menu con id $sismenu_id	
-		if($sismenu_id){
-			$data['flag'] = $this->flags;	
-			$data["rows_salidad"] = $this->salidad_model->get_m(array("salidad_modulo" => 11, 'salidad_estado' => 2, 'sismenu_id' => $sismenu_id)); 
-			if($data["rows_salidad"])
-				$this->load->view('salidadg_view/record_list_salidadg', $data);
+		if($this->flagR)
+		{
+			//filtrar solo los relay del modulo generico y del menu con id $sismenu_id	
+			if($sismenu_id){
+				$data['flag'] = $this->flags;	
+				$data["rows_salidad"] = $this->salidad_model->get_m(array("salidad_modulo" => 11, 'salidad_estado' => 2, 'sismenu_id' => $sismenu_id)); 
+				if($data["rows_salidad"])
+					$this->load->view('salidadg_view/record_list_salidadg', $data);
+			}
+		}else{
+			show_404();
+            return;
 		}
 	}
 

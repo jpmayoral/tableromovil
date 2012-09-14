@@ -1,4 +1,5 @@
 <?=$this->load->view('default/_header')?>
+
 <form action="<?=base_url()?>perfiles_controller/edit_c/<?=$perfiles->perfiles_id?>" method="post" name="formEditperfiles" id="formEditperfiles">
 	<div data-role="fieldcontain">
 		<label for="perfiles_id"><?=$this->config->item('perfiles_id')?>:</label>
@@ -35,4 +36,5 @@
 	?>
 	</div>
 </form>
+
 <?=$this->load->view('default/_footer')?>

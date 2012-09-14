@@ -45,8 +45,8 @@ class Cameras_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagI){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
@@ -97,13 +97,19 @@ class Cameras_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
-		$data['title_header'] = $this->config->item('recordEditTitle');
 		$data['cameras'] = $this->cameras_model->get_m(array('cameras_id' => $cameras_id),$flag=1);
+		if (is_null($data['cameras']))
+        {
+            show_404();
+            return;
+        }
+
+		$data['title_header'] = $this->config->item('recordEditTitle');
 		
 		$this->form_validation->set_rules('cameras_id', 'cameras_id', 'trim|required|integer|xss_clean');
 		$this->form_validation->set_rules('cameras_descripcion', 'cameras_descripcion', 'trim|required|alpha_numeric|xss_clean');
@@ -151,9 +157,16 @@ class Cameras_Controller extends CI_Controller {
 	{
 		//code here
 		if(!$this->flagD){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
+
+		$data['cameras'] = $this->cameras_model->get_m(array('cameras_id' => $cameras_id),$flag=1);
+		if (is_null($data['cameras']))
+        {
+            show_404();
+            return;
+        }
 
 		if($this->cameras_model->delete_m($cameras_id)){ 
 			$this->session->set_flashdata('flashConfirm', $this->config->item('cameras_flash_delete_message')); 
@@ -179,21 +192,26 @@ class Cameras_Controller extends CI_Controller {
 		$data = array(); 
 		$fieldSearch = array(); 
 		$data_search_salidad = array(); 
+		
+		if($this->flagR)
+		{
+			$data_search_cameras['offset'] = $offset;
+			$data_search_cameras['sortBy'] = 'cameras_id';
+			$data_search_cameras['sortDirection'] = 'asc';
 
-		$data_search_cameras['offset'] = $offset;
-		$data_search_cameras['sortBy'] = 'cameras_id';
-		$data_search_cameras['sortDirection'] = 'asc';
+			$data['cameras'] = $this->cameras_model->get_m($data_search_cameras);
 
-		$data['cameras'] = $this->cameras_model->get_m($data_search_cameras);
+			$data['flag'] = $this->flags;
+			$data['fieldShow'] = $this->basicrud->getFieldToShow($this->cameras_model->getFieldsTable_m());
 
-		$data['flag'] = $this->flags;
-		$data['fieldShow'] = $this->basicrud->getFieldToShow($this->cameras_model->getFieldsTable_m());
-
-		$data['title_header'] = 'Config. Cámaras';
-		$this->load->view('cameras_view/home_cameras', $data);
-		$this->load->view('cameras_view/record_list_cameras');
-		$this->load->view('default/_footer');
-
+			$data['title_header'] = 'Config. Cámaras';
+			$this->load->view('cameras_view/home_cameras', $data);
+			$this->load->view('cameras_view/record_list_cameras');
+			$this->load->view('default/_footer');
+		}else{
+			show_404();
+            return;
+		}
 	}
 
 }

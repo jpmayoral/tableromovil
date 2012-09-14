@@ -131,6 +131,9 @@
       <Cl au="0" df="" nm="entradad_iconoff" nu="1">
         <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
+      <Cl au="0" df="" nm="entradad_nov" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
       <Cl au="0" df="now()" nm="entradad_created_at" nu="1">
         <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
@@ -409,11 +412,14 @@
       <Cl au="0" df="" nm="salidad_iconoff" nu="1">
         <DT arr="0" ds="Text" en="" id="703" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
+      <Cl au="0" df="" nm="salidad_nov" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
       <Cl au="0" df="" nm="salidad_created_at" nu="1">
-        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="now()" nm="salidad_updated_at" nu="1">
-        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Fk deAc="1" nm="salidad_estados_id" prLkCl="estados_id" upAc="1">
         <PrTb mn="0" nm="estados" oe="1" sch="public" zr="0"/>
@@ -794,7 +800,7 @@
       <Zone bkCl="ffece9d8" h="1231" nm="Módulo principal" w="428" x="133" y="447"/>
     </Zones>
   </Dgm>
-  <RnmMgr NxRnmId="194">
+  <RnmMgr NxRnmId="198">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="callcenter" SupCls="" SupNme="">
       <Rnm id="1" nNm="public" oNm="schemaA"/>
     </RnmCh>
@@ -1256,9 +1262,11 @@
       <Rnm id="179" nNm="salidad_created_at" oNm="salidad_updated_at"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="entradad" SupCls="Schema" SupNme="public">
+      <Rnm id="194" nNm="entradad_nov" oNm="entradad_created_at"/>
       <Rnm id="183" nNm="entradad_created_at" oNm="entradad_updated_at"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="salidad" SupCls="Schema" SupNme="public">
+      <Rnm id="196" nNm="salidad_nov" oNm="salidad_created_at"/>
       <Rnm id="186" nNm="salidad_created_at" oNm="salidad_updated_at"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="playlistlinea" SupCls="Schema" SupNme="public">
@@ -1281,6 +1289,12 @@
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="novedades" SupCls="Schema" SupNme="public">
       <Rnm id="193" nNm="novedades_tipo" oNm="novedades_leido"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="entradad" SupCls="Schema" SupNme="public">
+      <Rnm id="195" nNm="entradad_created_at" oNm="entradad_updated_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salidad" SupCls="Schema" SupNme="public">
+      <Rnm id="197" nNm="salidad_created_at" oNm="salidad_updated_at"/>
     </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>

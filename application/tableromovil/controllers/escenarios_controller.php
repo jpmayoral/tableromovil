@@ -46,8 +46,8 @@ class Escenarios_Controller extends CI_Controller
 	{
 		//code here
 		if(!$this->flagI){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
@@ -91,14 +91,19 @@ class Escenarios_Controller extends CI_Controller
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 
 		$data = array();
-		$data['title_header'] = $this->config->item('recordEditTitle');
-
 		$data['escenario'] = $this->escenarios_model->get_m(array('escenarios_id' => $escenarios_id),$flag=1);
+		if (is_null($data['escenario']))
+        {
+            show_404();
+            return;
+        }
+
+		$data['title_header'] = $this->config->item('recordEditTitle');
 
 		$this->form_validation->set_rules('escenarios_id', 'escenarios_id', 'trim|integer|required|xss_clean');
 		$this->form_validation->set_rules('escenarios_descripcion', 'escenarios_descripcion', 'trim|required|alpha_numeric|xss_clean');
@@ -141,25 +146,26 @@ class Escenarios_Controller extends CI_Controller
 	{
 		//code here
 		if(!$this->flagD){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 		
 		$escenario = $this->escenarios_model->get_m(array('escenarios_id' => $escenarios_id));
+		if (is_null($escenario))
+        {
+            show_404();
+            return;
+        }
 
-		if($escenario){
-			if($this->escenarios_model->delete_m($escenarios_id)){
-				unlink("./thumbs/escenarios/".$escenario[0]->escenarios_iconpath); 
-				$this->session->set_flashdata('flashConfirm', $this->config->item('escenarios_flash_delete_message')); 
-				redirect('escenarios_controller','location');
-			}else{
-				$this->session->set_flashdata('flashError', $this->config->item('escenarios_flash_error_delete_message')); 
-				redirect('escenarios_controller','location');
-			}
+		if($this->escenarios_model->delete_m($escenarios_id)){
+			unlink("./thumbs/escenarios/".$escenario[0]->escenarios_iconpath); 
+			$this->session->set_flashdata('flashConfirm', $this->config->item('escenarios_flash_delete_message')); 
+			redirect('escenarios_controller','location');
 		}else{
 			$this->session->set_flashdata('flashError', $this->config->item('escenarios_flash_error_delete_message')); 
 			redirect('escenarios_controller','location');
 		}
+		
 	}
 
 
@@ -178,18 +184,23 @@ class Escenarios_Controller extends CI_Controller
 		$fieldSearch = array(); 
 		$data_search_escenarios = array(); 
 
-		$data_search_escenarios['offset'] = $offset;
-		$data_search_escenarios['sortBy'] = 'escenarios_id';
-		$data_search_escenarios['sortDirection'] = 'asc';
+		if($this->flagR)
+		{
+			$data_search_escenarios['offset'] = $offset;
+			$data_search_escenarios['sortBy'] = 'escenarios_id';
+			$data_search_escenarios['sortDirection'] = 'asc';
 
-		$data['escenarios'] = $this->escenarios_model->get_m($data_search_escenarios);
-		$data['flag'] = $this->flags;
+			$data['escenarios'] = $this->escenarios_model->get_m($data_search_escenarios);
+			$data['flag'] = $this->flags;
 
-		$data['title_header'] = 'Escenarios';
-		$this->load->view('escenarios_view/home_escenarios', $data);
-		$this->load->view('escenarios_view/record_list_escenarios');
-		$this->load->view('default/_footer');
-		
+			$data['title_header'] = 'Escenarios';
+			$this->load->view('escenarios_view/home_escenarios', $data);
+			$this->load->view('escenarios_view/record_list_escenarios');
+			$this->load->view('default/_footer');
+		}else{
+			show_404();
+            return;
+		}
 
 	}
 
@@ -245,8 +256,8 @@ class Escenarios_Controller extends CI_Controller
 	{
 		//code here
 		if(!$this->flagU){
-			echo $this->config->item('accessTitle');
-			exit();
+			show_404();
+            return;
 		}
 		
 		if($this->escenarios_model->edit_m(array('escenarios_id' => $escenarios_id, 'escenarios_estado' => $escenarios_estado)))

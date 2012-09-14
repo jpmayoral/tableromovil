@@ -27,19 +27,31 @@ class Controlaccess_Controller extends CI_Controller
 	function index()
 	{
 		//code here
-		$data['title_header']='C&aacute;maras';
-		$this->load->view('default/_header', $data);
-		$data["rows_cameras"] = $this->cameras_model->get_m(); 
-		$data["rows_btncameras"] = $this->btncameras_model->get_m(); 
-		$this->load->view('controlaccess_view/home_controlaccess',$data);
-		$this->load->view('default/_footer');
+		if($this->flagR)
+		{
+			$data['title_header']='C&aacute;maras';
+			$this->load->view('default/_header', $data);
+			$data["rows_cameras"] = $this->cameras_model->get_m(); 
+			$data["rows_btncameras"] = $this->btncameras_model->get_m(); 
+			$this->load->view('controlaccess_view/home_controlaccess',$data);
+			$this->load->view('default/_footer');
+		}else{
+			show_404();
+            return;
+		}
 	}
 
 	function search_c($offset = 0)
 	{
-		$data["rows_cameras"] = $this->cameras_model->get_m(); 
-		$data["rows_btncameras"] = $this->btncameras_model->get_m(); 
-		$this->load->view('controlaccess_view/record_list_controlaccess2', $data);
+		if($this->flagR)
+		{
+			$data["rows_cameras"] = $this->cameras_model->get_m(); 
+			$data["rows_btncameras"] = $this->btncameras_model->get_m(); 
+			$this->load->view('controlaccess_view/record_list_controlaccess2', $data);
+		}else{
+			show_404();
+            return;
+		}
 	}
 
 }

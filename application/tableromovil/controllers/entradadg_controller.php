@@ -31,20 +31,26 @@ class Entradadg_Controller extends CI_Controller
 	function index($sismenu_id)
 	{
 		//code here
-		if($sismenu_id){
-			$sismenu = $this->sismenu_model->get_m(array('sismenu_id' => $sismenu_id));
-			if($sismenu){
-				$data['title_header'] = $sismenu[0]->sismenu_descripcion;
-				$data['sismenu_id'] = $sismenu[0]->sismenu_id;
-				$this->load->view('default/_header',$data);
-				//filtrar solo los relay del modulo generico y del menu con id $sismenu_id		
-				$data["rows_entradad"] = $this->entradad_model->get_m(array("entradad_modulo" => 11, 'entradad_estado' => 2, 'sismenu_id' => $sismenu[0]->sismenu_id));
-				if($data["rows_entradad"]){ 
-					$data['flag'] = $this->flags;
-					$this->load->view('entradadg_view/home_entradadg', $data);
-					$this->load->view('default/_footer');	
-				}
-			}			
+		if($this->flagR)
+		{
+			if($sismenu_id){
+				$sismenu = $this->sismenu_model->get_m(array('sismenu_id' => $sismenu_id));
+				if($sismenu){
+					$data['title_header'] = $sismenu[0]->sismenu_descripcion;
+					$data['sismenu_id'] = $sismenu[0]->sismenu_id;
+					$this->load->view('default/_header',$data);
+					//filtrar solo los relay del modulo generico y del menu con id $sismenu_id		
+					$data["rows_entradad"] = $this->entradad_model->get_m(array("entradad_modulo" => 11, 'entradad_estado' => 2, 'sismenu_id' => $sismenu[0]->sismenu_id));
+					if($data["rows_entradad"]){ 
+						$data['flag'] = $this->flags;
+						$this->load->view('entradadg_view/home_entradadg', $data);
+						$this->load->view('default/_footer');	
+					}
+				}			
+			}
+		}else{
+			show_404();
+            return;
 		}
 	}
 
@@ -52,11 +58,17 @@ class Entradadg_Controller extends CI_Controller
 	function search_c($sismenu_id)
 	{
 		//filtrar solo los relay del modulo generico y del menu con id $sismenu_id	
-		if($sismenu_id){
-			$data['flag'] = $this->flags;	
-			$data["rows_entradad"] = $this->entradad_model->get_m(array("entradad_modulo" => 11, 'entradad_estado' => 2, 'sismenu_id' => $sismenu_id)); 
-			if($data["rows_entradad"])
-				$this->load->view('entradadg_view/record_list_entradadg', $data);
+		if($this->flagR)
+		{
+			if($sismenu_id){
+				$data['flag'] = $this->flags;	
+				$data["rows_entradad"] = $this->entradad_model->get_m(array("entradad_modulo" => 11, 'entradad_estado' => 2, 'sismenu_id' => $sismenu_id)); 
+				if($data["rows_entradad"])
+					$this->load->view('entradadg_view/record_list_entradadg', $data);
+			}
+		}else{
+			show_404();
+            return;
 		}
 	}
 
