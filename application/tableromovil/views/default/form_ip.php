@@ -1,0 +1,1 @@
+<?php  system("nslookup ".$dominio.""); ?>

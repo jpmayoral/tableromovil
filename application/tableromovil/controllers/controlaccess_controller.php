@@ -13,6 +13,7 @@ class Controlaccess_Controller extends CI_Controller
 	{
 		parent::__construct();		
 		if($this->session->userdata('logged_in') == TRUE) {
+				$this->config->load('controlaccess_settings');
 				$data['flags'] = $this->basicauth->getPermissions('cameras');
 				$this->flagR = $data['flags']['flag-read'];
 				$this->flagI = $data['flags']['flag-insert'];
@@ -21,6 +22,9 @@ class Controlaccess_Controller extends CI_Controller
 				$this->flags = array('i' => $this->flagI, 'u' => $this->flagU, 'd' => $this->flagD);
 				$this->load->model('cameras_model');
 				$this->load->model('btncameras_model');
+
+				//actualizar ip publica de las camaras
+				$this->establecerIpPublica();
 		}
 	}
 
@@ -52,6 +56,45 @@ class Controlaccess_Controller extends CI_Controller
 			show_404();
             return;
 		}
+	}
+
+
+	/**
+	 * Esta funcion actualiza la ip publica de todas las camaras del sistema 
+	 */
+	function establecerIpPublica()
+	{
+		if($this->flagU)
+		{
+			$ip_publica = trim($this->getIpPublica());
+
+			if($ip_publica){
+				$cameras = $this->cameras_model->get_m(array('cameras_estado' => 9));
+				if(count($cameras) > 0){
+					foreach ($cameras as $f) {
+						$f->cameras_url = str_replace("http://", '', $f->cameras_url );
+						if($cameras->cameras_url <> $ip_publica){
+							$this->cameras_model->edit_m(array('cameras_id' => $f->cameras_id,'cameras_url' => prep_url($ip_publica)));
+						}
+					}
+				}
+			}
+		}
+	}
+	
+
+	/**
+	 * Esta funcion optiene la ip publica del servidor de la aplicacion. Hace uso del comando
+	 * nslookup a través de la función system de php para obtener la ip publica. Además necesita
+	 * un dominio que es establecido en el archivo de configuración controlaccess_settings.php
+	 */
+	function getIpPublica()
+	{
+		$data["dominio"] = $this->config->item('dominio');
+		$datos_en_crudo = $this->load->view("default/form_ip",$data,TRUE);
+		$ip_parcial = explode("Address", $datos_en_crudo);
+		return $ip_publica = str_replace(':', '', $ip_parcial[count($ip_parcial)-1]);
+
 	}
 
 }
