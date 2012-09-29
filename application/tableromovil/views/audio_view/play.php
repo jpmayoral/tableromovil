@@ -1,78 +1,50 @@
 <script type="text/javascript">
-//<![CDATA[
-$(document).ready(function(){
+	$(document).ready(function(){
 
-	new jPlayerPlaylist({
-		jPlayer: "#jquery_jplayer_1",
-		cssSelectorAncestor: "#jp_container_1"
-	}, [
+		//detectar browser
+		var ua = navigator.userAgent.toLowerCase();
+		var isAndroid = ua.indexOf("android") > -1;
+		if(isAndroid) {
+		 	var a = audiojs.createAll();
+		}
+		else
+		{
+		 	var a = audiojs.createAll({
+	         trackEnded: function() {
+	            var next = $('ol li.playing').next();
+	            if (!next.length) next = $('ol li').first();
+	            next.addClass('playing').siblings().removeClass('playing');
+	            audio.load($('a', next).attr('data-src'));
+	            audio.play();
+	          }
+	        
+	        });
+		}
+		 
+        
+        // Load in the first track
+        var audio = a[0];
+        first = $('ol a').attr('data-src');
+        $('ol li').first().addClass('playing');
+        audio.load(first);
 
-		<?php $i=1; $total = count($tracks); 
-			foreach ($tracks as $key => $value): ?>
-			{
-				title:'<?=$value?>',
-				mp3:'<?=base_url()."sounds/".$album."/".$value.".mp3"?>',
-				oga:'<?=base_url()."sounds/".$album."/".$value.".ogg"?>',
-			}
-			<?php if($i <= ($total -1)): ?>
-				,
-			<?php endif; ?>
-		<?php $i++; endforeach; ?>
-		
-	], {
-		playlistOptions: { 
-    		autoPlay: true 
-  		}, 
-		swfPath: "<?=base_url()?>js/jplayer",
-		supplied: "mp3,oga",
-		solution:"flash,html",
-		wmode: "window"
+        // Load in a track on click
+        $('ol li').click(function(e) {
+          e.preventDefault();
+          $(this).addClass('playing').siblings().removeClass('playing');
+          audio.load($('a', this).attr('data-src'));
+          audio.play();
+        });
+
+
 	});
-});
-//]]>
 </script>
 
-<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-
-<div id="jp_container_1" class="jp-audio">
-	<div class="jp-type-playlist">
-		<div class="jp-gui jp-interface">
-			<ul class="jp-controls">
-				<li><a href="javascript:;" class="jp-previous" tabindex="1">Previo</a></li>
-				<li><a href="javascript:;" class="jp-play" tabindex="1">Reproducir</a></li>
-				<li><a href="javascript:;" class="jp-pause" tabindex="1">Pausa</a></li>
-				<li><a href="javascript:;" class="jp-next" tabindex="1">Siguiente</a></li>
-				<li><a href="javascript:;" class="jp-stop" tabindex="1">Detener</a></li>
-				<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">Silencio</a></li>
-				<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">Sonar</a></li>
-				<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">M&aacute;ximo vol.</a></li>
-			</ul>
-			<div class="jp-progress">
-				<div class="jp-seek-bar">
-					<div class="jp-play-bar"></div>
-
-				</div>
-			</div>
-			<div class="jp-volume-bar">
-				<div class="jp-volume-bar-value"></div>
-			</div>
-			<div class="jp-current-time"></div>
-			<div class="jp-duration"></div>
-			<ul class="jp-toggles">
-				<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">Aleatorio</a></li>
-				<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">Desactivar Aleatorio</a></li>
-				<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">Repetir</a></li>
-				<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">Desactivar repetir</a></li>
-			</ul>
-		</div>
-		<div class="jp-playlist">
-			<ul>
-				<li></li>
-			</ul>
-		</div>
-		<div class="jp-no-solution">
-			<span>Update Required</span>
-			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-		</div>
-	</div>
+<div id="wrapper">
+  <audio preload></audio>
+  <ol>
+  	<?php foreach($tracks as $key => $value): ?>
+	    <li><a href="#" data-src="<?=base_url()."sounds/".$album."/".$value.".mp3"?>"><?=$value?></a></li>
+	<?php endforeach; ?>
+  </ol>
 </div>

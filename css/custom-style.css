@@ -53,6 +53,7 @@
 	color: 	#fff ;
 }
 .ui-bar-h .ui-link {
+	text-decoration: none;
 	color: #ddf0f8 ;
 	font-weight: bold;
 }
@@ -99,17 +100,18 @@
 	color: 	#fff ;
 }
 .ui-body-h .ui-link {
+	text-decoration: none;
 	color: #fff ;
 	font-weight: bold;
 }
 .ui-body-h .ui-link:hover {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-body-h .ui-link:active {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-body-h .ui-link:visited {
-    color: #2489CE ;
+    color: #70EB4B ;
 }
 .ui-btn-up-h {
 	border: 0px solid 		#C7EBFF ;
@@ -201,17 +203,18 @@
 	/*color: #fff ;*/
 }
 .ui-bar-i .ui-link {
-	color: #7cc4e7 ;
+	text-decoration: none;
+	color: #fff ;
 	font-weight: bold;
 }
 .ui-bar-i .ui-link:hover {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-bar-i .ui-link:active {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-bar-i .ui-link:visited {
-    color: #2489CE ;
+    color: #70EB4B ;
 }
 .ui-body-i,
 .ui-overlay-i {
@@ -243,17 +246,18 @@
 	color: 	#fff ;
 }
 .ui-body-i .ui-link {
-	color: #2489CE ;
+	text-decoration: none;
+	color: #fff ;
 	font-weight: bold;
 }
 .ui-body-i .ui-link:hover {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-body-i .ui-link:active {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-body-i .ui-link:visited {
-    color: #2489CE ;
+    color: #70EB4B ;
 }
 .ui-btn-up-i {
 	border: 1px solid 		#111 ;
@@ -336,17 +340,18 @@
 	color: #fff ;
 }
 .ui-bar-j .ui-link {
-	color: #7cc4e7 ;
+	text-decoration: none;
+	color: #fff ;
 	font-weight: bold;
 }
 .ui-bar-j .ui-link:hover {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-bar-j .ui-link:active {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-bar-j .ui-link:visited {
-    color: #2489CE ;
+    color: #70EB4B ;
 }
 .ui-body-j,
 .ui-overlay-j {
@@ -382,17 +387,18 @@
 	color: 	#fff ;
 }
 .ui-body-j .ui-link {
-	color: #2489CE ;
+	text-decoration: none;
+	color: #fff ;
 	font-weight: bold;
 }
 .ui-body-j .ui-link:hover {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-body-j .ui-link:active {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-body-j .ui-link:visited {
-    color: #2489CE ;
+    color: #70EB4B ;
 }
 .ui-btn-up-j {
 	border: 1px solid 		#111 ;
@@ -474,17 +480,18 @@
 	color: #fff ;
 }
 .ui-bar-k .ui-link {
-	color: #7cc4e7 ;
+	text-decoration: none;
+	color: #fff ;
 	font-weight: bold;
 }
 .ui-bar-k .ui-link:hover {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-bar-k .ui-link:active {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-bar-k .ui-link:visited {
-    color: #2489CE ;
+    color: #70EB4B ;
 }
 .ui-body-k,
 .ui-overlay-k {
@@ -518,17 +525,18 @@
 	color: 	#fff ;
 }
 .ui-body-k .ui-link {
-	color: #2489CE ;
+	text-decoration: none;
+	color: #fff ;
 	font-weight: bold;
 }
 .ui-body-k .ui-link:hover {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-body-k .ui-link:active {
-	color: #2489CE ;
+	color: #ABFF91 ;
 }
 .ui-body-k .ui-link:visited {
-    color: #2489CE ;
+    color: #70EB4B ;
 }
 .ui-btn-up-k {
 	border: 1px solid 		#111 ;
@@ -731,4 +739,34 @@ background-color: #666;
 	position: absolute;
 	top:4px;
 	right:0px;
+}
+
+/* estilo para reproductor de audio*/
+.ui-body-c, .ui-overlay-c {
+	color: #333;
+	text-shadow: 0 1px 0 #333;
+}
+
+#wrapper{
+	width: 360px;
+}
+#wrapper ol{
+	padding: 0px; 
+	margin: 0px; 
+	list-style: decimal-leading-zero inside; 
+	color: #ccc; 
+	border-top: 1px 
+	solid #ccc; 
+	font-size: 0.9em; 
+}
+#wrapper ol li{
+	position: relative; 
+	margin: 0px; 
+	padding: 9px 2px 10px; 
+	border-bottom: 1px solid #066B39; 
+	cursor: pointer; 
+}
+
+.playing {
+	background-color: #066B31;
 }
