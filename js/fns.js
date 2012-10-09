@@ -221,3 +221,23 @@ function updateNov(url)
         }
     });
 }
+
+
+//function to play in Android
+
+function addClass(ele,cls) {
+  ele.addClass(cls);
+}
+
+function removeClass(ele,cls) {
+  ele.removeClass(cls);
+}
+
+function setVisibleCls(ele){
+  ele.css("display","block");
+}
+
+function setInvisibleCls(ele){
+  ele.css("display","none");
+}
+

@@ -72,7 +72,13 @@ class Audio_Controller extends CI_Controller
 		$data['tracks'] = $tracks;
 		$data['album'] = urldecode($album);
 		
-		$this->load->view('audio_view/play',$data);
+		if ($this->checkMobileAndroid())
+		{
+		    $this->load->view('audio_view/play_to_android',$data);
+		}else{
+			 $this->load->view('audio_view/play_to_desktop',$data);
+		}			
+
 		$this->load->view('audio_view/_footer_audio_tracks',$data);
 		
 	}
@@ -118,8 +124,36 @@ class Audio_Controller extends CI_Controller
 		}
 
 		$data['tracks'] = $tracks;
-		$this->load->view('audio_view/play_playlist',$data);
+		
+		if ($this->checkMobileAndroid())
+		{
+		    $this->load->view('audio_view/play_playlist_to_android',$data);
+		}else{
+			$this->load->view('audio_view/play_playlist_to_desktop',$data);
+		}
+
 		$this->load->view('audio_view/_footer_audio_tracks_playlist',$data);
 	}
+
+
+
+	/*function detect_mobile()
+	{
+	    if(preg_match('/(alcatel|amoi|android|avantgo|blackberry|benq|cell|cricket|docomo|elaine|htc|iemobile|iphone|ipad|ipaq|ipod|j2me|java|midp|mini|mmp|mobi|motorola|nec-|nokia|palm|panasonic|philips|phone|playbook|sagem|sharp|sie-|silk|smartphone|sony|symbian|t-mobile|telus|up\.browser|up\.link|vodafone|wap|webos|wireless|xda|xoom|zte)/i', $_SERVER['HTTP_USER_AGENT']))
+	        return true;
+	 
+	    else
+	        return false;
+	}*/
+
+	function checkMobileAndroid()
+	{
+	    if(preg_match('/(android)/i', $_SERVER['HTTP_USER_AGENT']))
+	        return true;
+	 
+	    else
+	        return false;
+	}
+
 
 }
